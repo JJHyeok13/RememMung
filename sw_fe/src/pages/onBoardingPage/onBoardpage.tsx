@@ -1,20 +1,14 @@
 import React from "react";
 
-import BackgroundImage from "../../assets/onBoardingPage/background.svg";
-import styled from "styled-components";
 import StepComponent from "../../components/onBoardingPage/stepComponent/stepComponent";
 
-const Background = styled.div`
-  background: url(${BackgroundImage});
-  width: 100vw;
-  height: 100vh;
-`;
+import styles from "./styles";
 
 const OnBoardingPage: React.FC = () => {
   return (
-    <Background>
+    <styles.Background>
       <StepComponent />
-    </Background>
+    </styles.Background>
   );
 };
 
