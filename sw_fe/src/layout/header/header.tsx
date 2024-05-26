@@ -14,8 +14,11 @@ const Header: React.FC = () => {
         </styles.LeftContainer>
       </styles.StyledLink>
       <styles.RightContainer>
-        <styles.Button>로그인</styles.Button>
-        <styles.Button>회원가입</styles.Button>
+        <styles.Greeting>
+          <styles.Nickname>정현</styles.Nickname>님 반가워요!
+        </styles.Greeting>
+        <styles.Button>마이페이지</styles.Button>
+        <styles.Button>로그아웃</styles.Button>
       </styles.RightContainer>
     </styles.Container>
   );
