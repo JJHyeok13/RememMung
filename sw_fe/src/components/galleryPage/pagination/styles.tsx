@@ -33,6 +33,9 @@ const styles = {
     border-radius: 50%;
     background-color: ${(props) => (props.$isActive ? "#eae0d6" : "")};
     cursor: pointer;
+
+    font-size: 14px;
+    font-weight: ${(props) => (props.$isActive ? 600 : 500)};
   `,
 };
 
