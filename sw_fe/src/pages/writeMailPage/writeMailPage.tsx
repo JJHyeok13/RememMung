@@ -1,8 +1,9 @@
 import React from "react";
 
-import styles from "./styles";
 import InputContainer from "../../components/writeMailPage/inputContainer/inputContainer";
 import SelectLetterStyle from "../../components/writeMailPage/selectLetterStyle/selectLetterStyle";
+
+import styles from "./styles";
 
 const WriteMailPage: React.FC = () => {
   return (
