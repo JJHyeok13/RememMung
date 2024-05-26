@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./styles";
 
-import LogoImage from "../../assets/Logo.svg";
+import LogoImage from "../../assets/header/Logo.svg";
 
 const Header: React.FC = () => {
   return (

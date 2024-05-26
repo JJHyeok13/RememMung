@@ -13,3 +13,8 @@ p {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+@font-face {
+  font-family: "SEBANG Gothic";
+  src: url("../public/SEBANGGothic.ttf") format("woff2");
+}

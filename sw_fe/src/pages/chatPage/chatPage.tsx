@@ -1,11 +1,10 @@
 import React from "react";
 
-import useBodyOverflowHidden from "../../\bhooks/useBodyOverflowHidden";
-
 import styled from "styled-components";
 
 import PetImageExample from "../../assets/mainPage/PetImageExample.svg";
 import ChattingInput from "../../components/mainPage/chattingInput/chattingInput";
+import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
 
 const Container = styled.div`
   display: flex;

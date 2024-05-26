@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-import useBodyOverflowHidden from "../../\bhooks/useBodyOverflowHidden";
+import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
 
 const Container = styled.div`
   display: flex;

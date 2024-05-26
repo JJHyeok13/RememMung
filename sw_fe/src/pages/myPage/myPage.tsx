@@ -1,43 +1,15 @@
 import React from "react";
 
-import styled from "styled-components";
+import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
 
-import useBodyOverflowHidden from "../../\bhooks/useBodyOverflowHidden";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 1080px;
-  margin: 0 auto;
-`;
-
-const WhiteBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 1080px;
-  height: 551px;
-  border-radius: 12px;
-  background-color: #f4f4f4;
-
-  // 글씨 관련 CSS
-  font-size: 18px;
-  color: #5d606b;
-  line-height: 180%;
-  letter-spacing: -0.02em;
-
-  padding: 32px 16px 32px 32px;
-  box-sizing: border-box;
-
-  margin: 0 auto;
-`;
+import styles from "./styles";
 
 const MyPage: React.FC = () => {
   useBodyOverflowHidden();
 
   return (
-    <Container>
-      <WhiteBox>
+    <styles.Container>
+      <styles.WhiteBox>
         <div>반가워요!</div>
         <div>
           리멤멍은 반려동물과의 이별을 하게된 사람들을 위해 과거의 추억 회상을
@@ -47,8 +19,8 @@ const MyPage: React.FC = () => {
         <div>당신의 반려동물과 건강한 이별을 리멤멍이 도와줄게요!</div>
         <br />
         <br />
-      </WhiteBox>
-    </Container>
+      </styles.WhiteBox>
+    </styles.Container>
   );
 };
 
