@@ -6,7 +6,7 @@ import styles from "./styles";
 
 const Pagination: React.FC = () => {
   const [totalPage, setTotalPage] = useState<number>(10);
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const pageNumbers = [];
 
@@ -18,9 +18,17 @@ const Pagination: React.FC = () => {
     setCurrentPage(page);
   };
 
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
   return (
     <styles.Container>
-      <MdNavigateBefore size={24} fill="#767676" />
+      <MdNavigateBefore size={24} fill="#767676" onClick={handlePrevPage} />
       <styles.PageContainer>
         {pageNumbers.map((page, index) => (
           <styles.PaginationItem
@@ -32,7 +40,7 @@ const Pagination: React.FC = () => {
           </styles.PaginationItem>
         ))}
       </styles.PageContainer>
-      <MdNavigateNext size={24} fill="#767676" />
+      <MdNavigateNext size={24} fill="#767676" onClick={handleNextPage} />
     </styles.Container>
   );
 };

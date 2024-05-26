@@ -24,4 +24,14 @@ export const dummyData = [
     writer: "브리",
     createdAt: "2024. 03. 25",
   },
+  {
+    title: "요즘엔 어떤 노래 들어어~?",
+    writer: "브리",
+    createdAt: "3시간 전",
+  },
+  {
+    title: "감기 조심해야해애~",
+    writer: "브리",
+    createdAt: "2024. 04. 27",
+  },
 ];

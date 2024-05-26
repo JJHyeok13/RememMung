@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 const styles = {
   Table: styled.table`
-    width: 90%;
+    width: 100%;
     height: 100%;
-    overflow-y: auto;
+    margin-bottom: 64px;
   `,
   TableHeader: styled.th`
     color: #464646;
   `,
   TitleData: styled.td`
-    width: 60%;
+    width: 65%;
     color: #444444;
   `,
   OtherData: styled.td`
