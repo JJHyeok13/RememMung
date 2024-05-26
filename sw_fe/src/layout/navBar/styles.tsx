@@ -11,10 +11,11 @@ const styles = {
     margin: 0 auto;
   `,
   StyleLink: styled(Link)<{ $active: boolean }>`
+    width: 50px;
     font-size: 12px;
     text-align: center;
     text-decoration: none;
-    margin-right: 56px;
+    margin-right: 24px;
     margin-bottom: 27px;
     position: relative;
   `,
