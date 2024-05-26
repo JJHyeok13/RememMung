@@ -1,5 +1,7 @@
 import React from "react";
 
+import useBodyOverflowHidden from "../../\bhooks/useBodyOverflowHidden";
+
 import styled from "styled-components";
 
 import PetImageExample from "../../assets/mainPage/PetImageExample.svg";
@@ -13,29 +15,26 @@ const Container = styled.div`
 `;
 
 const WhiteBox = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   width: 1080px;
-  height: 551px;
+  height: 580px;
   border-radius: 12px;
-  background-color: #f4f4f4;
+  background-image: url(${PetImageExample});
 
   margin: 0 auto;
 `;
 
-const PetImage = styled.img`
-  width: 1080px;
-  height: 551px;
-  border-radius: 12px;
-`;
-
 const ChatPage: React.FC = () => {
+  // 스크롤 방지 Hooks
+  useBodyOverflowHidden();
+
   return (
     <Container>
       <WhiteBox>
-        <PetImage src={PetImageExample} />
+        <ChattingInput />
       </WhiteBox>
-      <ChattingInput />
     </Container>
   );
 };
