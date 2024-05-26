@@ -32,7 +32,7 @@ const WhiteBox = styled.div`
   margin: 0 auto;
 `;
 
-const MainPage: React.FC = () => {
+const GalleryPage: React.FC = () => {
   useBodyOverflowHidden();
 
   return (
@@ -52,4 +52,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default GalleryPage;
