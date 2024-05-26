@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-import { RiHome4Fill } from "react-icons/ri";
-import { PiChatCircleTextFill } from "react-icons/pi";
-import { PiMailboxFill } from "react-icons/pi";
-import { LuMail } from "react-icons/lu";
-import { CgProfile } from "react-icons/cg";
+import HomeIcon from "../../assets/navBar/homeIcon.svg";
+import ChattingIcon from "../../assets/navBar/chattingIcon.svg";
+import GalleryIcon from "../../assets/navBar/galleryIcon.svg";
+import LetterIcon from "../../assets/navBar/letterIcon.svg";
+import MailBoxIcon from "../../assets/navBar/mailBoxIcon.svg";
 
 import styles from "./styles";
 
@@ -14,40 +14,40 @@ const NavBar: React.FC = () => {
 
   const isHome = location.pathname === "/main";
   const isChat = location.pathname === "/chat";
-  const isMailbox = location.pathname === "/mailbox";
+  const isGallery = location.pathname === "/gallery";
   const isWrite = location.pathname === "/write";
-  const isMypage = location.pathname === "/mypage";
+  const isMailbox = location.pathname === "/mailbox";
 
   return (
     <styles.Container>
-      <styles.StyleLink to="/main" active={isHome}>
-        <RiHome4Fill size={24} color={isHome ? "#946233" : "#AAAEBB"} />
+      <styles.StyleLink to="/main" $active={isHome}>
+        {isHome && <styles.Dot />}
+        <img src={HomeIcon} />
         <div style={{ color: isHome ? "#946233" : "#AAAEBB" }}>홈</div>
       </styles.StyleLink>
 
-      <styles.StyleLink to="/chat" active={isChat}>
-        <PiChatCircleTextFill
-          size={24}
-          color={isChat ? "#946233" : "#AAAEBB"}
-        />
+      <styles.StyleLink to="/chat" $active={isChat}>
+        {isChat && <styles.Dot />}
+        <img src={ChattingIcon} />
         <div style={{ color: isChat ? "#946233" : "#AAAEBB" }}>채팅</div>
       </styles.StyleLink>
 
-      <styles.StyleLink to="/mailbox" active={isMailbox}>
-        <PiMailboxFill size={24} color={isMailbox ? "#946233" : "#AAAEBB"} />
-        <div style={{ color: isMailbox ? "#946233" : "#AAAEBB" }}>우편함</div>
+      <styles.StyleLink to="/gallery" $active={isGallery}>
+        {isGallery && <styles.Dot />}
+        <img src={GalleryIcon} />
+        <div style={{ color: isGallery ? "#946233" : "#AAAEBB" }}>갤러리</div>
       </styles.StyleLink>
 
-      <styles.StyleLink to="/write" active={isWrite}>
-        <LuMail size={24} color={isWrite ? "#946233" : "#AAAEBB"} />
+      <styles.StyleLink to="/write" $active={isWrite}>
+        {isWrite && <styles.Dot />}
+        <img src={LetterIcon} />
         <div style={{ color: isWrite ? "#946233" : "#AAAEBB" }}>편지쓰기</div>
       </styles.StyleLink>
 
-      <styles.StyleLink to="/mypage" active={isMypage}>
-        <CgProfile size={24} color={isMypage ? "#946233" : "#AAAEBB"} />
-        <div style={{ color: isMypage ? "#946233" : "#AAAEBB" }}>
-          마이페이지
-        </div>
+      <styles.StyleLink to="/mailbox" $active={isMailbox}>
+        {isMailbox && <styles.Dot />}
+        <img src={MailBoxIcon} />
+        <div style={{ color: isMailbox ? "#946233" : "#AAAEBB" }}>우편함</div>
       </styles.StyleLink>
     </styles.Container>
   );

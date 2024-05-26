@@ -6,8 +6,10 @@ import StartPage from "./pages/startPage/startPage";
 import OnBoardingPage from "./pages/onBoardingPage/onBoardpage";
 
 import MainPage from "./pages/mainPage/mainPage";
-import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
+import ChatPage from "./pages/chatPage/chatPage";
+
 import WriteMailPage from "./pages/writeMailPage/writeMailPage";
+import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
 
 function App() {
   return (
@@ -18,10 +20,10 @@ function App() {
 
         <Route element={<BasicLayout />}>
           <Route path="/main" element={<MainPage />} />
-          <Route path="/chat" element={<MainPage />} />
-          <Route path="/mailbox" element={<MailBoxPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/gallery" element={<MainPage />} />
           <Route path="/write" element={<WriteMailPage />} />
-          <Route path="/mypage" element={<MainPage />} />
+          <Route path="/mailbox" element={<MailBoxPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

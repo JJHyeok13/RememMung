@@ -10,13 +10,23 @@ const styles = {
     align-items: center;
     margin: 0 auto;
   `,
-  StyleLink: styled(Link)<{ active: boolean }>`
+  StyleLink: styled(Link)<{ $active: boolean }>`
     font-size: 12px;
     text-align: center;
-    border-bottom: ${({ active }) => (active ? "6px solid #946233" : "none")};
     text-decoration: none;
     margin-right: 56px;
     margin-bottom: 27px;
+    position: relative;
+  `,
+  Dot: styled.div`
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #946233;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
   `,
 };
 
