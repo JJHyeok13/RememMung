@@ -4,16 +4,17 @@ const styles = {
   Container: styled.div`
     display: flex;
     flex-direction: column;
-    width: 1080px;
+    width: 84%;
     margin: 0 auto;
   `,
   ElementBox: styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 1080px;
+    width: 100%;
     height: 551px;
     border-radius: 12px;
+    box-sizing: border-box;
     padding: 32px 16px 32px 64px;
     background-color: #f4f4f4;
     overflow: hidden;

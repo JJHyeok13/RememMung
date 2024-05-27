@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import KakaoLoginImage from "@assets/startPage/kakaoButton.svg";
 import NaverLoginImage from "@assets/startPage/naverButton.svg";
@@ -6,6 +7,12 @@ import NaverLoginImage from "@assets/startPage/naverButton.svg";
 import styles from "./styles";
 
 const StartPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/onboard`);
+  };
+
   return (
     <styles.Background>
       <styles.Gradation>
@@ -19,8 +26,8 @@ const StartPage: React.FC = () => {
           </styles.Subtitle>
 
           <styles.ButtonContainer>
-            <styles.Button src={KakaoLoginImage} />
-            <styles.Button src={NaverLoginImage} />
+            <styles.Button src={KakaoLoginImage} onClick={handleClick} />
+            <styles.Button src={NaverLoginImage} onClick={handleClick} />
           </styles.ButtonContainer>
         </styles.Container>
       </styles.Gradation>

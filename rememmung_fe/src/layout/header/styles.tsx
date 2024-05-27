@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const styles = {
   Container: styled.div`
-    width: 1080px;
+    width: 84%;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;

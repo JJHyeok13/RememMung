@@ -7,14 +7,14 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepThreeProps {
   selectedCharacter: string[];
-  setSelectedCharacter: (character: string[]) => void;
+  setPetCharacter: React.Dispatch<React.SetStateAction<string[]>>;
   handlePrevStep: () => void;
   handleNextStep: () => void;
 }
 
 const StepThree: React.FC<StepThreeProps> = ({
   selectedCharacter,
-  setSelectedCharacter,
+  setPetCharacter,
   handlePrevStep,
   handleNextStep,
 }) => {
@@ -33,14 +33,18 @@ const StepThree: React.FC<StepThreeProps> = ({
 
   const isInputComplete = selectedCharacter.length > 0;
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, checked } = event.target;
-    if (checked) {
-      setSelectedCharacter((prevCharacters) => [...prevCharacters, id]);
+  const disableButtonClick = () => {
+    alert("성격을 선택해주세요!");
+  };
+
+  const checkHandler = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    if (e.target.checked) {
+      setPetCharacter([...selectedCharacter, value]);
     } else {
-      setSelectedCharacter((prevCharacters) =>
-        prevCharacters.filter((char) => char !== id)
-      );
+      setPetCharacter(selectedCharacter.filter((char) => char !== value));
     }
   };
 
@@ -54,7 +58,9 @@ const StepThree: React.FC<StepThreeProps> = ({
               type="checkbox"
               id={character.id}
               name="petCharacter"
-              onChange={handleCheckboxChange}
+              value={character.id}
+              checked={selectedCharacter.includes(character.name)}
+              onChange={(e) => checkHandler(e, character.name)}
             />
             <styles.Label htmlFor={character.id}>
               <span>{character.name}</span>
@@ -65,11 +71,14 @@ const StepThree: React.FC<StepThreeProps> = ({
 
       <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />
 
-      <button onClick={handleNextStep} disabled={!isInputComplete}>
+      {!isInputComplete ? (
         <styles.NextButton
-          src={!isInputComplete ? DisableNextButtonImage : AbleNextButtonImage}
+          src={DisableNextButtonImage}
+          onClick={disableButtonClick}
         />
-      </button>
+      ) : (
+        <styles.NextButton src={AbleNextButtonImage} onClick={handleNextStep} />
+      )}
     </styles.Container>
   );
 };

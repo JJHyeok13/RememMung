@@ -8,6 +8,7 @@ const styles = {
   `,
   TableHeader: styled.th`
     color: #464646;
+    padding-bottom: 32px;
   `,
   TitleData: styled.td`
     width: 65%;

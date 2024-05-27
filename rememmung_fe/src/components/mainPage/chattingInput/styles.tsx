@@ -2,17 +2,16 @@ import styled from "styled-components";
 
 const styles = {
   Container: styled.div`
-    position: fixed; /* Updated to fixed */
+    position: fixed;
     bottom: 29px;
-    width: 1080px; /* Ensure it fits within the container width */
+    width: 84%;
     display: flex;
     align-items: center;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto;
   `,
-
   StyleInput: styled.input`
     font-size: 16px;
-    width: 988px;
+    width: 95%;
     height: 51px;
     box-sizing: border-box;
     padding: 16px;
@@ -26,9 +25,8 @@ const styles = {
       color: #898989;
     }
   `,
-
   SendButton: styled.img`
-    margin-left: 24px;
+    margin-left: 4%;
     cursor: pointer;
   `,
 };

@@ -8,6 +8,7 @@ const styles = {
     grid-column-gap: 29px;
     grid-row-gap: 32px;
     margin-bottom: 48px;
+    place-items: center;
   `,
   PhotoContainer: styled.div`
     position: relative;

@@ -7,7 +7,7 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepTwoProps {
   selectedName: string;
-  setName: (name: string) => void;
+  setName: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePrevStep: () => void;
   handleNextStep: () => void;
 }
@@ -18,11 +18,11 @@ const StepTwo: React.FC<StepTwoProps> = ({
   handlePrevStep,
   handleNextStep,
 }) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-
   const isInputComplete = selectedName !== "";
+
+  const disableButtonClick = () => {
+    alert("이름을 입력해주세요!");
+  };
 
   return (
     <styles.Container>
@@ -31,17 +31,20 @@ const StepTwo: React.FC<StepTwoProps> = ({
         type="text"
         placeholder="이름을 입력해주세요"
         value={selectedName}
-        onChange={handleInputChange}
-        $borderColor={selectedName ? "#53555C" : "#b9bbc2"}
+        onChange={setName}
+        $borderColor={selectedName ? "#946233" : "#b9bbc2"}
       />
 
       <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />
 
-      <button onClick={handleNextStep} disabled={!isInputComplete}>
+      {!isInputComplete ? (
         <styles.NextButton
-          src={!isInputComplete ? DisableNextButtonImage : AbleNextButtonImage}
+          src={DisableNextButtonImage}
+          onClick={disableButtonClick}
         />
-      </button>
+      ) : (
+        <styles.NextButton src={AbleNextButtonImage} onClick={handleNextStep} />
+      )}
     </styles.Container>
   );
 };

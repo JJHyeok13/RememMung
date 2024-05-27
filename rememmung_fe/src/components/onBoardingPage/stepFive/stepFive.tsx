@@ -1,24 +1,63 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import styles from "./styles";
 
+import { createYear, createMonth, createDay } from "utils/createTime";
+
 import PrevButtonImage from "@assets/onBoardingPage/prevButton.svg";
-import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
 import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepFiveProps {
-  selectedName: string;
-  setName: (name: string) => void;
+  additionalInfo: {
+    gender: string;
+    birthday: string;
+    farewell: string;
+    favorite: string[];
+    hate: string[];
+    skill: string[];
+  };
+  setAdditionalInfo: (info: Partial<StepFiveProps["additionalInfo"]>) => void;
   handlePrevStep: () => void;
   handleSubmit: () => void;
 }
 
 const StepFive: React.FC<StepFiveProps> = ({
-  selectedName,
+  additionalInfo,
+  setAdditionalInfo,
   handlePrevStep,
   handleSubmit,
 }) => {
-  const isInputComplete = selectedName !== "";
+  const [birthdayYear, setBirthdayYear] = useState<string>("");
+  const [birthdayMonth, setBirthdayMonth] = useState<string>("");
+  const [birthdayDay, setBirthdayDay] = useState<string>("");
+
+  const [farewellYear, setFarewellYear] = useState<string>("");
+  const [farewellMonth, setFarewellMonth] = useState<string>("");
+  const [farewellDay, setFarewellDay] = useState<string>("");
+
+  useEffect(() => {
+    const birthday = `${birthdayYear}-${birthdayMonth}-${birthdayDay}`;
+    const farewell = `${farewellYear}-${farewellMonth}-${farewellDay}`;
+    setAdditionalInfo({ birthday, farewell });
+  }, [
+    birthdayYear,
+    birthdayMonth,
+    birthdayDay,
+    farewellYear,
+    farewellMonth,
+    farewellDay,
+  ]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    if (name === "favorite" || name === "hate" || name === "skill") {
+      const list = value.split(",").map((item) => item.trim());
+      setAdditionalInfo({ [name]: list });
+    } else {
+      setAdditionalInfo({ [name]: value });
+    }
+  };
 
   return (
     <styles.Container>
@@ -27,36 +66,142 @@ const StepFive: React.FC<StepFiveProps> = ({
         선택사항이지만, 대답해주신다면 더 정확한 AI 모델을 얻을 수 있어요
       </styles.SubTitle>
 
-      <div>
-        <h3>성별</h3>
-        <input type="radio" name="male" />
-        <label htmlFor="male">남자</label>
+      <styles.TotalInputContainer>
+        <styles.InputContainer>
+          <h3>성별</h3>
+          <styles.Input>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              checked={additionalInfo.gender === "male"}
+              onChange={handleChange}
+            />
+            <label htmlFor="male">남자</label>
 
-        <input type="radio" name="female" />
-        <label htmlFor="female">여자</label>
-      </div>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              checked={additionalInfo.gender === "female"}
+              onChange={handleChange}
+            />
+            <label htmlFor="female">여자</label>
+          </styles.Input>
+        </styles.InputContainer>
 
-      <div>
-        <h3>생일</h3>
-        <input type="number" /> 년
-        <input type="number" /> 월
-        <input type="number" /> 일
-      </div>
+        <styles.InputContainer>
+          <h3>생일</h3>
+          <styles.Input>
+            <select
+              name="birthdayYear"
+              value={birthdayYear}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setBirthdayYear(e.target.value)
+              }
+            >
+              <option value="">년</option>
+              {createYear()}
+            </select>{" "}
+            년
+            <select
+              name="birthdayMonth"
+              value={birthdayMonth}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setBirthdayMonth(e.target.value)
+              }
+            >
+              <option value="">월</option>
+              {createMonth()}
+            </select>{" "}
+            월
+            <select
+              name="birthdayDay"
+              value={birthdayDay}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setBirthdayDay(e.target.value)
+              }
+            >
+              <option value="">일</option>
+              {createDay()}
+            </select>{" "}
+            일
+          </styles.Input>
+        </styles.InputContainer>
 
-      <div>
-        <h3>이별한 날짜</h3>
-        <input type="number" /> 년
-        <input type="number" /> 월
-        <input type="number" /> 일
-      </div>
+        <styles.InputContainer>
+          <h3>이별한 날짜</h3>
+          <styles.Input>
+            <select
+              name="farewellYear"
+              value={farewellYear}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setFarewellYear(e.target.value)
+              }
+            >
+              <option value="">년</option>
+              {createYear()}
+            </select>{" "}
+            년
+            <select
+              name="farewellMonth"
+              value={farewellMonth}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setFarewellMonth(e.target.value)
+              }
+            >
+              <option value="">월</option>
+              {createMonth()}
+            </select>{" "}
+            월
+            <select
+              name="farewellDay"
+              value={farewellDay}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setFarewellDay(e.target.value)
+              }
+            >
+              <option value="">일</option>
+              {createDay()}
+            </select>{" "}
+            일
+          </styles.Input>
+        </styles.InputContainer>
+
+        <styles.InputContainer>
+          <h3>좋아하는 것</h3>
+          <styles.Textarea
+            placeholder="내용을 입력해주세요"
+            name="favorite"
+            value={additionalInfo.favorite.join(", ")}
+            onChange={handleChange}
+          />
+        </styles.InputContainer>
+
+        <styles.InputContainer>
+          <h3>싫어하는 것</h3>
+          <styles.Textarea
+            placeholder="내용을 입력해주세요"
+            name="hate"
+            value={additionalInfo.hate.join(", ")}
+            onChange={handleChange}
+          />
+        </styles.InputContainer>
+
+        <styles.InputContainer>
+          <h3>개인기</h3>
+          <styles.Textarea
+            placeholder="내용을 입력해주세요"
+            name="skill"
+            value={additionalInfo.skill.join(", ")}
+            onChange={handleChange}
+          />
+        </styles.InputContainer>
+      </styles.TotalInputContainer>
 
       <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />
 
-      <button onClick={handleSubmit} disabled={!isInputComplete}>
-        <styles.NextButton
-          src={!isInputComplete ? DisableNextButtonImage : AbleNextButtonImage}
-        />
-      </button>
+      <styles.NextButton src={AbleNextButtonImage} onClick={handleSubmit} />
     </styles.Container>
   );
 };

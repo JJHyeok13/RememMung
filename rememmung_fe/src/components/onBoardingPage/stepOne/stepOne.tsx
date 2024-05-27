@@ -6,13 +6,13 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepOneProps {
   selectedType: string;
-  setSelectedType: (type: string) => void;
+  setType: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleNextStep: () => void;
 }
 
 const StepOne: React.FC<StepOneProps> = ({
   selectedType,
-  setSelectedType,
+  setType,
   handleNextStep,
 }) => {
   const types = [
@@ -34,8 +34,8 @@ const StepOne: React.FC<StepOneProps> = ({
 
   const isInputComplete = selectedType !== "";
 
-  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedType(event.target.id);
+  const disableButtonClick = () => {
+    alert("반려동물의 종을 선택해주세요!");
   };
 
   return (
@@ -48,8 +48,9 @@ const StepOne: React.FC<StepOneProps> = ({
               type="radio"
               id={type.id}
               name="petType"
+              value={type.id}
               checked={selectedType === type.id}
-              onChange={handleOptionChange}
+              onChange={setType}
             />
             <styles.Label htmlFor={type.id}>
               <span>{type.name}</span>
@@ -58,11 +59,14 @@ const StepOne: React.FC<StepOneProps> = ({
         ))}
       </styles.OptionContainer>
 
-      <button onClick={handleNextStep} disabled={!isInputComplete}>
+      {!isInputComplete ? (
         <styles.NextButton
-          src={!isInputComplete ? DisableNextButtonImage : AbleNextButtonImage}
+          src={DisableNextButtonImage}
+          onClick={disableButtonClick}
         />
-      </button>
+      ) : (
+        <styles.NextButton src={AbleNextButtonImage} onClick={handleNextStep} />
+      )}
     </styles.Container>
   );
 };

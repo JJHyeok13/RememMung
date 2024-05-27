@@ -4,10 +4,9 @@ const styles = {
   Container: styled.div`
     display: flex;
     flex-direction: column;
-    width: 1080px;
+    width: 84%;
     margin: 0 auto;
   `,
-
   ElementBox: styled.div`
     display: flex;
     flex-direction: column;

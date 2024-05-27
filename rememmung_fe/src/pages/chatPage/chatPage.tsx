@@ -9,7 +9,7 @@ import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1080px;
+  width: 84%;
   margin: 0 auto;
 `;
 
@@ -17,7 +17,7 @@ const WhiteBox = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  width: 1080px;
+  width: 100%;
   height: 580px;
   border-radius: 12px;
   background-image: url(${PetImageExample});

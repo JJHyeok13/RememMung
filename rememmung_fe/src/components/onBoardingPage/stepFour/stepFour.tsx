@@ -9,7 +9,7 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepFourProps {
   selectedName: string;
-  setName: (name: string) => void;
+  setName: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePrevStep: () => void;
   handleNextStep: () => void;
 }
@@ -20,6 +20,10 @@ const ImageUpload: React.FC<StepFourProps> = ({
   handleNextStep,
 }) => {
   const isInputComplete = selectedName !== "";
+
+  const disableButtonClick = () => {
+    alert("사진을 첨부해주세요!");
+  };
 
   return (
     <styles.Container>
@@ -37,11 +41,14 @@ const ImageUpload: React.FC<StepFourProps> = ({
 
       <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />
 
-      <button onClick={handleNextStep} disabled={!isInputComplete}>
+      {!isInputComplete ? (
         <styles.NextButton
-          src={!isInputComplete ? DisableNextButtonImage : AbleNextButtonImage}
+          src={DisableNextButtonImage}
+          onClick={disableButtonClick}
         />
-      </button>
+      ) : (
+        <styles.NextButton src={AbleNextButtonImage} onClick={handleNextStep} />
+      )}
     </styles.Container>
   );
 };

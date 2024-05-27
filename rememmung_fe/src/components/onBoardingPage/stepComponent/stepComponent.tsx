@@ -14,20 +14,41 @@ const StepComponent: React.FC = () => {
 
   const [step, setStep] = useState(1);
 
-  const [petInfo, setPetInfo] = useState<{
-    type: string;
-    name: string;
-    character: string[];
+  const [petType, setPetType] = useState<string>("");
+  const [petName, setPetName] = useState<string>("");
+  const [petCharacter, setPetCharacter] = useState<string[]>([]);
+
+  const [additionalInfo, setAdditionalInfo] = useState<{
+    gender: string;
+    birthday: string;
+    farewell: string;
+    favorite: string[];
+    hate: string[];
+    skill: string[];
   }>({
-    type: "",
-    name: "",
-    character: [],
+    gender: "male",
+    birthday: "",
+    farewell: "",
+    favorite: [],
+    hate: [],
+    skill: [],
   });
+
+  // const [petInfo, setPetInfo] = useState<{
+  //   type: string;
+  //   name: string;
+  //   character: string[];
+  // }>({
+  //   type: "",
+  //   name: "",
+  //   character: [],
+  // });
 
   const handlePrevStep = () => {
     if (step > 1) {
+      setStep(step - 1);
       console.log(step);
-      console.log(petInfo);
+      console.log(petType, petName, petCharacter);
     }
   };
 
@@ -35,33 +56,25 @@ const StepComponent: React.FC = () => {
     if (step < 5) {
       setStep(step + 1);
       console.log(step);
-      console.log(petInfo);
+      console.log(petType, petName, petCharacter);
     }
   };
 
   const handleSubmit = () => {
-    navigate("/main");
+    console.log("petType :", petType);
+    console.log("petName :", petName);
+    console.log("petCharacter :", petCharacter);
+    console.log("additionalInfo :", additionalInfo);
   };
 
-  const setSelectedType = (type: string) => {
-    setPetInfo((prevInfo) => ({
-      ...prevInfo,
-      type: type,
-    }));
+  const setType = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setPetType(value);
   };
 
-  const setName = (name: string) => {
-    setPetInfo((prevInfo) => ({
-      ...prevInfo,
-      name: name,
-    }));
-  };
-
-  const setSelectedCharacter = (character: string[]) => {
-    setPetInfo((prevInfo) => ({
-      ...prevInfo,
-      character: character,
-    }));
+  const setName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setPetName(value);
   };
 
   return (
@@ -82,14 +95,14 @@ const StepComponent: React.FC = () => {
 
       {step === 1 && (
         <StepOne
-          selectedType={petInfo.type}
-          setSelectedType={setSelectedType}
+          selectedType={petType}
+          setType={setType}
           handleNextStep={handleNextStep}
         />
       )}
       {step === 2 && (
         <StepTwo
-          selectedName={petInfo.name}
+          selectedName={petName}
           setName={setName}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
@@ -98,8 +111,8 @@ const StepComponent: React.FC = () => {
 
       {step === 3 && (
         <StepThree
-          selectedCharacter={petInfo.character}
-          setSelectedCharacter={setSelectedCharacter}
+          selectedCharacter={petCharacter}
+          setPetCharacter={setPetCharacter}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
         />
@@ -107,7 +120,7 @@ const StepComponent: React.FC = () => {
 
       {step === 4 && (
         <StepFour
-          selectedName={petInfo.name}
+          selectedName={petName}
           setName={setName}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
@@ -116,8 +129,10 @@ const StepComponent: React.FC = () => {
 
       {step === 5 && (
         <StepFive
-          selectedName={petInfo.name}
-          setName={setName}
+          additionalInfo={additionalInfo}
+          setAdditionalInfo={(info) =>
+            setAdditionalInfo((prev) => ({ ...prev, ...info }))
+          }
           handlePrevStep={handlePrevStep}
           handleSubmit={handleSubmit}
         />
