@@ -1,7 +1,7 @@
 import React from "react";
 
-import InputContainer from "../../components/writeMailPage/inputContainer/inputContainer";
-import SelectLetterStyle from "../../components/writeMailPage/selectLetterStyle/selectLetterStyle";
+import InputContainer from "@components/writeMailPage/inputContainer/inputContainer";
+import SelectLetterStyle from "@components/writeMailPage/selectLetterStyle/selectLetterStyle";
 
 import styles from "./styles";
 

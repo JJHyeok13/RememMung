@@ -1,9 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./styles";
 
-import LogoImage from "../../assets/header/Logo.svg";
-import { useNavigate } from "react-router-dom";
+import LogoImage from "@assets/header/Logo.svg";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();

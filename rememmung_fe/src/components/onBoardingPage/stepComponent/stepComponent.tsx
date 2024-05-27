@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import styles from "./styles";
-
-import StepOne from "../stepOne/stepOne";
-import StepTwo from "../stepTwo/stepTwo";
-import StepThree from "../stepThree/stepThree";
-import StepFour from "../stepFour/stepFour";
-import StepFive from "../stepFive/stepFive";
 import { useNavigate } from "react-router-dom";
+
+import StepOne from "@components/onBoardingPage/stepOne/stepOne";
+import StepTwo from "@components/onBoardingPage/stepTwo/stepTwo";
+import StepThree from "@components/onBoardingPage/stepThree/stepThree";
+import StepFour from "@components/onBoardingPage/stepFour/stepFour";
+import StepFive from "@components/onBoardingPage/stepFive/stepFive";
+
+import styles from "./styles";
 
 const StepComponent: React.FC = () => {
   const navigate = useNavigate();
@@ -99,6 +100,7 @@ const StepComponent: React.FC = () => {
         <StepThree
           selectedCharacter={petInfo.character}
           setSelectedCharacter={setSelectedCharacter}
+          handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
         />
       )}

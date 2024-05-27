@@ -41,6 +41,12 @@ const styles = {
     background-color: #e8e8eb;
     color: #8a8e99;
   `,
+  PrevButton: styled.img`
+    position: fixed;
+    bottom: 400px;
+    left: 200px;
+    cursor: pointer;
+  `,
   NextButton: styled.img`
     position: fixed;
     bottom: 400px;

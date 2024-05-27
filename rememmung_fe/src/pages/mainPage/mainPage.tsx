@@ -1,6 +1,6 @@
 import React from "react";
 
-import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
+import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
 
 import styles from "./styles";
 

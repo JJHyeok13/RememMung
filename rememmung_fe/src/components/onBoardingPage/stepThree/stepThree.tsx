@@ -1,18 +1,21 @@
 import React from "react";
 import styles from "./styles";
 
-import DisableNextButtonImage from "../../../assets/onBoardingPage/disableNextButton.svg";
-import AbleNextButtonImage from "../../../assets/onBoardingPage/ableNextButton.svg";
+import PrevButtonImage from "@assets/onBoardingPage/prevButton.svg";
+import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
+import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepThreeProps {
   selectedCharacter: string[];
   setSelectedCharacter: (character: string[]) => void;
+  handlePrevStep: () => void;
   handleNextStep: () => void;
 }
 
 const StepThree: React.FC<StepThreeProps> = ({
   selectedCharacter,
   setSelectedCharacter,
+  handlePrevStep,
   handleNextStep,
 }) => {
   const characters = [
@@ -59,6 +62,8 @@ const StepThree: React.FC<StepThreeProps> = ({
           </React.Fragment>
         ))}
       </styles.OptionContainer>
+
+      <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />
 
       <button onClick={handleNextStep} disabled={!isInputComplete}>
         <styles.NextButton

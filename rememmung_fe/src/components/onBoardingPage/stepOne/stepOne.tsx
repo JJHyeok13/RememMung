@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./styles";
 
-import DisableNextButtonImage from "../../../assets/onBoardingPage/disableNextButton.svg";
-import AbleNextButtonImage from "../../../assets/onBoardingPage/ableNextButton.svg";
+import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
+import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepOneProps {
   selectedType: string;

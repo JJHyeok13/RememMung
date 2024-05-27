@@ -1,7 +1,7 @@
 import React from "react";
 
-import KakaoLoginImage from "../../assets/startPage/kakaoButton.svg";
-import NaverLoginImage from "../../assets/startPage/naverButton.svg";
+import KakaoLoginImage from "@assets/startPage/kakaoButton.svg";
+import NaverLoginImage from "@assets/startPage/naverButton.svg";
 
 import styles from "./styles";
 

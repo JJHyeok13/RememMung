@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
+import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
+
+import PhotoContainer from "@components/galleryPage/photoContainer/photoContainer";
+import Pagination from "@components/common/pagination/pagination";
 
 import styles from "./styles";
-import PhotoContainer from "../../components/galleryPage/photoContainer/photoContainer";
 import { dummyData } from "./dummyData";
-import Pagination from "../../components/common/pagination/pagination";
 
 const GalleryPage: React.FC = () => {
   useBodyOverflowHidden();

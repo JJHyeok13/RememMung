@@ -1,13 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-import HomeIcon from "../../assets/navBar/homeIcon.svg";
-import ChattingIcon from "../../assets/navBar/chattingIcon.svg";
-import GalleryIcon from "../../assets/navBar/galleryIcon.svg";
-import LetterIcon from "../../assets/navBar/letterIcon.svg";
-import MailBoxIcon from "../../assets/navBar/mailBoxIcon.svg";
-
 import styles from "./styles";
+
+import HomeIcon from "@assets/navBar/homeIcon.svg";
+import ChattingIcon from "@assets/navBar/chattingIcon.svg";
+import GalleryIcon from "@assets/navBar/galleryIcon.svg";
+import LetterIcon from "@assets/navBar/letterIcon.svg";
+import MailBoxIcon from "@assets/navBar/mailBoxIcon.svg";
 
 const NavBar: React.FC = () => {
   const location = useLocation();

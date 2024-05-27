@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./styles";
 
-import PrevButtonImage from "../../../assets/onBoardingPage/prevButton.svg";
-
-import DisableNextButtonImage from "../../../assets/onBoardingPage/disableNextButton.svg";
-import AbleNextButtonImage from "../../../assets/onBoardingPage/ableNextButton.svg";
+import PrevButtonImage from "@assets/onBoardingPage/prevButton.svg";
+import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
+import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepTwoProps {
   selectedName: string;
