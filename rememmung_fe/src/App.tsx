@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import StartPage from "./pages/startPage/startPage";
+import KakaoLoginPage from "@pages/socialLoginPage/kakaoLoginPage";
 import OnBoardingPage from "./pages/onBoardingPage/onBoardpage";
 
 import MainPage from "./pages/mainPage/mainPage";
@@ -18,6 +19,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<StartPage />} />
+
+        <Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
         <Route path="/onboard" element={<OnBoardingPage />} />
 
         <Route element={<BasicLayout />}>

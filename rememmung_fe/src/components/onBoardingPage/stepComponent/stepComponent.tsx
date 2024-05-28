@@ -34,16 +34,6 @@ const StepComponent: React.FC = () => {
     skill: [],
   });
 
-  // const [petInfo, setPetInfo] = useState<{
-  //   type: string;
-  //   name: string;
-  //   character: string[];
-  // }>({
-  //   type: "",
-  //   name: "",
-  //   character: [],
-  // });
-
   const handlePrevStep = () => {
     if (step > 1) {
       setStep(step - 1);

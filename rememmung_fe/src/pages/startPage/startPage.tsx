@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import KakaoLoginImage from "@assets/startPage/kakaoButton.svg";
 import NaverLoginImage from "@assets/startPage/naverButton.svg";
@@ -7,11 +6,15 @@ import NaverLoginImage from "@assets/startPage/naverButton.svg";
 import styles from "./styles";
 
 const StartPage: React.FC = () => {
-  const navigate = useNavigate();
+  const kakao_client_id = import.meta.env.VITE_KAKAO_REST_API_KEY;
+  const kakao_redirect_uri = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
-  const handleClick = () => {
-    navigate(`/onboard`);
-  };
+  // const naver_client_id = import.meta.env.VITE_NAVER_REST_API_KEY;
+  // const naver_redirect_uri = import.meta.env.VITE_NAVER_REDIRECT_URI;
+  // const naver_state = import.meta.env.VITE_NAVER_STATE_STRING;
+
+  const kakaoLoginURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${kakao_client_id}&redirect_uri=${kakao_redirect_uri}`;
+  // const naverLoginURL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naver_client_id}&state=${naver_state}&redirect_uri=${naver_redirect_uri}`
 
   return (
     <styles.Background>
@@ -26,8 +29,10 @@ const StartPage: React.FC = () => {
           </styles.Subtitle>
 
           <styles.ButtonContainer>
-            <styles.Button src={KakaoLoginImage} onClick={handleClick} />
-            <styles.Button src={NaverLoginImage} onClick={handleClick} />
+            <a href={kakaoLoginURL}>
+              <styles.Button src={KakaoLoginImage} />
+            </a>
+            <styles.Button src={NaverLoginImage} />
           </styles.ButtonContainer>
         </styles.Container>
       </styles.Gradation>

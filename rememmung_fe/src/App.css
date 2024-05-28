@@ -18,3 +18,12 @@ p {
   font-family: "SEBANG Gothic";
   src: url("../public/SEBANGGothic.ttf") format("woff2");
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #bababa;
+  opacity: 0.6;
+  border-radius: 37px;
+}

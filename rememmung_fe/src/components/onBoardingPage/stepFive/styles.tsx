@@ -33,6 +33,10 @@ const styles = {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   `,
   Input: styled.div`
     display: flex;

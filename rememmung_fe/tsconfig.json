@@ -27,9 +27,9 @@
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@layout/*": ["layout/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
       //"@recoil/*": ["recoil/*"],
-      //"@server/*": ["server/*"],
+      "@server/*": ["server/*"]
       //"@utils/*": ["utils/*"]
     }
   },
