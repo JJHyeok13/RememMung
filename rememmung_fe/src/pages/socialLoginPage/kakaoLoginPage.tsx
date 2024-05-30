@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getKakaoToken } from "@server/api/oauth";
+import { getKakaoToken, kakaoLogin } from "@server/api/oauth";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./styles";
@@ -28,7 +28,6 @@ const KakaoLoginPage: React.FC = () => {
           localStorage.setItem("kakaoToken", res.access_token);
 
           setLoading(false);
-          navigate("/onboard");
         }
       } catch (error) {
         console.log(error);
@@ -36,6 +35,24 @@ const KakaoLoginPage: React.FC = () => {
     };
     fetchKakaoToken();
   }, []);
+
+  useEffect(() => {
+    const getJWTToken = async () => {
+      try {
+        setLoading(true);
+        if (kakaoToken) {
+          const res = await kakaoLogin(kakaoToken);
+          localStorage.setItem("accessToken", res.access_token);
+
+          setLoading(false);
+          navigate("/onboarding");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getJWTToken();
+  });
 
   return (
     <>

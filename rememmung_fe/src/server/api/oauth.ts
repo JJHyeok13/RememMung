@@ -15,3 +15,10 @@ export const getKakaoToken = async (
   );
   return res.data;
 };
+
+export const kakaoLogin = async (accessToken: string) => {
+  const res = await axios.post(`http://localhost:8080/api/auth/kakao`, {
+    accessToken: accessToken,
+  });
+  return res.data;
+};

@@ -23,7 +23,7 @@
     "baseUrl": "src",
     "paths": {
       "@assets/*": ["assets/*"],
-      //"@axios/*": ["axios/*"],
+      "@axios/*": ["axios/*"],
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@layout/*": ["layout/*"],
