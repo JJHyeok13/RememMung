@@ -88,7 +88,7 @@ const styles = {
     box-sizing: border-box;
     border: 0;
     border-radius: 4px;
-    padding: 8px 6px 8px 8px;
+    padding: 6px 12px 6px 14px;
   `,
   Textarea: styled.textarea`
     width: 90%;
