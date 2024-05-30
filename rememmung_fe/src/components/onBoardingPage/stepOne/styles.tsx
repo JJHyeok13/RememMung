@@ -43,7 +43,7 @@ const styles = {
   `,
   NextButton: styled.img`
     position: fixed;
-    bottom: 400px;
+    bottom: 200px;
     right: 200px;
     cursor: pointer;
   `,

@@ -25,13 +25,13 @@ const styles = {
   `,
   PrevButton: styled.img`
     position: fixed;
-    bottom: 400px;
+    bottom: 200px;
     left: 200px;
     cursor: pointer;
   `,
   NextButton: styled.img`
     position: fixed;
-    bottom: 400px;
+    bottom: 200px;
     right: 200px;
     cursor: pointer;
   `,

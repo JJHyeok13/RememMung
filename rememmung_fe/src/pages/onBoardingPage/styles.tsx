@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import Background1280 from "@assets/background_1280.png";
-import Background1440 from "@assets/background_1440.png";
-import Background1680 from "@assets/background_1680.png";
-import Background1920 from "@assets/background_1920.png";
+import Background1280 from "@assets/background/background_1280.png";
+import Background1440 from "@assets/background/background_1440.png";
+import Background1680 from "@assets/background/background_1680.png";
+import Background1920 from "@assets/background/background_1920.png";
 
 const styles = {
   Background: styled.div`
