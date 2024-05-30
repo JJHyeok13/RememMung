@@ -5,11 +5,11 @@ import { FaCirclePlus } from "react-icons/fa6";
 
 interface InputButtonProps {
   description: string;
-  imageUrl?: string; // Add imageUrl prop
+  imageUrl?: string;
 }
 
 const Container = styled.div`
-  position: relative; /* Add position relative to position the image */
+  position: relative;
   width: 120px;
   height: 120px;
   background-color: #e8e8eb;
@@ -35,13 +35,13 @@ const StyleIcon = styled(FaCirclePlus)`
 `;
 
 const ImagePreview = styled.img`
-  position: absolute; /* Position the image absolutely */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the container */
-  border-radius: 12px; /* Maintain border radius */
+  object-fit: cover;
+  border-radius: 12px;
 `;
 
 const InputButton: React.FC<InputButtonProps> = ({ description, imageUrl }) => {
