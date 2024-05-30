@@ -4,7 +4,7 @@ import "./App.css";
 
 import StartPage from "./pages/startPage/startPage";
 import KakaoLoginPage from "@pages/socialLoginPage/kakaoLoginPage";
-import OnBoardingPage from "./pages/onBoardingPage/onBoardpage";
+import OnBoardingPage from "./pages/onBoardingPage/onBoardingPage";
 
 import MainPage from "./pages/mainPage/mainPage";
 import MyPage from "./pages/myPage/myPage";

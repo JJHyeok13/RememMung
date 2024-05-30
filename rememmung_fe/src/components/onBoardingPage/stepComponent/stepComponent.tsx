@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import StepOne from "@components/onBoardingPage/stepOne/stepOne";
 import StepTwo from "@components/onBoardingPage/stepTwo/stepTwo";
@@ -9,9 +8,11 @@ import StepFive from "@components/onBoardingPage/stepFive/stepFive";
 
 import styles from "./styles";
 
-const StepComponent: React.FC = () => {
-  const navigate = useNavigate();
+interface StepComponentProps {
+  onSubmit: (data: any) => void;
+}
 
+const StepComponent: React.FC<StepComponentProps> = ({ onSubmit }) => {
   const [step, setStep] = useState(1);
 
   const [petType, setPetType] = useState<string>("");
@@ -51,10 +52,13 @@ const StepComponent: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    console.log("petType :", petType);
-    console.log("petName :", petName);
-    console.log("petCharacter :", petCharacter);
-    console.log("additionalInfo :", additionalInfo);
+    const data = {
+      petType,
+      petName,
+      petCharacter,
+      additionalInfo,
+    };
+    onSubmit(data);
   };
 
   const setType = (e: React.ChangeEvent<HTMLInputElement>) => {

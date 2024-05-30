@@ -18,7 +18,7 @@ const styles = {
   `,
   StepContainer: styled.div`
     width: 100vw;
-    padding-top: 100px;
+    padding-top: 198px;
     display: flex;
     flex-direction: row;
     justify-content: center;
