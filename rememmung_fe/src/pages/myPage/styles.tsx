@@ -4,8 +4,7 @@ const styles = {
   Container: styled.div`
     display: flex;
     flex-direction: column;
-    width: 84%;
-    margin: 0 auto;
+    width: 100%;
   `,
 
   WhiteBox: styled.div`

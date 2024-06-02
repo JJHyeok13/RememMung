@@ -24,8 +24,12 @@ const KakaoLoginPage: React.FC = () => {
         setLoading(true);
         if (code) {
           const res = await getKakaoToken(client_id, redirect_uri, code);
-          setKakaoToken(res.access_token);
+
+          // 로컬스토리지에 카카오 토큰 저장
           localStorage.setItem("kakaoToken", res.access_token);
+
+          // 카카오 토큰 값 저장
+          setKakaoToken(res.access_token);
 
           setLoading(false);
         }
@@ -34,7 +38,7 @@ const KakaoLoginPage: React.FC = () => {
       }
     };
     fetchKakaoToken();
-  }, []);
+  }, [code, client_id, redirect_uri]);
 
   useEffect(() => {
     const getJWTToken = async () => {
@@ -42,24 +46,30 @@ const KakaoLoginPage: React.FC = () => {
         setLoading(true);
         if (kakaoToken) {
           const res = await kakaoLogin(kakaoToken);
+
+          // 로컬스토리지에 accessToken 저장
           localStorage.setItem("accessToken", res.access_token);
 
-          setLoading(false);
+          // 온보딩 페이지로 이동
           navigate("/onboarding");
+
+          setLoading(false);
         }
       } catch (error) {
         console.log(error);
       }
     };
-    getJWTToken();
-  });
+
+    // 카카오토큰 값이 존재할 때에만 실행
+    if (kakaoToken) {
+      getJWTToken();
+    }
+  }, [kakaoToken, navigate]);
 
   return (
-    <>
-      <styles.Container>
-        <HashLoader size="120px" color="#0075ff" loading={loading} />
-      </styles.Container>
-    </>
+    <styles.Container>
+      <HashLoader size="120px" color="#0075ff" loading={loading} />
+    </styles.Container>
   );
 };
 

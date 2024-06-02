@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./styles";
 
@@ -7,7 +8,6 @@ import GoodIcon from "@assets/onBoardingPage/goodButton.svg";
 import ResetIcon from "@assets/onBoardingPage/resetButton.svg";
 import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
 import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
-import { useNavigate } from "react-router-dom";
 
 interface CompleteComponentProps {
   petData?: any;
@@ -35,6 +35,10 @@ const CompleteComponent: React.FC<CompleteComponentProps> = ({
 
   const [selectedOption, setSelectedOption] = useState<string>("");
   const name = "브리";
+
+  const disableButtonClick = () => {
+    alert("옵션을 선택해주세요!");
+  };
 
   const handleComplete = () => {
     navigate("/main");
@@ -72,7 +76,10 @@ const CompleteComponent: React.FC<CompleteComponentProps> = ({
       ))}
 
       {selectedOption === "" ? (
-        <styles.NextButton src={DisableNextButtonImage} />
+        <styles.NextButton
+          src={DisableNextButtonImage}
+          onClick={disableButtonClick}
+        />
       ) : selectedOption === "good" ? (
         <styles.NextButton src={AbleNextButtonImage} onClick={handleComplete} />
       ) : (

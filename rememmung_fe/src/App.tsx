@@ -1,4 +1,5 @@
 import BasicLayout from "./layout/BasicLayout";
+import MyPageLayout from "@layout/MypageLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -25,12 +26,14 @@ function App() {
 
         <Route element={<BasicLayout />}>
           <Route path="/main" element={<MainPage />} />
-          <Route path="/mypage" element={<MyPage />} />
-
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/write" element={<WriteMailPage />} />
           <Route path="/mailbox" element={<MailBoxPage />} />
+        </Route>
+
+        <Route element={<MyPageLayout />}>
+          <Route path="/mypage/:type" element={<MyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
