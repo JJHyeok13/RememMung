@@ -3,6 +3,8 @@ import MyPageLayout from "@layout/MypageLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
+import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
+
 import StartPage from "./pages/startPage/startPage";
 import KakaoLoginPage from "@pages/socialLoginPage/kakaoLoginPage";
 import OnBoardingPage from "./pages/onBoardingPage/onBoardingPage";
@@ -16,6 +18,8 @@ import WriteMailPage from "./pages/writeMailPage/writeMailPage";
 import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
 
 function App() {
+  useBodyOverflowHidden();
+
   return (
     <BrowserRouter>
       <Routes>

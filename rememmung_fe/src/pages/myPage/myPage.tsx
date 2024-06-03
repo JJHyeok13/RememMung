@@ -1,12 +1,8 @@
 import React from "react";
 
-import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
-
 import styles from "./styles";
 
 const MyPage: React.FC = () => {
-  useBodyOverflowHidden();
-
   return (
     <styles.Container>
       <styles.WhiteBox>

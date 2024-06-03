@@ -1,6 +1,6 @@
 import React from "react";
 
-import SendButtonImage from "../../../assets/mainPage/sendButton.svg";
+import SendButtonImage from "../../../assets/chatPage/sendButton.svg";
 
 import styles from "./styles";
 

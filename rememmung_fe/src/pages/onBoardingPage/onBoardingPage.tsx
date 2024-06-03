@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
-
 import StepComponent from "@components/onBoardingPage/stepComponent/stepComponent";
 
 import styles from "./styles";
@@ -9,8 +7,6 @@ import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadin
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
 
 const OnBoardingPage: React.FC = () => {
-  useBodyOverflowHidden();
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isComplete, setIsComplete] = useState<boolean>(false);
 

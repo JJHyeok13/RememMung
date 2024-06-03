@@ -1,18 +1,15 @@
 import React from "react";
 
-import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
-
-import ChattingInput from "@components/mainPage/chattingInput/chattingInput";
+import ChattingInput from "@components/chatPage/chattingInput/chattingInput";
 
 import styles from "./styles";
+import ChatComponent from "@components/chatPage/chatting/chatting";
 
 const ChatPage: React.FC = () => {
-  // 스크롤 방지 Custom Hooks
-  useBodyOverflowHidden();
-
   return (
     <styles.Container>
       <styles.WhiteBox>
+        <ChatComponent />
         <ChattingInput />
       </styles.WhiteBox>
     </styles.Container>
