@@ -14,7 +14,7 @@ const styles = {
   `,
   LeftContainer: styled.div`
     display: flex;
-    font-family: "SEBANG Gothic";
+    font-family: "SebangGothic";
     color: #946233;
     align-items: center;
     font-size: 24px;
@@ -23,6 +23,8 @@ const styles = {
     margin-right: 10px;
   `,
   RightContainer: styled.div`
+    font-family: "Pretendard";
+
     display: flex;
     align-items: center;
 
@@ -44,6 +46,11 @@ const styles = {
     color: #838383;
     padding: 8px 16px;
     border-radius: 60px;
+
+    &:hover {
+      background-color: #946233;
+      color: #ffffff;
+    }
   `,
 };
 

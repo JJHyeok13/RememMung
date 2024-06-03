@@ -7,6 +7,8 @@ import Background1920 from "@assets/startPage/background_1920.png";
 
 const styles = {
   Background: styled.div`
+    font-family: "Pretendard";
+
     @media screen and (max-width: 1280px) {
       background: url(${Background1280});
       background-repeat: no-repeat;

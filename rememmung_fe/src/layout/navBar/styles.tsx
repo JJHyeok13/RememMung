@@ -11,6 +11,8 @@ interface NavLabelProps {
 
 const styles = {
   Container: styled.div`
+    font-family: "Pretendard";
+
     width: 84%;
     margin-top: 26px;
     display: flex;

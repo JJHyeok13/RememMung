@@ -4,6 +4,8 @@ import PetImageExample from "@assets/chatPage/background.png";
 
 const styles = {
   Container: styled.div`
+    font-family: "Pretendard";
+
     display: flex;
     flex-direction: column;
     width: 84%;
@@ -18,6 +20,7 @@ const styles = {
     height: 580px;
     border-radius: 12px;
     background-image: url(${PetImageExample});
+    background-repeat: no-repeat;
     margin: 0 auto;
   `,
 };

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 const styles = {
   Container: styled.div`
+    font-family: "Pretendard";
+
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -14,7 +16,7 @@ const styles = {
     width: 100%;
     height: 551px;
     border-radius: 12px;
-    background-color: #f4f4f4;
+    background-color: #f6f6f8;
 
     // 글씨 관련 CSS
     font-size: 18px;

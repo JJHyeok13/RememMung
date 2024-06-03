@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 
 const styles = {
   Container: styled.div`
+    font-family: "Pretendard";
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;

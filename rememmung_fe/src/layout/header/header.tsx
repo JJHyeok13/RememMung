@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   return (
     <styles.Container>
       <styles.StyledLink to="/main">
-        <styles.LeftContainer>
+        <styles.LeftContainer className="headerFont">
           <styles.LogoImage src={LogoImage} alt="Logo Image" />
           <div>리멤멍</div>
         </styles.LeftContainer>
