@@ -11,8 +11,8 @@ const styles = {
   `,
 
   WhiteBox: styled.div`
-    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 580px;

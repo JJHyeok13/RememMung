@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 const styles = {
   Container: styled.div`
-    width: 100%;
-    max-height: 100%; // 내부 div의 높이 설정 (필요에 따라 조절)
-    overflow-y: auto; // 스크롤 가능하도록 설정
-    padding: 29px 17px 22px 21px;
+    width: 96%;
+    max-height: 100%;
+    overflow-y: auto;
+
+    margin: 29px 17px 35px 21px;
+
     border-radius: 12px;
   `,
   ChattingContainer: styled.div<{ isMe: boolean }>`

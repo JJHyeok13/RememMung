@@ -3,52 +3,64 @@ import { useLocation } from "react-router-dom";
 
 import styles from "./styles";
 
-import HomeIcon from "@assets/navBar/homeIcon.svg";
-import ChattingIcon from "@assets/navBar/chattingIcon.svg";
-import GalleryIcon from "@assets/navBar/galleryIcon.svg";
-import LetterIcon from "@assets/navBar/letterIcon.svg";
-import MailBoxIcon from "@assets/navBar/mailBoxIcon.svg";
+import BrownHomeIcon from "@assets/navBar/brownHomeIcon.svg";
+import GrayHomeIcon from "@assets/navBar/grayHomeIcon.svg";
+
+import BrownChattingIcon from "@assets/navBar/brownChattingIcon.svg";
+import GrayChattingIcon from "@assets/navBar/grayChattingIcon.svg";
+
+import BrownGalleryIcon from "@assets/navBar/brownGalleryIcon.svg";
+import GrayGalleryIcon from "@assets/navBar/grayGalleryIcon.svg";
+
+import BrownLetterIcon from "@assets/navBar/brownLetterIcon.svg";
+import GrayLetterIcon from "@assets/navBar/grayLetterIcon.svg";
+
+import BrownMailBoxIcon from "@assets/navBar/brownMailBoxIcon.svg";
+import GrayMailBoxIcon from "@assets/navBar/grayMailBoxIcon.svg";
 
 const NavBar: React.FC = () => {
   const location = useLocation();
 
-  const isHome = location.pathname === "/main";
-  const isChat = location.pathname === "/chat";
-  const isGallery = location.pathname === "/gallery";
-  const isWrite = location.pathname === "/write";
-  const isMailbox = location.pathname === "/mailbox";
+  const navItems = [
+    { path: "/main", icon: BrownHomeIcon, grayIcon: GrayHomeIcon, label: "홈" },
+    {
+      path: "/chat",
+      icon: BrownChattingIcon,
+      grayIcon: GrayChattingIcon,
+      label: "채팅",
+    },
+    {
+      path: "/gallery",
+      icon: BrownGalleryIcon,
+      grayIcon: GrayGalleryIcon,
+      label: "갤러리",
+    },
+    {
+      path: "/write",
+      icon: BrownLetterIcon,
+      grayIcon: GrayLetterIcon,
+      label: "편지쓰기",
+    },
+    {
+      path: "/mailbox",
+      icon: BrownMailBoxIcon,
+      grayIcon: GrayMailBoxIcon,
+      label: "우편함",
+    },
+  ];
 
   return (
     <styles.Container>
-      <styles.StyleLink to="/main" $active={isHome}>
-        {isHome && <styles.Dot />}
-        <img src={HomeIcon} />
-        <div style={{ color: isHome ? "#946233" : "#AAAEBB" }}>홈</div>
-      </styles.StyleLink>
-
-      <styles.StyleLink to="/chat" $active={isChat}>
-        {isChat && <styles.Dot />}
-        <img src={ChattingIcon} />
-        <div style={{ color: isChat ? "#946233" : "#AAAEBB" }}>채팅</div>
-      </styles.StyleLink>
-
-      <styles.StyleLink to="/gallery" $active={isGallery}>
-        {isGallery && <styles.Dot />}
-        <img src={GalleryIcon} />
-        <div style={{ color: isGallery ? "#946233" : "#AAAEBB" }}>갤러리</div>
-      </styles.StyleLink>
-
-      <styles.StyleLink to="/write" $active={isWrite}>
-        {isWrite && <styles.Dot />}
-        <img src={LetterIcon} />
-        <div style={{ color: isWrite ? "#946233" : "#AAAEBB" }}>편지쓰기</div>
-      </styles.StyleLink>
-
-      <styles.StyleLink to="/mailbox" $active={isMailbox}>
-        {isMailbox && <styles.Dot />}
-        <img src={MailBoxIcon} />
-        <div style={{ color: isMailbox ? "#946233" : "#AAAEBB" }}>우편함</div>
-      </styles.StyleLink>
+      {navItems.map(({ path, icon, grayIcon, label }) => {
+        const isActive = location.pathname === path;
+        return (
+          <styles.StyleLink key={path} to={path} $active={isActive}>
+            {isActive && <styles.Dot />}
+            <img src={isActive ? icon : grayIcon} />
+            <styles.Location $active={isActive}>{label}</styles.Location>
+          </styles.StyleLink>
+        );
+      })}
     </styles.Container>
   );
 };

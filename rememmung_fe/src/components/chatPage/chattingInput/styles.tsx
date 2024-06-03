@@ -2,12 +2,10 @@ import styled from "styled-components";
 
 const styles = {
   Container: styled.div`
-    position: fixed;
-    bottom: 29px;
-    width: 84%;
+    width: 92%;
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto 22px;
   `,
   StyleInput: styled.input`
     font-size: 16px;
