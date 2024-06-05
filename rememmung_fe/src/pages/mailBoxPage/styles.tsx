@@ -17,7 +17,7 @@ const styles = {
     height: 551px;
     border-radius: 12px;
     box-sizing: border-box;
-    padding: 32px 16px 32px 64px;
+    padding: 32px 16px 32px 32px;
     background-color: #f4f4f4;
     overflow: hidden;
 
@@ -29,7 +29,7 @@ const styles = {
   `,
   ButtonContainer: styled.div`
     display: flex;
-    align-items: center;
+    margin-top: 16px;
 
     > * {
       margin-left: 12px;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-import PetImageExample from "@assets/chatPage/background.png";
+import PetImageExample from "@assets/chatPage/background.svg";
+//import PetImageExample from "@assets/chatPage/background.png";
+//import PetImageExample1680 from "@assets/chatPage/background1680.png";
 
 const styles = {
   Container: styled.div`
@@ -19,9 +21,10 @@ const styles = {
     width: 100%;
     height: 580px;
     border-radius: 12px;
+    margin: 0 auto;
+
     background-image: url(${PetImageExample});
     background-repeat: no-repeat;
-    margin: 0 auto;
   `,
 };
 

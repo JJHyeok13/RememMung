@@ -5,7 +5,7 @@ import styles from "./styles";
 const SearchBar: React.FC = () => {
   const [period, setPeriod] = useState();
   const [searchType, setSearchType] = useState<string>();
-  const [searchInput, setSearchInput] = useState<string>();
+  const [searchInput, setSearchInput] = useState<string>("");
 
   return (
     <styles.Container>
@@ -14,6 +14,9 @@ const SearchBar: React.FC = () => {
       </styles.SelectBox>
       <styles.SelectBox>
         <option>게시글 + 댓글</option>
+        <option>제목</option>
+        <option>내용</option>
+        <option>댓글</option>
       </styles.SelectBox>
       <styles.InputContainer>
         <styles.Input type="text" placeholder="검색어를 입력해주세요" />
