@@ -10,10 +10,10 @@ const styles = {
 
     border-radius: 12px;
   `,
-  ChattingContainer: styled.div<{ isMe: boolean }>`
+  ChattingContainer: styled.div<{ $isMe: boolean }>`
     display: flex;
     flex-direction: column;
-    align-items: ${(props) => (props.isMe ? "flex-end" : "flex-start")};
+    align-items: ${(props) => (props.$isMe ? "flex-end" : "flex-start")};
     margin: 10px 0;
   `,
   PetProfile: styled.div`
@@ -32,23 +32,23 @@ const styles = {
     font-size: 14px;
     font-weight: 600;
   `,
-  Message: styled.div<{ isMe: boolean }>`
+  Message: styled.div<{ $isMe: boolean }>`
     display: flex;
-    flex-direction: ${(props) => (props.isMe ? "row-reverse" : "row")};
+    flex-direction: ${(props) => (props.$isMe ? "row-reverse" : "row")};
     align-items: flex-end;
     padding: 0 16px;
   `,
-  MessageBubble: styled.div<{ isMe: boolean }>`
+  MessageBubble: styled.div<{ $isMe: boolean }>`
     display: flex;
     padding: 12px 16px;
 
     // true: 사용자 / false: 애완동물
-    background-color: ${(props) => (props.isMe ? "#946233" : "#D3D3D3")};
-    color: ${(props) => (props.isMe ? "#FFFFFF" : "#3E3E3E")};
+    background-color: ${(props) => (props.$isMe ? "#946233" : "#D3D3D3")};
+    color: ${(props) => (props.$isMe ? "#FFFFFF" : "#3E3E3E")};
     border-radius: ${(props) =>
-      props.isMe ? "16px 0 16px 16px;" : "0 16px 16px 16px;"};
+      props.$isMe ? "16px 0 16px 16px;" : "0 16px 16px 16px;"};
     max-width: fit-content;
-    margin: ${(props) => (props.isMe ? "0 0 0 4px" : "0 4px 0 0")};
+    margin: ${(props) => (props.$isMe ? "0 0 0 4px" : "0 4px 0 0")};
 
     font-size: 16px;
     font-weight: 500;

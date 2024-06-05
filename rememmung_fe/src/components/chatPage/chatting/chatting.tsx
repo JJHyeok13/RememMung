@@ -51,7 +51,7 @@ const ChatComponent: React.FC = () => {
   return (
     <styles.Container ref={chatContainerRef}>
       {chatMessages.map((msg) => (
-        <styles.ChattingContainer key={msg.id} isMe={msg.isMe}>
+        <styles.ChattingContainer key={msg.id} $isMe={msg.isMe}>
           {/* 애완동물 프로필사진 및 이름 */}
           {!msg.isMe && (
             <styles.PetProfile>
@@ -61,8 +61,8 @@ const ChatComponent: React.FC = () => {
           )}
 
           {/* 채팅 메시지 및 시간 */}
-          <styles.Message isMe={msg.isMe}>
-            <styles.MessageBubble isMe={msg.isMe}>
+          <styles.Message $isMe={msg.isMe}>
+            <styles.MessageBubble $isMe={msg.isMe}>
               <div>{msg.message}</div>
             </styles.MessageBubble>
             <styles.Timestamp>{msg.timestamp}</styles.Timestamp>
