@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<StartPage />} />
 
         <Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
-        <Route path="/onboard" element={<OnBoardingPage />} />
+        <Route path="/onboarding" element={<OnBoardingPage />} />
 
         <Route element={<BasicLayout />}>
           <Route path="/main" element={<MainPage />} />
