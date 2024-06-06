@@ -5,6 +5,7 @@ import StepComponent from "@components/onBoardingPage/stepComponent/stepComponen
 import styles from "./styles";
 import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
+import { testAPI } from "@server/api/test";
 
 const OnBoardingPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,9 +28,15 @@ const OnBoardingPage: React.FC = () => {
     //setIsComplete(true);
   };
 
+  const TestAPI = () => {
+    testAPI();
+  };
+
   return (
     <styles.Background>
-      {!isComplete && !isLoading && <StepComponent onSubmit={submitData} />}
+      {!isComplete && !isLoading && (
+        <StepComponent onSubmit={submitData} TestAPI={TestAPI} />
+      )}
 
       {isLoading && <LoadingComponent />}
 

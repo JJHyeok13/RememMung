@@ -47,6 +47,13 @@ const styles = {
     right: 200px;
     cursor: pointer;
   `,
+  TestButton: styled.div`
+    cursor: pointer;
+    padding: 10px 16px;
+
+    background-color: black;
+    color: white;
+  `,
 };
 
 export default styles;

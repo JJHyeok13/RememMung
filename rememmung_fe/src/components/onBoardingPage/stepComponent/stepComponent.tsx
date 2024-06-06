@@ -10,9 +10,10 @@ import styles from "./styles";
 
 interface StepComponentProps {
   onSubmit: (data: any) => void;
+  TestAPI: () => void;
 }
 
-const StepComponent: React.FC<StepComponentProps> = ({ onSubmit }) => {
+const StepComponent: React.FC<StepComponentProps> = ({ onSubmit, TestAPI }) => {
   const [step, setStep] = useState(1);
 
   const [petType, setPetType] = useState<string>("");
@@ -92,6 +93,7 @@ const StepComponent: React.FC<StepComponentProps> = ({ onSubmit }) => {
           selectedType={petType}
           setType={setType}
           handleNextStep={handleNextStep}
+          TestAPI={TestAPI}
         />
       )}
       {step === 2 && (
