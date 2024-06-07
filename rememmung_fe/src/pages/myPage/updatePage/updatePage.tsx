@@ -4,9 +4,9 @@ import styles from "./styles";
 
 const UpdatePage: React.FC = () => {
   return (
-    <div>
+    <styles.Container>
       <div></div>
-    </div>
+    </styles.Container>
   );
 };
 export default UpdatePage;

@@ -10,12 +10,7 @@ import { dummyData } from "./dummyData";
 import { useNavigate } from "react-router-dom";
 
 const MyMailPage: React.FC = () => {
-  const navigate = useNavigate();
   const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
-
-  const ToWritePage = () => {
-    navigate("/write");
-  };
 
   const OnDeleteMode = () => {
     setIsDeleteMode(true);
@@ -35,14 +30,9 @@ const MyMailPage: React.FC = () => {
         <SearchBar />
         <styles.ButtonContainer>
           {!isDeleteMode ? (
-            <>
-              <styles.WriteButton onClick={ToWritePage}>
-                편지쓰기
-              </styles.WriteButton>
-              <styles.DeleteButton onClick={OnDeleteMode}>
-                삭제
-              </styles.DeleteButton>
-            </>
+            <styles.DeleteButton onClick={OnDeleteMode}>
+              삭제
+            </styles.DeleteButton>
           ) : (
             <>
               <styles.WriteButton onClick={OffDeleteMode}>

@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./styles";
 
-import DeleteDataComponent from "@components/myPage/deleteMemberPage/deleteMemberComponent";
+import DeleteDataComponent from "@components/myPage/deleteDataPage/deleteDataComponent";
 
 const DeleteDataPage: React.FC = () => {
   return (

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./styles";
 import DeleteModal from "../deleteModal/deleteModal";
 
-const DeleteDataComponent: React.FC = () => {
+const DeleteMemberComponent: React.FC = () => {
   const [selectModalOpen, setSelectModalOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
@@ -18,8 +18,8 @@ const DeleteDataComponent: React.FC = () => {
     <>
       <styles.Container>
         <styles.Content>
-          <styles.Title>데이터 삭제 전 꼭 읽어주세요!</styles.Title>
-          <div>데이터를 삭제하시면, 회원은 유지되지만</div>
+          <styles.Title>탈퇴 전 꼭 확인해주세요!</styles.Title>
+          <div>탈퇴하시게 된다면면, 모든 데이터가 사라져요!</div>
           <div>
             브리와 나눴던 대화, 사진, 편지 등등 모든 데이터가 사라집니다...
           </div>
@@ -32,4 +32,4 @@ const DeleteDataComponent: React.FC = () => {
   );
 };
 
-export default DeleteDataComponent;
+export default DeleteMemberComponent;

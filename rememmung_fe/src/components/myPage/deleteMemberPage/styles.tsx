@@ -10,7 +10,7 @@ const styles = {
   Content: styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #efefef;
+    background-color: #f6f6f8;
     border-radius: 16px;
     padding: 24px 32px;
 
