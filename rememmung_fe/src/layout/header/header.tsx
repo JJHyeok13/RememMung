@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
 
   const handleMypage = () => {
-    navigate("/mypage/delete");
+    navigate("/mypage/mymail");
   };
 
   return (
