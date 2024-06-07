@@ -25,6 +25,8 @@ const styles = {
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+
     position: absolute;
     top: 0;
     left: 0;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent, useEffect } from "react";
 
 import styles from "./styles";
 
@@ -12,6 +12,20 @@ interface DetailMailProps {
 }
 
 const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
+  useEffect(() => {
+    const handleESC = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    const handleKeyDown = (e: Event) =>
+      handleESC(e as unknown as KeyboardEvent);
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleClose]);
+
   return (
     <>
       <styles.Background>

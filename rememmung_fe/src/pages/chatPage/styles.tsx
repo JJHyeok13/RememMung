@@ -12,6 +12,8 @@ const styles = {
     flex-direction: column;
     width: 84%;
     margin: 0 auto;
+
+    border-radius: 12px;
   `,
 
   WhiteBox: styled.div`

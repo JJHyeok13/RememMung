@@ -5,9 +5,8 @@ import styles from "./styles";
 interface PhotoContainerProps {
   photoData: {
     id: number;
+    createdAt: string;
     url: string;
-    title: string;
-    content: string;
   }[];
 }
 
@@ -32,8 +31,7 @@ const PhotoContainer: React.FC<PhotoContainerProps> = ({ photoData }) => {
         >
           {hoveredIndex === index && (
             <styles.HoveredData>
-              <styles.Title>{photo.title}</styles.Title>
-              <styles.Content>{photo.content}</styles.Content>
+              <styles.Title>{photo.createdAt}</styles.Title>
             </styles.HoveredData>
           )}
           <styles.Photo src={photo.url} />
