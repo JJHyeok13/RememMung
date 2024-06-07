@@ -6,14 +6,14 @@ const styles = {
 
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 892px;
   `,
 
   WhiteBox: styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 892px;
     height: 551px;
     border-radius: 12px;
     background-color: #f6f6f8;
