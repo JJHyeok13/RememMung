@@ -10,12 +10,16 @@ import KakaoLoginPage from "@pages/socialLoginPage/kakaoLoginPage";
 import OnBoardingPage from "./pages/onBoardingPage/onBoardingPage";
 
 import MainPage from "./pages/mainPage/mainPage";
-import MyPage from "./pages/myPage/myPage";
 
 import ChatPage from "./pages/chatPage/chatPage";
 import GalleryPage from "./pages/galleryPage/galleryPage";
 import WriteMailPage from "./pages/writeMailPage/writeMailPage";
 import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
+
+import MyMailPage from "@pages/myPage/myMailPage/myMailPage";
+import UpdatePage from "@pages/myPage/updatePage/updatePage";
+import DeleteDataPage from "@pages/myPage/deleteDataPage/deleteDataPage";
+import DeleteMemberPage from "@pages/myPage/deleteMemberPage/deleteMemberPage";
 
 function App() {
   useBodyOverflowHidden();
@@ -37,7 +41,10 @@ function App() {
         </Route>
 
         <Route element={<MyPageLayout />}>
-          <Route path="/mypage/:type" element={<MyPage />} />
+          <Route path="/mypage/mymail" element={<MyMailPage />} />
+          <Route path="/mypage/update" element={<UpdatePage />} />
+          <Route path="/mypage/deletedata" element={<DeleteDataPage />} />
+          <Route path="/mypage/delete" element={<DeleteMemberPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
