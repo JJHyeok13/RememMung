@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { PostAxiosInstance } from "@axios/axios.method";
+
 export const getKakaoToken = async (
   client_id: string,
   redirect_uri: string,
@@ -17,7 +19,7 @@ export const getKakaoToken = async (
 };
 
 export const kakaoLogin = async (accessToken: string) => {
-  const res = await axios.post(`http://localhost:8080/api/auth/kakao`, {
+  const res = await PostAxiosInstance(`http://localhost:8080/api/auth/kakao`, {
     accessToken: accessToken,
   });
   return res.data;

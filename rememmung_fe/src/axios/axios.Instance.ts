@@ -1,27 +1,28 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL,
   withCredentials: true,
 });
 
-axiosInstance.interceptors.request.use(
-  async (config) => {
-    const accessToken = localStorage.getItem('accessToken');
+// JWT 토큰 기반 API 요청 => 주석 처리
+// axiosInstance.interceptors.request.use(
+//   async (config) => {
+//     const accessToken = localStorage.getItem("accessToken");
 
-    if (!accessToken) {
-      // 토큰이 없을 경우 로그아웃 처리
-      throw new Error('토큰 없음');
-    }
+//     if (!accessToken) {
+//       // 토큰이 없을 경우 로그아웃 처리
+//       throw new Error("토큰 없음");
+//     }
 
-    config.headers['Authorization'] = `Bearer ${accessToken}`;
+//     config.headers["Authorization"] = `Bearer ${accessToken}`;
 
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
 
 // // 토큰 관련 에러 처리
 // axiosInstance.interceptors.response.use(
