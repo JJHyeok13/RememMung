@@ -1,5 +1,3 @@
-import React from "react";
-
 export const createYear = () => {
   const options = [];
 
@@ -19,7 +17,7 @@ export const createMonth = () => {
   const options = [];
 
   for (let i = 1; i < 13; i++) {
-    const value = i;
+    const value = i < 10 ? `0${i}` : `${i}`;
 
     options.push(
       <option key={value} value={value}>
@@ -34,7 +32,7 @@ export const createDay = () => {
   const options = [];
 
   for (let i = 1; i < 32; i++) {
-    const value = i;
+    const value = i < 10 ? `0${i}` : `${i}`;
 
     options.push(
       <option key={value} value={value}>

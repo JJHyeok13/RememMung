@@ -10,7 +10,10 @@ export const savePetInfo = async (
   data: SavePetInfoRequest
 ): Promise<SavePetInfoResponse> => {
   try {
-    const res = await PostAxiosInstance(`/petInfo/save`, data);
+    const res = await PostAxiosInstance<SavePetInfoResponse>(
+      `http://localhost:8080/petInfo/save`,
+      data
+    );
 
     return res.data.result;
   } catch (error) {
@@ -22,7 +25,9 @@ export const savePetInfo = async (
 // 온보딩 펫 정보 조회하기 /petInfo/get
 export const getPetInfo = async (): Promise<GetPetInfoResponse> => {
   try {
-    const res = await GetAxiosInstance<GetPetInfoResponse>(`/petInfo/get`);
+    const res = await GetAxiosInstance<GetPetInfoResponse>(
+      `http://localhost:8080/petInfo/get`
+    );
 
     return res.data.result;
   } catch (error) {

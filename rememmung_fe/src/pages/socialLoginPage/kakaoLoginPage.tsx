@@ -41,17 +41,17 @@ const KakaoLoginPage: React.FC = () => {
   }, [code, client_id, redirect_uri]);
 
   useEffect(() => {
-    const getJWTToken = async () => {
+    const getCookie = async () => {
       try {
         setLoading(true);
         if (kakaoToken) {
           const res = await kakaoLogin(kakaoToken);
 
-          // 로컬스토리지에 accessToken 저장
-          localStorage.setItem("accessToken", res.access_token);
-
-          // 온보딩 페이지로 이동
-          navigate("/onboarding");
+          if (res.existed) {
+            navigate(`/main`);
+          } else {
+            navigate(`/onboarding`);
+          }
 
           setLoading(false);
         }
@@ -59,10 +59,9 @@ const KakaoLoginPage: React.FC = () => {
         console.log(error);
       }
     };
-
     // 카카오토큰 값이 존재할 때에만 실행
     if (kakaoToken) {
-      getJWTToken();
+      getCookie();
     }
   }, [kakaoToken, navigate]);
 

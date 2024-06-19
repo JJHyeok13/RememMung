@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { PostAxiosInstance } from "@axios/axios.method";
+import { KakaoLoginResponse } from "@server/responseType/oauth";
 
 export const getKakaoToken = async (
   client_id: string,
@@ -18,9 +19,19 @@ export const getKakaoToken = async (
   return res.data;
 };
 
-export const kakaoLogin = async (accessToken: string) => {
-  const res = await PostAxiosInstance(`http://localhost:8080/api/auth/kakao`, {
-    accessToken: accessToken,
-  });
-  return res.data;
+export const kakaoLogin = async (
+  accessToken: string
+): Promise<KakaoLoginResponse> => {
+  try {
+    const res = await PostAxiosInstance<KakaoLoginResponse>(
+      `http://localhost:8080/api/auth/kakao`,
+      {
+        accessToken: accessToken,
+      }
+    );
+    return res.data.result;
+  } catch (error) {
+    console.log("카카오 로그인 에러", error);
+    throw error;
+  }
 };

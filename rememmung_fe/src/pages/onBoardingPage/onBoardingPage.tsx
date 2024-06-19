@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import StepComponent from "@components/onBoardingPage/stepComponent/stepComponent";
 
 import styles from "./styles";
-import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
+// import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
 import { testAPI } from "@server/api/test";
 import { PetInfoProps } from "type/onboardingPage/onboardingPage";
 import { savePetInfo } from "@server/api/user";
 
 const OnBoardingPage: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
   const [petData, setPetData] = useState<PetInfoProps>({
@@ -78,7 +78,7 @@ const OnBoardingPage: React.FC = () => {
 
   return (
     <styles.Background>
-      {!isComplete && !isLoading && (
+      {!isComplete && (
         <StepComponent
           petData={petData}
           setType={setType}
@@ -95,7 +95,7 @@ const OnBoardingPage: React.FC = () => {
         />
       )}
 
-      {isLoading && <LoadingComponent />}
+      {/* {isLoading && <LoadingComponent />} */}
 
       {isComplete && <CompleteComponent petData={petData} />}
     </styles.Background>
