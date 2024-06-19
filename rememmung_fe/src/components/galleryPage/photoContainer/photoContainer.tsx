@@ -5,8 +5,13 @@ import styles from "./styles";
 interface PhotoContainerProps {
   photoData: {
     id: number;
-    createdAt: string;
-    url: string;
+    petId: number;
+    attachment: {
+      id: number;
+      type: string;
+      url: string;
+      createdAt: string;
+    };
   }[];
 }
 
@@ -31,10 +36,10 @@ const PhotoContainer: React.FC<PhotoContainerProps> = ({ photoData }) => {
         >
           {hoveredIndex === index && (
             <styles.HoveredData>
-              <styles.Title>{photo.createdAt}</styles.Title>
+              <styles.Title>{photo.attachment.createdAt}</styles.Title>
             </styles.HoveredData>
           )}
-          <styles.Photo src={photo.url} />
+          <styles.Photo src={photo.attachment.url} />
         </styles.PhotoContainer>
       ))}
     </styles.Container>

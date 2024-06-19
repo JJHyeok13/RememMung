@@ -8,22 +8,37 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 import ResetButtonImage from "@assets/onBoardingPage/resetButton.svg";
 
 interface StepFiveProps {
-  additionalInfo: {
-    gender: string;
-    birthday: string;
-    farewell: string;
-    favorite: string[];
-    hate: string[];
-    skill: string[];
-  };
-  setAdditionalInfo: (info: Partial<StepFiveProps["additionalInfo"]>) => void;
+  selectedGender: string;
+  selectedBirthday: string;
+  selectedFarewellday: string;
+  selectedFavorites: string[];
+  selectedDislike: string[];
+  selectedSkill: string[];
+
+  setGender: (gender: string) => void;
+  setBirthday: (birthday: string) => void;
+  setFarewellday: (farewellday: string) => void;
+  setFavorites: (favorites: string[]) => void;
+  setDislike: (dislike: string[]) => void;
+  setSkill: (skill: string[]) => void;
+
   handlePrevStep: () => void;
   handleSubmit: () => void;
 }
 
 const StepFive: React.FC<StepFiveProps> = ({
-  additionalInfo,
-  setAdditionalInfo,
+  selectedGender,
+  selectedBirthday,
+  selectedFarewellday,
+  selectedFavorites,
+  selectedDislike,
+  selectedSkill,
+  setGender,
+  setBirthday,
+  setFarewellday,
+  setFavorites,
+  setDislike,
+  setSkill,
   handlePrevStep,
   handleSubmit,
 }) => {
@@ -36,29 +51,19 @@ const StepFive: React.FC<StepFiveProps> = ({
   const [farewellDay, setFarewellDay] = useState<string>("");
 
   useEffect(() => {
-    const birthday = `${birthdayYear}-${birthdayMonth}-${birthdayDay}`;
-    const farewell = `${farewellYear}-${farewellMonth}-${farewellDay}`;
-    setAdditionalInfo({ birthday, farewell });
-  }, [
-    birthdayYear,
-    birthdayMonth,
-    birthdayDay,
-    farewellYear,
-    farewellMonth,
-    farewellDay,
-  ]);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    if (name === "favorite" || name === "hate" || name === "skill") {
-      const list = value.split(",").map((item) => item.trim());
-      setAdditionalInfo({ [name]: list });
-    } else {
-      setAdditionalInfo({ [name]: value });
+    if (selectedBirthday) {
+      const [year, month, day] = selectedBirthday.split("-");
+      setBirthdayYear(year);
+      setBirthdayMonth(month);
+      setBirthdayDay(day);
     }
-  };
+    if (selectedFarewellday) {
+      const [year, month, day] = selectedFarewellday.split("-");
+      setFarewellYear(year);
+      setFarewellMonth(month);
+      setFarewellDay(day);
+    }
+  }, [selectedBirthday, selectedFarewellday]);
 
   // 입력 내용 초기화 함수
   const handleReset = () => {
@@ -68,15 +73,39 @@ const StepFive: React.FC<StepFiveProps> = ({
     setFarewellYear("");
     setFarewellMonth("");
     setFarewellDay("");
-    setAdditionalInfo({
-      gender: "male",
-      birthday: "",
-      farewell: "",
-      favorite: [],
-      hate: [],
-      skill: [],
-    });
+    setGender("");
+    setFavorites([]);
+    setDislike([]);
+    setSkill([]);
   };
+
+  const handleChangeGender = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGender(e.target.value);
+  };
+
+  const handleChangeFavorites = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFavorites(e.target.value.split(", ").map((item) => item.trim()));
+  };
+
+  const handleChangeDislike = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDislike(e.target.value.split(", ").map((item) => item.trim()));
+  };
+
+  const handleChangeSkill = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setSkill(e.target.value.split(", ").map((item) => item.trim()));
+  };
+
+  useEffect(() => {
+    if (birthdayYear && birthdayMonth && birthdayDay) {
+      setBirthday(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
+    }
+  }, [birthdayYear, birthdayMonth, birthdayDay]);
+
+  useEffect(() => {
+    if (farewellYear && farewellMonth && farewellDay) {
+      setFarewellday(`${farewellYear}-${farewellMonth}-${farewellDay}`);
+    }
+  }, [farewellYear, farewellMonth, farewellDay]);
 
   return (
     <styles.Container>
@@ -97,8 +126,8 @@ const StepFive: React.FC<StepFiveProps> = ({
               type="radio"
               name="gender"
               value="male"
-              checked={additionalInfo.gender === "male"}
-              onChange={handleChange}
+              checked={selectedGender === "male"}
+              onChange={handleChangeGender}
             />
             <label htmlFor="male">남자</label>
 
@@ -106,8 +135,8 @@ const StepFive: React.FC<StepFiveProps> = ({
               type="radio"
               name="gender"
               value="female"
-              checked={additionalInfo.gender === "female"}
-              onChange={handleChange}
+              checked={selectedGender === "female"}
+              onChange={handleChangeGender}
             />
             <label htmlFor="female">여자</label>
           </styles.Input>
@@ -196,8 +225,8 @@ const StepFive: React.FC<StepFiveProps> = ({
           <styles.Textarea
             placeholder="내용을 입력해주세요"
             name="favorite"
-            value={additionalInfo.favorite.join(", ")}
-            onChange={handleChange}
+            value={selectedFavorites.join(", ")}
+            onChange={handleChangeFavorites}
           />
         </styles.InputContainer>
 
@@ -206,8 +235,8 @@ const StepFive: React.FC<StepFiveProps> = ({
           <styles.Textarea
             placeholder="내용을 입력해주세요"
             name="hate"
-            value={additionalInfo.hate.join(", ")}
-            onChange={handleChange}
+            value={selectedDislike.join(", ")}
+            onChange={handleChangeDislike}
           />
         </styles.InputContainer>
 
@@ -216,8 +245,8 @@ const StepFive: React.FC<StepFiveProps> = ({
           <styles.Textarea
             placeholder="내용을 입력해주세요"
             name="skill"
-            value={additionalInfo.skill.join(", ")}
-            onChange={handleChange}
+            value={selectedSkill.join(", ")}
+            onChange={handleChangeSkill}
           />
         </styles.InputContainer>
       </styles.TotalInputContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import StepComponent from "@components/onBoardingPage/stepComponent/stepComponent";
 
@@ -6,26 +6,70 @@ import styles from "./styles";
 import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
 import { testAPI } from "@server/api/test";
+import { PetInfoProps } from "type/onboardingPage/onboardingPage";
+import { savePetInfo } from "@server/api/user";
 
 const OnBoardingPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
-  const [petData, setPetData] = useState<any>(null);
+  const [petData, setPetData] = useState<PetInfoProps>({
+    species: "",
+    name: "",
+    personality: [],
+    gender: "",
+    birthday: "",
+    farewellday: "",
+    favorites: [],
+    dislike: [],
+    skill: [],
+  });
 
-  const submitData = async (data: any) => {
-    //setIsLoading(true);
+  useEffect(() => {
+    console.log(petData);
+  });
 
-    // 데이터 POST API 함수 호출
-    setIsComplete(true);
+  const setType = (species: string) => {
+    setPetData((prev) => ({ ...prev, species }));
   };
 
-  const handleReload = async () => {
-    setIsComplete(false);
-    setIsLoading(true);
+  const setName = (name: string) => {
+    setPetData((prev) => ({ ...prev, name }));
+  };
 
-    // 다시 생성하기 요청 API 함수 호출
-    //setIsComplete(true);
+  const setPetCharacter = (personality: string[]) => {
+    setPetData((prev) => ({ ...prev, personality }));
+  };
+
+  const setGender = (gender: string) => {
+    setPetData((prev) => ({ ...prev, gender }));
+  };
+
+  const setBirthday = (birthday: string) => {
+    setPetData((prev) => ({ ...prev, birthday }));
+  };
+
+  const setFarewellday = (farewellday: string) => {
+    setPetData((prev) => ({ ...prev, farewellday }));
+  };
+
+  const setFavorites = (favorites: string[]) => {
+    setPetData((prev) => ({ ...prev, favorites }));
+  };
+
+  const setDislike = (dislike: string[]) => {
+    setPetData((prev) => ({ ...prev, dislike }));
+  };
+
+  const setSkill = (skill: string[]) => {
+    setPetData((prev) => ({ ...prev, skill }));
+  };
+
+  const submitData = async () => {
+    //setIsLoading(true);
+
+    await savePetInfo(petData);
+    setIsComplete(true);
   };
 
   const TestAPI = () => {
@@ -35,14 +79,25 @@ const OnBoardingPage: React.FC = () => {
   return (
     <styles.Background>
       {!isComplete && !isLoading && (
-        <StepComponent onSubmit={submitData} TestAPI={TestAPI} />
+        <StepComponent
+          petData={petData}
+          setType={setType}
+          setName={setName}
+          setPetCharacter={setPetCharacter}
+          setGender={setGender}
+          setBirthday={setBirthday}
+          setFarewellday={setFarewellday}
+          setFavorites={setFavorites}
+          setDislike={setDislike}
+          setSkill={setSkill}
+          submitData={submitData}
+          TestAPI={TestAPI}
+        />
       )}
 
       {isLoading && <LoadingComponent />}
 
-      {isComplete && (
-        <CompleteComponent petData={petData} handleReload={handleReload} />
-      )}
+      {isComplete && <CompleteComponent petData={petData} />}
     </styles.Background>
   );
 };

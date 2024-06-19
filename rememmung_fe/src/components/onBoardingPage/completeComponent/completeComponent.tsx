@@ -11,13 +11,13 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface CompleteComponentProps {
   petData?: any;
-  handleReload: () => void;
 }
 
-const CompleteComponent: React.FC<CompleteComponentProps> = ({
-  //petData,
-  handleReload,
-}) => {
+const CompleteComponent: React.FC<CompleteComponentProps> = (
+  {
+    //petData,
+  }
+) => {
   const navigate = useNavigate();
 
   const types = [
@@ -83,7 +83,7 @@ const CompleteComponent: React.FC<CompleteComponentProps> = ({
       ) : selectedOption === "good" ? (
         <styles.NextButton src={AbleNextButtonImage} onClick={handleComplete} />
       ) : (
-        <styles.NextButton src={AbleNextButtonImage} onClick={handleReload} />
+        <styles.NextButton src={AbleNextButtonImage} />
       )}
     </styles.Container>
   );

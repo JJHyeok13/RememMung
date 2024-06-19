@@ -4,9 +4,13 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 import styles from "./styles";
 
-const Pagination: React.FC = () => {
+interface PaginationProps {
+  page: number;
+  handlePage: (num: number) => void;
+}
+
+const Pagination: React.FC<PaginationProps> = ({ page, handlePage }) => {
   const [totalPage, setTotalPage] = useState<number>(10);
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const pageNumbers = [];
 
@@ -15,15 +19,15 @@ const Pagination: React.FC = () => {
   }
 
   const handlePageClick = (page: number) => {
-    setCurrentPage(page);
+    handlePage(page);
   };
 
   const handlePrevPage = () => {
-    setCurrentPage(currentPage - 1);
+    handlePage(page - 1);
   };
 
   const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
+    handlePage(page + 1);
   };
 
   return (
@@ -33,7 +37,7 @@ const Pagination: React.FC = () => {
         {pageNumbers.map((page, index) => (
           <styles.PaginationItem
             key={index}
-            $isActive={currentPage === page}
+            $isActive={page === page}
             onClick={() => handlePageClick(page)}
           >
             {page}

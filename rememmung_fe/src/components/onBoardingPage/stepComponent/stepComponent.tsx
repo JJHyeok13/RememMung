@@ -3,44 +3,49 @@ import React, { useState } from "react";
 import StepOne from "@components/onBoardingPage/stepOne/stepOne";
 import StepTwo from "@components/onBoardingPage/stepTwo/stepTwo";
 import StepThree from "@components/onBoardingPage/stepThree/stepThree";
-import StepFour from "@components/onBoardingPage/stepFour/stepFour";
+// import StepFour from "@components/onBoardingPage/stepFour/stepFour";
 import StepFive from "@components/onBoardingPage/stepFive/stepFive";
 
 import styles from "./styles";
+import { PetInfoProps } from "type/onboardingPage/onboardingPage";
 
 interface StepComponentProps {
-  onSubmit: (data: any) => void;
+  petData: PetInfoProps;
+  setType: (species: string) => void;
+  setName: (name: string) => void;
+  setPetCharacter: (personality: string[]) => void;
+  setGender: (gender: string) => void;
+  setBirthday: (birthday: string) => void;
+  setFarewellday: (farewellday: string) => void;
+  setFavorites: (favorites: string[]) => void;
+  setDislike: (dislike: string[]) => void;
+  setSkill: (skill: string[]) => void;
+
+  submitData: () => void;
   TestAPI: () => void;
 }
 
-const StepComponent: React.FC<StepComponentProps> = ({ onSubmit, TestAPI }) => {
+const StepComponent: React.FC<StepComponentProps> = ({
+  petData,
+  setType,
+  setName,
+  setPetCharacter,
+  setGender,
+  setBirthday,
+  setFarewellday,
+  setFavorites,
+  setDislike,
+  setSkill,
+  submitData,
+  TestAPI,
+}) => {
   const [step, setStep] = useState(1);
-
-  const [petType, setPetType] = useState<string>("");
-  const [petName, setPetName] = useState<string>("");
-  const [petCharacter, setPetCharacter] = useState<string[]>([]);
-
-  const [additionalInfo, setAdditionalInfo] = useState<{
-    gender: string;
-    birthday: string;
-    farewell: string;
-    favorite: string[];
-    hate: string[];
-    skill: string[];
-  }>({
-    gender: "male",
-    birthday: "",
-    farewell: "",
-    favorite: [],
-    hate: [],
-    skill: [],
-  });
 
   const handlePrevStep = () => {
     if (step > 1) {
       setStep(step - 1);
       console.log(step);
-      console.log(petType, petName, petCharacter);
+      console.log(petData);
     }
   };
 
@@ -48,28 +53,8 @@ const StepComponent: React.FC<StepComponentProps> = ({ onSubmit, TestAPI }) => {
     if (step < 5) {
       setStep(step + 1);
       console.log(step);
-      console.log(petType, petName, petCharacter);
+      console.log(petData);
     }
-  };
-
-  const handleSubmit = () => {
-    const data = {
-      petType,
-      petName,
-      petCharacter,
-      additionalInfo,
-    };
-    onSubmit(data);
-  };
-
-  const setType = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setPetType(value);
-  };
-
-  const setName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setPetName(value);
   };
 
   return (
@@ -90,7 +75,7 @@ const StepComponent: React.FC<StepComponentProps> = ({ onSubmit, TestAPI }) => {
 
       {step === 1 && (
         <StepOne
-          selectedType={petType}
+          selectedType={petData.species}
           setType={setType}
           handleNextStep={handleNextStep}
           TestAPI={TestAPI}
@@ -98,7 +83,7 @@ const StepComponent: React.FC<StepComponentProps> = ({ onSubmit, TestAPI }) => {
       )}
       {step === 2 && (
         <StepTwo
-          selectedName={petName}
+          selectedName={petData.name}
           setName={setName}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
@@ -107,30 +92,38 @@ const StepComponent: React.FC<StepComponentProps> = ({ onSubmit, TestAPI }) => {
 
       {step === 3 && (
         <StepThree
-          selectedCharacter={petCharacter}
+          selectedCharacter={petData.personality}
           setPetCharacter={setPetCharacter}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
         />
       )}
 
-      {step === 4 && (
+      {/* {step === 4 && (
         <StepFour
-          selectedName={petName}
+          selectedName={petData.name}
           setName={setName}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
         />
-      )}
+      )} */}
 
-      {step === 5 && (
+      {step === 4 && (
         <StepFive
-          additionalInfo={additionalInfo}
-          setAdditionalInfo={(info) =>
-            setAdditionalInfo((prev) => ({ ...prev, ...info }))
-          }
+          selectedGender={petData.gender}
+          selectedBirthday={petData.birthday}
+          selectedFarewellday={petData.farewellday}
+          selectedFavorites={petData.favorites}
+          selectedDislike={petData.dislike}
+          selectedSkill={petData.skill}
+          setGender={setGender}
+          setBirthday={setBirthday}
+          setFarewellday={setFarewellday}
+          setFavorites={setFavorites}
+          setDislike={setDislike}
+          setSkill={setSkill}
           handlePrevStep={handlePrevStep}
-          handleSubmit={handleSubmit}
+          handleSubmit={submitData}
         />
       )}
     </styles.Container>

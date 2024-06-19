@@ -7,7 +7,7 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepThreeProps {
   selectedCharacter: string[];
-  setPetCharacter: React.Dispatch<React.SetStateAction<string[]>>;
+  setPetCharacter: (personality: string[]) => void;
   handlePrevStep: () => void;
   handleNextStep: () => void;
 }
@@ -37,14 +37,11 @@ const StepThree: React.FC<StepThreeProps> = ({
     alert("성격을 선택해주세요!");
   };
 
-  const checkHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
-    if (e.target.checked) {
-      setPetCharacter([...selectedCharacter, value]);
+  const handleCharacterChange = (character: string) => {
+    if (selectedCharacter.includes(character)) {
+      setPetCharacter(selectedCharacter.filter((c) => c !== character));
     } else {
-      setPetCharacter(selectedCharacter.filter((char) => char !== value));
+      setPetCharacter([...selectedCharacter, character]);
     }
   };
 
@@ -59,8 +56,8 @@ const StepThree: React.FC<StepThreeProps> = ({
               id={character.id}
               name="petCharacter"
               value={character.id}
-              checked={selectedCharacter.includes(character.name)}
-              onChange={(e) => checkHandler(e, character.name)}
+              checked={selectedCharacter.includes(character.id)}
+              onChange={() => handleCharacterChange(character.id)}
             />
             <styles.Label htmlFor={character.id}>
               <span>{character.name}</span>

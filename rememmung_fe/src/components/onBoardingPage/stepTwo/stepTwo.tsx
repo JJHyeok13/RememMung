@@ -7,7 +7,7 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepTwoProps {
   selectedName: string;
-  setName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setName: (name: string) => void;
   handlePrevStep: () => void;
   handleNextStep: () => void;
 }
@@ -31,8 +31,8 @@ const StepTwo: React.FC<StepTwoProps> = ({
         type="text"
         placeholder="이름을 입력해주세요"
         value={selectedName}
-        onChange={setName}
-        $borderColor={selectedName ? "#946233" : "#b9bbc2"}
+        onChange={(e) => setName(e.target.value)}
+        $borderColor={selectedName ? "#100f0e" : "#b9bbc2"}
       />
 
       <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />

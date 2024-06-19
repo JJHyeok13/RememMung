@@ -6,7 +6,7 @@ import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
 
 interface StepOneProps {
   selectedType: string;
-  setType: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setType: (species: string) => void;
   handleNextStep: () => void;
   TestAPI: () => void;
 }
@@ -20,18 +20,18 @@ const StepOne: React.FC<StepOneProps> = ({
   const types = [
     { id: "dog", name: "🐶 강아지" },
     { id: "cat", name: "🐱 고양이" },
-    { id: "hamster", name: "🐹 햄스터" },
-    { id: "raccoon", name: "🦝 라쿤" },
-    { id: "lizard", name: "🦎 도마뱀" },
-    { id: "turtle", name: "🐢 거북이" },
-    { id: "rabbit", name: "🐰 토끼" },
-    { id: "parrot", name: "🦜 앵무새" },
-    { id: "pig", name: "🐷 돼지" },
-    { id: "duck", name: "🦆 오리" },
-    { id: "fish", name: "🐠 물고기" },
-    { id: "monkey", name: "🐵 원숭이" },
-    { id: "hedgedog", name: "🦔 고슴도치" },
-    { id: "frog", name: "🐸 개구리" },
+    // { id: "hamster", name: "🐹 햄스터" },
+    // { id: "raccoon", name: "🦝 라쿤" },
+    // { id: "lizard", name: "🦎 도마뱀" },
+    // { id: "turtle", name: "🐢 거북이" },
+    // { id: "rabbit", name: "🐰 토끼" },
+    // { id: "parrot", name: "🦜 앵무새" },
+    // { id: "pig", name: "🐷 돼지" },
+    // { id: "duck", name: "🦆 오리" },
+    // { id: "fish", name: "🐠 물고기" },
+    // { id: "monkey", name: "🐵 원숭이" },
+    // { id: "hedgedog", name: "🦔 고슴도치" },
+    // { id: "frog", name: "🐸 개구리" },
   ];
 
   const isInputComplete = selectedType !== "";
@@ -52,7 +52,7 @@ const StepOne: React.FC<StepOneProps> = ({
               name="petType"
               value={type.id}
               checked={selectedType === type.id}
-              onChange={setType}
+              onChange={() => setType(type.id)}
             />
             <styles.Label htmlFor={type.id}>
               <span>{type.name}</span>
