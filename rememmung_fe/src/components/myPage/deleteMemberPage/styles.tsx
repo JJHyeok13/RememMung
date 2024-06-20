@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const styles = {
   Container: styled.div`
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
   `,
@@ -22,6 +22,12 @@ const styles = {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 8px;
+  `,
+
+  Text: styled.div`
+    font-size: 14px;
+    font-family: 500;
+    color: #444444;
   `,
 
   DeleteButton: styled.div`

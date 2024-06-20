@@ -18,7 +18,7 @@ const styles = {
     border-radius: 12px;
     box-sizing: border-box;
     padding: 32px 16px 32px 32px;
-    background-color: #f4f4f4;
+    background-color: #f6f6f8;
     overflow: hidden;
 
     margin: 0 auto;

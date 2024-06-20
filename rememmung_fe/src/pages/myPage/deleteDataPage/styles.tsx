@@ -7,7 +7,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     width: 84%;
-    margin: 0 auto;
+    margin-left: auto;
   `,
 };
 
