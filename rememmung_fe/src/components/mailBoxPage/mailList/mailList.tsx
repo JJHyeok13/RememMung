@@ -1,32 +1,25 @@
 import React, { useState } from "react";
 
+// import DetailMail from "../detailMail/detailMail";
+
 import styles from "./styles";
-import DetailMail from "../detailMail/detailMail";
 
 interface MailListProps {
   isDeleteMode: boolean;
   mailData: {
     id: number;
+    sourceId: number;
+    from: string;
+    sourceName: string;
     title: string;
-    writer: string;
+    content: string;
+    isRead: boolean;
     createdAt: string;
   }[];
 }
 
 const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const [detailData, setDetailData] = useState({
-    title: "요즘엔 어떤 노래 들어어~?",
-    writer: "브리",
-    content: [
-      "눈나 잘 지내?",
-      "여기는 요즘 엄청 날씨가 좋아!!",
-      "눈나 있는 곳은 어때? 거기도 날씨가 좋았으면 좋겠다아...",
-      "꽃도 많이 보고 나비도 꼭 봐아! 난 요즘 나비를 따라다니고 있어!",
-      "나비를 따라가면 세상 어디든 다 갈 수 있는 거 같아~!!!",
-    ],
-  });
 
   const handleClick = () => {
     setIsOpen(true);
@@ -60,16 +53,16 @@ const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
               <styles.TitleData>
                 <styles.Title onClick={handleClick}>{mail.title}</styles.Title>
               </styles.TitleData>
-              <styles.OtherData>{mail.writer}</styles.OtherData>
+              <styles.OtherData>{mail.from}</styles.OtherData>
               <styles.OtherData>{mail.createdAt}</styles.OtherData>
             </tr>
           </tbody>
         ))}
       </styles.Table>
 
-      {isOpen && (
-        <DetailMail detailData={detailData} handleClose={handleClose} />
-      )}
+      {/* {isOpen && (
+        <DetailMail detailData={content} handleClose={handleClose} />
+      )} */}
     </>
   );
 };

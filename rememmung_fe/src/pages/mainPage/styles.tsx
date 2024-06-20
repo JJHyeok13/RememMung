@@ -15,7 +15,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 551px;
+    height: 580px;
     border-radius: 12px;
     background-color: #f6f6f8;
 

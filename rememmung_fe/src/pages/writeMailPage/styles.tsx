@@ -14,7 +14,7 @@ const styles = {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 551px;
+    height: 580px;
     border-radius: 12px;
     background-color: #f4f4f4;
     overflow: hidden;
@@ -27,6 +27,7 @@ const styles = {
     justify-content: space-between;
   `,
   SendButton: styled.div`
+    cursor: pointer;
     padding: 12px 32px;
     background-color: #946233;
     color: #ffffff;

@@ -5,13 +5,16 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import styles from "./styles";
 
 interface PaginationProps {
-  page: number;
+  currentPage: number;
   handlePage: (num: number) => void;
+  totalPage: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ page, handlePage }) => {
-  const [totalPage, setTotalPage] = useState<number>(10);
-
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  handlePage,
+  totalPage,
+}) => {
   const pageNumbers = [];
 
   for (let i = 0; i < totalPage; i++) {
@@ -19,32 +22,42 @@ const Pagination: React.FC<PaginationProps> = ({ page, handlePage }) => {
   }
 
   const handlePageClick = (page: number) => {
-    handlePage(page);
-  };
-
-  const handlePrevPage = () => {
     handlePage(page - 1);
   };
 
+  const handlePrevPage = () => {
+    handlePage(currentPage - 1);
+  };
+
   const handleNextPage = () => {
-    handlePage(page + 1);
+    handlePage(currentPage + 1);
   };
 
   return (
     <styles.Container>
-      <MdNavigateBefore size={24} fill="#767676" onClick={handlePrevPage} />
+      <MdNavigateBefore
+        size={24}
+        fill="#767676"
+        onClick={handlePrevPage}
+        style={{ cursor: "pointer" }}
+      />
       <styles.PageContainer>
         {pageNumbers.map((page, index) => (
           <styles.PaginationItem
             key={index}
-            $isActive={page === page}
+            $isActive={currentPage + 1 === page}
             onClick={() => handlePageClick(page)}
           >
             {page}
           </styles.PaginationItem>
         ))}
       </styles.PageContainer>
-      <MdNavigateNext size={24} fill="#767676" onClick={handleNextPage} />
+      <MdNavigateNext
+        size={24}
+        fill="#767676"
+        onClick={handleNextPage}
+        style={{ cursor: "pointer" }}
+      />
     </styles.Container>
   );
 };

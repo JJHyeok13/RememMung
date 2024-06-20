@@ -13,11 +13,15 @@ import { PhotoDataProps } from "type/galleryPage/galleryPage";
 
 const GalleryPage: React.FC = () => {
   const [photoData, setPhotoData] = useState<PhotoDataProps>(dummyData);
-  const [page, setPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 10;
 
+  const [totalPage, setTotalPage] = useState<number>(
+    Math.ceil(photoData.totalCount / pageSize)
+  );
+
   const handlePage = (num: number) => {
-    setPage(num);
+    setCurrentPage(num);
   };
 
   // useEffect(() => {
@@ -28,7 +32,11 @@ const GalleryPage: React.FC = () => {
     <styles.Container>
       <styles.WhiteBox>
         <PhotoContainer photoData={photoData.nodes} />
-        <Pagination page={page} handlePage={handlePage} />
+        <Pagination
+          currentPage={currentPage}
+          handlePage={handlePage}
+          totalPage={totalPage}
+        />
       </styles.WhiteBox>
     </styles.Container>
   );

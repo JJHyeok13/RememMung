@@ -7,10 +7,35 @@ import SearchBar from "@components/mailBoxPage/searchBar/searchBar";
 import styles from "./styles";
 
 import { dummyData } from "./dummyData";
-import { useNavigate } from "react-router-dom";
+
+interface MailDataProps {
+  totalCount: number;
+  nodes: {
+    id: number;
+    sourceId: number;
+    from: string;
+    sourceName: string;
+    title: string;
+    content: string;
+    isRead: boolean;
+    createdAt: string;
+  }[];
+}
 
 const MyMailPage: React.FC = () => {
   const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
+
+  const [mailData, setMailData] = useState<MailDataProps>(dummyData);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const pageSize = 7;
+
+  const [totalPage, setTotalPage] = useState<number>(
+    Math.ceil(mailData.totalCount / pageSize)
+  );
+
+  const handlePage = (num: number) => {
+    setCurrentPage(num);
+  };
 
   const OnDeleteMode = () => {
     setIsDeleteMode(true);
@@ -23,8 +48,12 @@ const MyMailPage: React.FC = () => {
   return (
     <styles.Container>
       <styles.ElementBox>
-        <MailList mailData={dummyData} isDeleteMode={isDeleteMode} />
-        <Pagination />
+        <MailList mailData={mailData.nodes} isDeleteMode={isDeleteMode} />
+        <Pagination
+          currentPage={currentPage}
+          handlePage={handlePage}
+          totalPage={totalPage}
+        />
       </styles.ElementBox>
       <styles.LowerContainer>
         <SearchBar />

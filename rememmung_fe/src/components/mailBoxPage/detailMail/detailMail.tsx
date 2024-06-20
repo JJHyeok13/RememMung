@@ -5,7 +5,7 @@ import styles from "./styles";
 interface DetailMailProps {
   detailData: {
     title: string;
-    writer: string;
+    from: string;
     content: string[];
   };
   handleClose: () => void;
