@@ -22,7 +22,7 @@ export const writeLetter = async (
 ): Promise<WriteLetterResponse> => {
   try {
     const res = await PostAxiosInstance<WriteLetterResponse>(
-      `http://localhost:8080/users/me/letters`,
+      `/users/me/letters`,
       data
     );
 
@@ -39,7 +39,7 @@ export const getLetterList = async (
 ): Promise<GetLetterListResponse> => {
   try {
     const res = await GetAxiosInstance<GetLetterListResponse>(
-      `http://localhost:8080/users/me/letters`,
+      `/users/me/letters`,
       config
     );
 
@@ -57,7 +57,7 @@ export const updateLetter = async (
 ): Promise<UpdateLetterResponse> => {
   try {
     const res = await PatchAxiosInstance<UpdateLetterResponse>(
-      `http://localhost:8080/users/me/letters/${letterId}`,
+      `/users/me/letters/${letterId}`,
       data
     );
 
@@ -74,7 +74,7 @@ export const deleteLetter = async (
 ): Promise<DeleteLetterResponse> => {
   try {
     const res = await DeleteAxiosInstance<DeleteLetterResponse>(
-      `http://localhost:8080/users/me/letters/${letterId}`
+      `/users/me/letters/${letterId}`
     );
 
     return res.data.result;

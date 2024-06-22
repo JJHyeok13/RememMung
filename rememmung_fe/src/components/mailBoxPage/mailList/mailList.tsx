@@ -28,6 +28,13 @@ const MailList: React.FC<MailListProps> = ({
   handleOpen,
   handleClose,
 }) => {
+  const [selectedMail, setSelectedMail] = useState(null);
+
+  const handleMailClick = (mail: any) => {
+    setSelectedMail(mail);
+    handleOpen(mail.id);
+  };
+
   return (
     <>
       <styles.Table>
@@ -40,32 +47,29 @@ const MailList: React.FC<MailListProps> = ({
           </tr>
         </thead>
 
-        {mailData.map((mail) => (
-          <>
-            <tbody key={mail.id}>
-              <tr>
-                <styles.CheckBox>
-                  <styles.StyleInput
-                    type="checkbox"
-                    isDeleteMode={isDeleteMode}
-                  />
-                </styles.CheckBox>
-                <styles.TitleData>
-                  <styles.Title onClick={() => handleOpen(mail.id)}>
-                    {mail.title}
-                  </styles.Title>
-                </styles.TitleData>
-                <styles.OtherData>{mail.from}</styles.OtherData>
-                <styles.OtherData>{mail.createdAt}</styles.OtherData>
-              </tr>
-            </tbody>
-
-            {isOpen && (
-              <DetailMail detailData={mail} handleClose={handleClose} />
-            )}
-          </>
-        ))}
+        <tbody>
+          {mailData.map((mail) => (
+            <tr key={mail.id}>
+              <styles.CheckBox>
+                <styles.StyleInput
+                  type="checkbox"
+                  $isDeleteMode={isDeleteMode}
+                />
+              </styles.CheckBox>
+              <styles.TitleData>
+                <styles.Title onClick={() => handleMailClick(mail)}>
+                  {mail.title}
+                </styles.Title>
+              </styles.TitleData>
+              <styles.OtherData>{mail.from}</styles.OtherData>
+              <styles.OtherData>{mail.createdAt}</styles.OtherData>
+            </tr>
+          ))}
+        </tbody>
       </styles.Table>
+      {isOpen && selectedMail && (
+        <DetailMail detailData={selectedMail} handleClose={handleClose} />
+      )}
     </>
   );
 };

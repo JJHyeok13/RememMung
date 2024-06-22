@@ -14,8 +14,8 @@ const styles = {
     width: 65%;
     color: #444444;
   `,
-  StyleInput: styled.input<{ isDeleteMode: boolean }>`
-    display: ${(props) => (props.isDeleteMode ? "flex" : "none")};
+  StyleInput: styled.input<{ $isDeleteMode: boolean }>`
+    display: ${(props) => (props.$isDeleteMode ? "flex" : "none")};
     align-items: center;
     width: 20px;
     height: 20px;
