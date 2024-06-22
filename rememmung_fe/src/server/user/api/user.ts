@@ -1,9 +1,9 @@
 import { PostAxiosInstance, GetAxiosInstance } from "@axios/user/axios.method";
-import { SavePetInfoRequest } from "@server/requestType/user";
+import { SavePetInfoRequest } from "@server/user/requestType/user";
 import {
   GetPetInfoResponse,
   SavePetInfoResponse,
-} from "@server/responseType/user";
+} from "@server/user/responseType/user";
 
 // 온보딩 펫 정보 저장하기 /petInfo/save
 export const savePetInfo = async (
