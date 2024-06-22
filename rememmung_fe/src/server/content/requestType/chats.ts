@@ -1,3 +1,3 @@
-export interface SendChatRequset {
+export interface SendChatRequest {
   content: string;
 }

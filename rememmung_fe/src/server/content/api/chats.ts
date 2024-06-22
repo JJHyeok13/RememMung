@@ -3,7 +3,7 @@ import {
   PostAxiosInstance,
 } from "@axios/content/axios.method";
 import { GetChattingConfig } from "@server/content/config/chats";
-import { SendChatRequset } from "@server/content/requestType/chats";
+import { SendChatRequest } from "@server/content/requestType/chats";
 import {
   GetChattingResponse,
   SendChatResponse,
@@ -11,7 +11,7 @@ import {
 
 // 채팅 내용 전송 /users/me/chat
 export const sendChat = async (
-  data: SendChatRequset
+  data: SendChatRequest
 ): Promise<SendChatResponse> => {
   try {
     const res = await PostAxiosInstance<SendChatResponse>(
