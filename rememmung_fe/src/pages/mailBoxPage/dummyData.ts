@@ -1,5 +1,5 @@
 export const dummyData = {
-  totalCount: 8,
+  totalCount: 7,
   nodes: [
     {
       id: 1,
@@ -70,17 +70,6 @@ export const dummyData = {
     {
       id: 7,
       sourceId: 7,
-      from: "브리",
-      sourceName: "브리",
-      title: "감기 조심해야해애~",
-      content:
-        "눈나 잘 지내? 여기는 요즘 엄청 날씨가 좋아!! 눈나 있는 곳은 어때? 거기도 날씨가 좋았으면 좋겠다아... 꽃도 많이 보고 나비도 꼭 봐아! 난 요즘 나비를 따라다니고 있어! 나비를 따라가면 세상 어디든 다 갈 수 있는 거 같아~!!!",
-      isRead: true,
-      createdAt: "2024. 04. 27",
-    },
-    {
-      id: 8,
-      sourceId: 8,
       from: "브리",
       sourceName: "브리",
       title: "감기 조심해야해애~",

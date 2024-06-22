@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// import DetailMail from "../detailMail/detailMail";
+import DetailMail from "../detailMail/detailMail";
 
 import styles from "./styles";
 
@@ -42,27 +42,31 @@ const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
         </thead>
 
         {mailData.map((mail) => (
-          <tbody key={mail.id}>
-            <tr>
-              <styles.CheckBox>
-                <styles.StyleInput
-                  type="checkbox"
-                  isDeleteMode={isDeleteMode}
-                />
-              </styles.CheckBox>
-              <styles.TitleData>
-                <styles.Title onClick={handleClick}>{mail.title}</styles.Title>
-              </styles.TitleData>
-              <styles.OtherData>{mail.from}</styles.OtherData>
-              <styles.OtherData>{mail.createdAt}</styles.OtherData>
-            </tr>
-          </tbody>
+          <>
+            <tbody key={mail.id}>
+              <tr>
+                <styles.CheckBox>
+                  <styles.StyleInput
+                    type="checkbox"
+                    isDeleteMode={isDeleteMode}
+                  />
+                </styles.CheckBox>
+                <styles.TitleData>
+                  <styles.Title onClick={handleClick}>
+                    {mail.title}
+                  </styles.Title>
+                </styles.TitleData>
+                <styles.OtherData>{mail.from}</styles.OtherData>
+                <styles.OtherData>{mail.createdAt}</styles.OtherData>
+              </tr>
+            </tbody>
+
+            {isOpen && (
+              <DetailMail detailData={mailData} handleClose={handleClose} />
+            )}
+          </>
         ))}
       </styles.Table>
-
-      {/* {isOpen && (
-        <DetailMail detailData={content} handleClose={handleClose} />
-      )} */}
     </>
   );
 };

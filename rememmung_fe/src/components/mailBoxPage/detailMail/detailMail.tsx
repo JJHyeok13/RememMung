@@ -4,9 +4,14 @@ import styles from "./styles";
 
 interface DetailMailProps {
   detailData: {
-    title: string;
+    id: number;
+    sourceId: number;
     from: string;
-    content: string[];
+    sourceName: string;
+    title: string;
+    content: string;
+    isRead: boolean;
+    createdAt: string;
   };
   handleClose: () => void;
 }
@@ -33,11 +38,7 @@ const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
           <styles.Letter>
             <styles.Content>
               <styles.Receiver>눈나에게</styles.Receiver>
-              <div>
-                {detailData.content.map((message, index) => (
-                  <div key={index}>{message}</div>
-                ))}
-              </div>
+              <div>{detailData.content}</div>
               <styles.Sender>{detailData.from}가</styles.Sender>
             </styles.Content>
           </styles.Letter>

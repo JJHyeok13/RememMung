@@ -12,8 +12,8 @@ const styles = {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
     z-index: 1000;
   `,
   Container: styled.div``,
