@@ -16,19 +16,18 @@ interface MailListProps {
     isRead: boolean;
     createdAt: string;
   }[];
+  isOpen: boolean;
+  handleOpen: (letterId: number) => void;
+  handleClose: () => void;
 }
 
-const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const handleClick = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
+const MailList: React.FC<MailListProps> = ({
+  isDeleteMode,
+  mailData,
+  isOpen,
+  handleOpen,
+  handleClose,
+}) => {
   return (
     <>
       <styles.Table>
@@ -52,7 +51,7 @@ const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
                   />
                 </styles.CheckBox>
                 <styles.TitleData>
-                  <styles.Title onClick={handleClick}>
+                  <styles.Title onClick={() => handleOpen(mail.id)}>
                     {mail.title}
                   </styles.Title>
                 </styles.TitleData>
@@ -62,7 +61,7 @@ const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
             </tbody>
 
             {isOpen && (
-              <DetailMail detailData={mailData} handleClose={handleClose} />
+              <DetailMail detailData={mail} handleClose={handleClose} />
             )}
           </>
         ))}
