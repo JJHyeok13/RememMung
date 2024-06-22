@@ -1,4 +1,7 @@
-import { PostAxiosInstance, GetAxiosInstance } from "@axios/axios.method";
+import {
+  PostAxiosInstance,
+  GetAxiosInstance,
+} from "@axios/content/axios.method";
 import { SavePetInfoRequest } from "@server/requestType/user";
 import {
   GetPetInfoResponse,

@@ -3,7 +3,7 @@ import {
   PostAxiosInstance,
   PatchAxiosInstance,
   DeleteAxiosInstance,
-} from "@axios/axios.method";
+} from "@axios/content/axios.method";
 import { GetLetterListConfig } from "@server/config/letter";
 import {
   UpdateLetterRequest,

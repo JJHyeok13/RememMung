@@ -1,4 +1,7 @@
-import { GetAxiosInstance, PostAxiosInstance } from "@axios/axios.method";
+import {
+  GetAxiosInstance,
+  PostAxiosInstance,
+} from "@axios/content/axios.method";
 
 export const testAPI = async () => {
   console.log("TEST API 호출");
@@ -17,9 +20,7 @@ export const testAPI = async () => {
 export const test = async () => {
   console.log("Content 테스트");
   try {
-    const res = await GetAxiosInstance(
-      `${import.meta.env.VITE_CONTENT_SERVER}/`
-    );
+    const res = await GetAxiosInstance(`/`);
 
     console.log(res);
     return res.data;

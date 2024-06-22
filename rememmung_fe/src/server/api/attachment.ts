@@ -1,4 +1,4 @@
-import { PostAxiosInstance } from "@axios/axios.method";
+import { PostAxiosInstance } from "@axios/content/axios.method";
 import { UploadFileRequest } from "@server/requestType/attachment";
 import {
   UpdateUploadFileResponse,
