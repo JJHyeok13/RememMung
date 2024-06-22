@@ -1,7 +1,4 @@
-import {
-  PostAxiosInstance,
-  GetAxiosInstance,
-} from "@axios/content/axios.method";
+import { PostAxiosInstance, GetAxiosInstance } from "@axios/user/axios.method";
 import { SavePetInfoRequest } from "@server/requestType/user";
 import {
   GetPetInfoResponse,
@@ -14,7 +11,7 @@ export const savePetInfo = async (
 ): Promise<SavePetInfoResponse> => {
   try {
     const res = await PostAxiosInstance<SavePetInfoResponse>(
-      `http://localhost:8080/petInfo/save`,
+      `/petInfo/save`,
       data
     );
 
@@ -28,9 +25,7 @@ export const savePetInfo = async (
 // 온보딩 펫 정보 조회하기 /petInfo/get
 export const getPetInfo = async (): Promise<GetPetInfoResponse> => {
   try {
-    const res = await GetAxiosInstance<GetPetInfoResponse>(
-      `http://localhost:8080/petInfo/get`
-    );
+    const res = await GetAxiosInstance<GetPetInfoResponse>(`/petInfo/get`);
 
     return res.data.result;
   } catch (error) {

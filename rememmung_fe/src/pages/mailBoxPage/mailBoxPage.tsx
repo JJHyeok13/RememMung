@@ -8,7 +8,7 @@ import SearchBar from "@components/mailBoxPage/searchBar/searchBar";
 import styles from "./styles";
 
 import { dummyData } from "./dummyData";
-import { getLetterList } from "@server/api/letter";
+import { getLetterList } from "@server/api/content/letter";
 
 interface MailDataProps {
   totalCount: number;

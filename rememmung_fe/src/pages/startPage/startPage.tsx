@@ -3,7 +3,7 @@ import React from "react";
 import KakaoLoginImage from "@assets/startPage/kakaoButton.svg";
 import NaverLoginImage from "@assets/startPage/naverButton.svg";
 
-import { test } from "@server/api/test";
+import { test } from "@server/api/content/test";
 
 import styles from "./styles";
 

@@ -38,7 +38,7 @@ const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
                   <div key={index}>{message}</div>
                 ))}
               </div>
-              <styles.Sender>{detailData.writer}가</styles.Sender>
+              <styles.Sender>{detailData.from}가</styles.Sender>
             </styles.Content>
           </styles.Letter>
           <styles.Button onClick={handleClose}>닫기</styles.Button>

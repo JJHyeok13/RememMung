@@ -14,7 +14,7 @@ interface PetInfoProps {
 
 import styles from "./styles";
 import UpdateComponent from "@components/myPage/updatePage/updateComponent";
-import { getPetInfo } from "@server/api/user";
+import { getPetInfo } from "@server/api/user/user";
 
 const UpdatePage: React.FC = () => {
   const [petData, setPetData] = useState<PetInfoProps>({

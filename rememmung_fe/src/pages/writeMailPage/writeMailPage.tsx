@@ -4,7 +4,7 @@ import InputContainer from "@components/writeMailPage/inputContainer/inputContai
 import SelectLetterStyle from "@components/writeMailPage/selectLetterStyle/selectLetterStyle";
 
 import styles from "./styles";
-import { writeLetter } from "@server/api/letter";
+import { writeLetter } from "@server/api/content/letter";
 
 interface LetterDataProps {
   title: string;

@@ -1,14 +1,11 @@
-import React, {
-  //useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 
 import PhotoContainer from "@components/galleryPage/photoContainer/photoContainer";
 import Pagination from "@components/common/pagination/pagination";
 
 import styles from "./styles";
 import { dummyData } from "./dummyData";
-// import { getPetFile } from "@server/api/pet_attachment";
+import { getPetFile } from "@server/api/content/pet_attachment";
 import { PhotoDataProps } from "type/galleryPage/galleryPage";
 
 const GalleryPage: React.FC = () => {
@@ -24,9 +21,9 @@ const GalleryPage: React.FC = () => {
     setCurrentPage(num);
   };
 
-  // useEffect(() => {
-  //   getPetFile(page, pageSize).then((res) => setPhotoData(res));
-  // }, [photoData]);
+  useEffect(() => {
+    getPetFile(currentPage, pageSize).then((res) => setPhotoData(res));
+  }, [photoData, currentPage]);
 
   return (
     <styles.Container>
