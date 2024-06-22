@@ -3,6 +3,8 @@ import React from "react";
 import KakaoLoginImage from "@assets/startPage/kakaoButton.svg";
 import NaverLoginImage from "@assets/startPage/naverButton.svg";
 
+import { test } from "@server/api/test";
+
 import styles from "./styles";
 
 const StartPage: React.FC = () => {
@@ -34,6 +36,8 @@ const StartPage: React.FC = () => {
             </a>
             <styles.Button src={NaverLoginImage} />
           </styles.ButtonContainer>
+
+          <div onClick={test}>테스트</div>
         </styles.Container>
       </styles.Gradation>
     </styles.Background>
