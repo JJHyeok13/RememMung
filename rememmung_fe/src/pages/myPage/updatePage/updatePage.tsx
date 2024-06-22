@@ -29,9 +29,9 @@ const UpdatePage: React.FC = () => {
     skill: [],
   });
 
-  useEffect(() => {
-    getPetInfo().then((res) => setPetData(res));
-  }, [petData]);
+  // useEffect(() => {
+  //   getPetInfo().then((res) => setPetData(res));
+  // }, [petData]);
 
   // const setType = (species: string) => {
   //   setPetData((prev) => ({ ...prev, species }));
