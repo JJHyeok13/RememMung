@@ -5,9 +5,9 @@ import StepComponent from "@components/onBoardingPage/stepComponent/stepComponen
 import styles from "./styles";
 // import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
-import { testAPI } from "@server/api/user/test";
+import { testAPI } from "@server/user/api/test";
 import { PetInfoProps } from "type/onboardingPage/onboardingPage";
-import { savePetInfo } from "@server/api/user/user";
+import { savePetInfo } from "@server/user/api/user";
 
 const OnBoardingPage: React.FC = () => {
   // const [isLoading, setIsLoading] = useState<boolean>(false);

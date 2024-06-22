@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getKakaoToken, kakaoLogin } from "@server/api/user/oauth";
+import { getKakaoToken, kakaoLogin } from "@server/user/api/oauth";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./styles";

@@ -1,9 +1,9 @@
 import { PostAxiosInstance } from "@axios/content/axios.method";
-import { UploadFileRequest } from "@server/requestType/attachment";
+import { UploadFileRequest } from "@server/content/requestType/attachment";
 import {
   UpdateUploadFileResponse,
   UploadFileResponse,
-} from "@server/responseType/attachment";
+} from "@server/content/responseType/attachment";
 
 // 첨부파일 업로드 /attachment/prepare-upload
 export const uploadFile = async (

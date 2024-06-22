@@ -5,7 +5,7 @@ import Pagination from "@components/common/pagination/pagination";
 
 import styles from "./styles";
 import { dummyData } from "./dummyData";
-import { getPetFile } from "@server/api/content/pet_attachment";
+import { getPetFile } from "@server/content/api/pet_attachment";
 import { PhotoDataProps } from "type/galleryPage/galleryPage";
 
 const GalleryPage: React.FC = () => {

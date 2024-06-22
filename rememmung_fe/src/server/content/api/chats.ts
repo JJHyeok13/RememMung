@@ -2,12 +2,12 @@ import {
   GetAxiosInstance,
   PostAxiosInstance,
 } from "@axios/content/axios.method";
-import { GetChattingConfig } from "@server/config/chats";
-import { SendChatRequset } from "@server/requestType/chats";
+import { GetChattingConfig } from "@server/content/config/chats";
+import { SendChatRequset } from "@server/content/requestType/chats";
 import {
   GetChattingResponse,
   SendChatResponse,
-} from "@server/responseType/chats";
+} from "@server/content/responseType/chats";
 
 // 채팅 내용 전송 /users/me/chat
 export const sendChat = async (

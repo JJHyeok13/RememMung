@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { PostAxiosInstance } from "@axios/user/axios.method";
-import { KakaoLoginResponse } from "@server/responseType/oauth";
+import { KakaoLoginResponse } from "@server/user/responseType/oauth";
 
 export const getKakaoToken = async (
   client_id: string,

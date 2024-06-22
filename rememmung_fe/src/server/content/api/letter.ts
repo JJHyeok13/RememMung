@@ -4,17 +4,17 @@ import {
   PatchAxiosInstance,
   DeleteAxiosInstance,
 } from "@axios/content/axios.method";
-import { GetLetterListConfig } from "@server/config/letter";
+import { GetLetterListConfig } from "@server/content/config/letter";
 import {
   UpdateLetterRequest,
   WriteLetterRequest,
-} from "@server/requestType/letter";
+} from "@server/content/requestType/letter";
 import {
   WriteLetterResponse,
   GetLetterListResponse,
   UpdateLetterResponse,
   DeleteLetterResponse,
-} from "@server/responseType/letter";
+} from "@server/content/responseType/letter";
 
 // 편지 생성하기 /users/me/letters
 export const writeLetter = async (

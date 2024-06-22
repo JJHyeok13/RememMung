@@ -1,5 +1,5 @@
 import { GetAxiosInstance } from "@axios/content/axios.method";
-import { GetPetFileResponse } from "@server/responseType/pet_attachment";
+import { GetPetFileResponse } from "@server/content/responseType/pet_attachment";
 
 // 펫 첨부파일 조회 /users/me/pet-attachments
 export const getPetFile = async (
