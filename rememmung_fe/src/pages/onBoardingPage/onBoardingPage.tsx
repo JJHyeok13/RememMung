@@ -46,11 +46,11 @@ const OnBoardingPage: React.FC = () => {
   };
 
   const setBirthday = (birthday: string) => {
-    setPetData((prev) => ({ ...prev, birthday }));
+    setPetData((prev) => ({ ...prev, birthday: birthday }));
   };
 
   const setFarewellday = (farewellday: string) => {
-    setPetData((prev) => ({ ...prev, farewellday }));
+    setPetData((prev) => ({ ...prev, farewellday: farewellday }));
   };
 
   const setFavorites = (favorites: string[]) => {

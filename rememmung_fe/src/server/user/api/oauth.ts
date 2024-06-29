@@ -26,7 +26,8 @@ export const kakaoLogin = async (
     const res = await PostAxiosInstance<KakaoLoginResponse>(`/api/auth/kakao`, {
       accessToken: accessToken,
     });
-    return res.data.result;
+    console.log(res);
+    return res.data;
   } catch (error) {
     console.log("카카오 로그인 에러", error);
     throw error;

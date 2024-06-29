@@ -52,13 +52,13 @@ const StepFive: React.FC<StepFiveProps> = ({
 
   useEffect(() => {
     if (selectedBirthday) {
-      const [year, month, day] = selectedBirthday.split("-");
+      const [year, month, day] = selectedBirthday.split("T")[0].split("-");
       setBirthdayYear(year);
       setBirthdayMonth(month);
       setBirthdayDay(day);
     }
     if (selectedFarewellday) {
-      const [year, month, day] = selectedFarewellday.split("-");
+      const [year, month, day] = selectedFarewellday.split("T")[0].split("-");
       setFarewellYear(year);
       setFarewellMonth(month);
       setFarewellDay(day);
@@ -97,13 +97,15 @@ const StepFive: React.FC<StepFiveProps> = ({
 
   useEffect(() => {
     if (birthdayYear && birthdayMonth && birthdayDay) {
-      setBirthday(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
+      setBirthday(`${birthdayYear}-${birthdayMonth}-${birthdayDay}T00:00:00`);
     }
   }, [birthdayYear, birthdayMonth, birthdayDay]);
 
   useEffect(() => {
     if (farewellYear && farewellMonth && farewellDay) {
-      setFarewellday(`${farewellYear}-${farewellMonth}-${farewellDay}`);
+      setFarewellday(
+        `${farewellYear}-${farewellMonth}-${farewellDay}T00:00:00`
+      );
     }
   }, [farewellYear, farewellMonth, farewellDay]);
 
@@ -125,8 +127,8 @@ const StepFive: React.FC<StepFiveProps> = ({
             <styles.RadioInput
               type="radio"
               name="gender"
-              value="male"
-              checked={selectedGender === "male"}
+              value="MALE"
+              checked={selectedGender === "MALE"}
               onChange={handleChangeGender}
             />
             <label htmlFor="male">남자</label>
@@ -134,8 +136,8 @@ const StepFive: React.FC<StepFiveProps> = ({
             <styles.RadioInput
               type="radio"
               name="gender"
-              value="female"
-              checked={selectedGender === "female"}
+              value="FEMALE"
+              checked={selectedGender === "FEMALE"}
               onChange={handleChangeGender}
             />
             <label htmlFor="female">여자</label>

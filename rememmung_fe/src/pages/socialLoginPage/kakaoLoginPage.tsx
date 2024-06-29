@@ -30,7 +30,6 @@ const KakaoLoginPage: React.FC = () => {
 
           // 카카오 토큰 값 저장
           setKakaoToken(res.access_token);
-
           setLoading(false);
         }
       } catch (error) {
@@ -38,7 +37,7 @@ const KakaoLoginPage: React.FC = () => {
       }
     };
     fetchKakaoToken();
-  }, [code, client_id, redirect_uri]);
+  }, []);
 
   useEffect(() => {
     const getCookie = async () => {
@@ -47,11 +46,13 @@ const KakaoLoginPage: React.FC = () => {
         if (kakaoToken) {
           const res = await kakaoLogin(kakaoToken);
 
-          if (res.existed) {
-            navigate(`/main`);
-          } else {
-            navigate(`/onboarding`);
-          }
+          console.log(res);
+
+          //if (res.existed) {
+          //navigate(`/main`);
+          //} else {
+          navigate(`/onboarding`);
+          //}
 
           setLoading(false);
         }
@@ -59,11 +60,8 @@ const KakaoLoginPage: React.FC = () => {
         console.log(error);
       }
     };
-    // 카카오토큰 값이 존재할 때에만 실행
-    if (kakaoToken) {
-      getCookie();
-    }
-  }, [kakaoToken, navigate]);
+    getCookie();
+  });
 
   return (
     <styles.Container>

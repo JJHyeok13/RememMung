@@ -1,7 +1,6 @@
 import { PostAxiosInstance } from "@axios/user/axios.method";
 
 export const testAPI = async () => {
-  console.log("TEST API 호출");
   try {
     const res = await PostAxiosInstance(`/test`);
 

@@ -15,7 +15,7 @@ export const savePetInfo = async (
       data
     );
 
-    return res.data.result;
+    return res.data;
   } catch (error) {
     console.log("온보딩 펫 정보 저장하기 에러", error);
     throw error;
@@ -27,7 +27,7 @@ export const getPetInfo = async (): Promise<GetPetInfoResponse> => {
   try {
     const res = await GetAxiosInstance<GetPetInfoResponse>(`/petInfo/get`);
 
-    return res.data.result;
+    return res.data;
   } catch (error) {
     console.log("온보딩 펫 정보 조회하기 에러", error);
     throw error;

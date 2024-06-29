@@ -5,10 +5,12 @@ export const test = async () => {
   try {
     const res = await GetAxiosInstance(`/`);
 
-    console.log(res);
+    console.log("성공", res);
+    alert("성공");
     return res.data;
   } catch (error) {
-    console.log("실패");
+    console.log("실패", error);
+    alert("실패");
     throw error;
   }
 };
