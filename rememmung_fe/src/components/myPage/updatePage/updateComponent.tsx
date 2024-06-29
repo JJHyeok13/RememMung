@@ -91,20 +91,20 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
           <styles.RadioInput
             type="radio"
             name="gender"
-            value="male"
-            checked={selectedGender === "male"}
+            value="MALE"
+            checked={selectedGender === "MALE"}
             onChange={handleChangeGender}
           />
-          <label htmlFor="male">남자</label>
+          <label htmlFor="MALE">남자</label>
 
           <styles.RadioInput
             type="radio"
             name="gender"
-            value="female"
-            checked={selectedGender === "female"}
+            value="FEMALE"
+            checked={selectedGender === "FEMALE"}
             onChange={handleChangeGender}
           />
-          <label htmlFor="female">여자</label>
+          <label htmlFor="FEMALE">여자</label>
         </styles.Input>
       </styles.InputContainer>
 

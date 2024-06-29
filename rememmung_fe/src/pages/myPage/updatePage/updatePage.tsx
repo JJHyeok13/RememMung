@@ -30,7 +30,10 @@ const UpdatePage: React.FC = () => {
   });
 
   useEffect(() => {
-    getPetInfo().then((res) => setPetData(res));
+    getPetInfo().then((res) => {
+      setPetData(res);
+      console.log(res);
+    });
   }, [petData]);
 
   // const setType = (species: string) => {

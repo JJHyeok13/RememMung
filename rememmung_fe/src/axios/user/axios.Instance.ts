@@ -5,6 +5,15 @@ const axiosInstance: AxiosInstance = axios.create({
   withCredentials: true,
 });
 
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 // JWT 토큰 기반 API 요청 => 주석 처리
 // axiosInstance.interceptors.request.use(
 //   async (config) => {

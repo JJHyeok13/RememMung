@@ -1,9 +1,19 @@
 import axios, { AxiosInstance } from "axios";
+//import Cookies from "js-cookie";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_CONTENT_SERVER_URL,
   withCredentials: true,
 });
+
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 // JWT 토큰 기반 API 요청 => 주석 처리
 // axiosInstance.interceptors.request.use(
