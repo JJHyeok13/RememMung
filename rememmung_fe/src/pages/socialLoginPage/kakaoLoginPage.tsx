@@ -21,8 +21,8 @@ const KakaoLoginPage: React.FC = () => {
   useEffect(() => {
     const fetchKakaoToken = async () => {
       try {
-        setLoading(true);
         if (code) {
+          setLoading(true);
           const res = await getKakaoToken(client_id, redirect_uri, code);
 
           // 로컬스토리지에 카카오 토큰 저장
@@ -34,16 +34,17 @@ const KakaoLoginPage: React.FC = () => {
         }
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     };
     fetchKakaoToken();
-  }, []);
+  }, [code, client_id, redirect_uri]);
 
   useEffect(() => {
     const getCookie = async () => {
       try {
-        setLoading(true);
         if (kakaoToken) {
+          setLoading(true);
           const res = await kakaoLogin(kakaoToken);
 
           console.log(res);
@@ -58,10 +59,11 @@ const KakaoLoginPage: React.FC = () => {
         }
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     };
     getCookie();
-  });
+  }, [kakaoToken, navigate]);
 
   return (
     <styles.Container>
