@@ -21,6 +21,7 @@ export const writeLetter = async (
   data: WriteLetterRequest
 ): Promise<WriteLetterResponse> => {
   try {
+    console.log("편지 생성하기 API 호출");
     const res = await PostAxiosInstance<WriteLetterResponse>(
       `/users/me/letters`,
       data
@@ -38,11 +39,14 @@ export const getLetterList = async (
   config: GetLetterListConfig
 ): Promise<GetLetterListResponse> => {
   try {
+    console.log("편지 목록 조회하기 API 호출");
     const res = await GetAxiosInstance<GetLetterListResponse>(
       `/users/me/letters`,
       config
     );
 
+    console.log(res);
+    console.log(res.data);
     return res.data.result;
   } catch (error) {
     console.log("편지 목록 조회하기 에러", error);
@@ -56,6 +60,7 @@ export const updateLetter = async (
   data: UpdateLetterRequest
 ): Promise<UpdateLetterResponse> => {
   try {
+    console.log("편지 상태 수정하기 API 호출");
     const res = await PatchAxiosInstance<UpdateLetterResponse>(
       `/users/me/letters/${letterId}`,
       data
@@ -73,6 +78,7 @@ export const deleteLetter = async (
   letterId: number
 ): Promise<DeleteLetterResponse> => {
   try {
+    console.log("편지 삭제하기 API 호출");
     const res = await DeleteAxiosInstance<DeleteLetterResponse>(
       `/users/me/letters/${letterId}`
     );

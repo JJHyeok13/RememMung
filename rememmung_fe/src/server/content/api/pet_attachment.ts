@@ -7,6 +7,7 @@ export const getPetFile = async (
   pageSize: number
 ): Promise<GetPetFileResponse> => {
   try {
+    console.log("펫 첨부파일 조회 API 호출");
     const res = await GetAxiosInstance<GetPetFileResponse>(
       `/users/me/pet-attachments?page=${page}&pageSize=${pageSize}`
     );

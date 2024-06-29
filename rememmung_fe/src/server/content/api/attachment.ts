@@ -10,6 +10,7 @@ export const uploadFile = async (
   data: UploadFileRequest
 ): Promise<UploadFileResponse> => {
   try {
+    console.log("첨부파일 업로드 API 호출");
     const res = await PostAxiosInstance<UploadFileResponse>(
       `/attachment/prepare-upload`,
       data
@@ -27,6 +28,7 @@ export const updateUploadFile = async (
   attachmentId: number
 ): Promise<UpdateUploadFileResponse> => {
   try {
+    console.log("첨부파일 업로드 상태 수정 API 호출");
     const res = await PostAxiosInstance<UpdateUploadFileResponse>(
       `/attachment/complete-upload/${attachmentId}`
     );

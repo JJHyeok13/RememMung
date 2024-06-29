@@ -14,6 +14,7 @@ export const sendChat = async (
   data: SendChatRequest
 ): Promise<SendChatResponse> => {
   try {
+    console.log("채팅 내용 전송 API 호출");
     const res = await PostAxiosInstance<SendChatResponse>(
       `/users/me/chat`,
       data
@@ -31,6 +32,7 @@ export const getChatting = async (
   config: GetChattingConfig
 ): Promise<GetChattingResponse> => {
   try {
+    console.log("채팅 내용 조회 API 호출");
     const res = await GetAxiosInstance<GetChattingResponse>(
       `/users/me/chats`,
       config

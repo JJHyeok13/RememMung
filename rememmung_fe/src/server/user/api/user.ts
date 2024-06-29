@@ -10,6 +10,7 @@ export const savePetInfo = async (
   data: SavePetInfoRequest
 ): Promise<SavePetInfoResponse> => {
   try {
+    console.log("온보딩 펫 정보 저장하기 호출");
     const res = await PostAxiosInstance<SavePetInfoResponse>(
       `/petInfo/save`,
       data
@@ -25,6 +26,7 @@ export const savePetInfo = async (
 // 온보딩 펫 정보 조회하기 /petInfo/get
 export const getPetInfo = async (): Promise<GetPetInfoResponse> => {
   try {
+    console.log("온보딩 펫 정보 조회하기 호출");
     const res = await GetAxiosInstance<GetPetInfoResponse>(`/petInfo/get`);
 
     return res.data;

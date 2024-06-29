@@ -5,6 +5,7 @@ import SelectLetterStyle from "@components/writeMailPage/selectLetterStyle/selec
 
 import styles from "./styles";
 import { writeLetter } from "@server/content/api/letter";
+import { useNavigate } from "react-router-dom";
 
 interface LetterDataProps {
   title: string;
@@ -12,6 +13,8 @@ interface LetterDataProps {
 }
 
 const WriteMailPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const [letterData, setLetterData] = useState<LetterDataProps>({
     title: "",
     content: "",
@@ -31,7 +34,8 @@ const WriteMailPage: React.FC = () => {
 
   const handleWrite = () => {
     writeLetter(letterData);
-    console.log("편지 작성");
+    console.log("편지 작성 완료");
+    navigate("/mailbox");
   };
 
   return (
