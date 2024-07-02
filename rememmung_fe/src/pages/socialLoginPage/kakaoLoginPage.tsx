@@ -49,11 +49,11 @@ const KakaoLoginPage: React.FC = () => {
 
           console.log(res);
 
-          //if (res.existed) {
-          ///  navigate(`/main`);
-          //} else {
-          navigate(`/onboarding`);
-          //}
+          if (res.existed) {
+            navigate(`/main`);
+          } else {
+            navigate(`/onboarding`);
+          }
 
           setLoading(false);
         }
