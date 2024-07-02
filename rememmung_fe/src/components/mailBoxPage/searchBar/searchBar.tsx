@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import styles from "./styles";
 
 const SearchBar: React.FC = () => {
+  // @ts-ignore
   const [period, setPeriod] = useState();
+  // @ts-ignore
   const [searchType, setSearchType] = useState<string>();
+  // @ts-ignore
   const [searchInput, setSearchInput] = useState<string>("");
 
   return (

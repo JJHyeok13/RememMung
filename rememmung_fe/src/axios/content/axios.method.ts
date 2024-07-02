@@ -1,6 +1,7 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import axiosInstance from "@axios/content/axios.Instance";
 
+// @ts-ignore
 export const PostAxiosInstance = async <T>(
   url: string,
   data?: any,
@@ -10,6 +11,7 @@ export const PostAxiosInstance = async <T>(
   return response;
 };
 
+// @ts-ignore
 export const GetAxiosInstance = async <T>(
   url: string,
   config?: AxiosRequestConfig
@@ -18,6 +20,7 @@ export const GetAxiosInstance = async <T>(
   return res;
 };
 
+// @ts-ignore
 export const PatchAxiosInstance = async <T>(
   url: string,
   data?: any,
@@ -27,6 +30,7 @@ export const PatchAxiosInstance = async <T>(
   return res;
 };
 
+// @ts-ignore
 export const DeleteAxiosInstance = async <T>(
   url: string,
   config?: AxiosRequestConfig

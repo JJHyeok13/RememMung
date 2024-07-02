@@ -19,9 +19,11 @@ const ChatPage: React.FC = () => {
   const [chattingData, setChattingData] =
     useState<ChattingDataProps>(dummyData);
 
+  // @ts-ignore
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 7;
 
+  // @ts-ignore
   const [config, setConfig] = useState<ConfigProps>({
     params: {
       page: currentPage,

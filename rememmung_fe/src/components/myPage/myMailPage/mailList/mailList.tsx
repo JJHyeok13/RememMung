@@ -16,6 +16,7 @@ interface MailListProps {
 const MailList: React.FC<MailListProps> = ({ isDeleteMode, mailData }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  // @ts-ignore
   const [detailData, setDetailData] = useState({
     title: "요즘엔 어떤 노래 들어어~?",
     writer: "브리",

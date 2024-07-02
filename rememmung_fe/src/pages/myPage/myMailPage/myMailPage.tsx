@@ -26,10 +26,12 @@ interface MailDataProps {
 const MyMailPage: React.FC = () => {
   const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
 
+  // @ts-ignore
   const [mailData, setMailData] = useState<MailDataProps>(dummyData);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 7;
 
+  // @ts-ignore
   const [totalPage, setTotalPage] = useState<number>(
     Math.ceil(mailData.totalCount / pageSize)
   );

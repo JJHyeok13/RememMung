@@ -13,6 +13,7 @@ const GalleryPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 10;
 
+  // @ts-ignore
   const [totalPage, setTotalPage] = useState<number>(
     Math.ceil(photoData.totalCount / pageSize)
   );

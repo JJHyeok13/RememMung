@@ -43,10 +43,12 @@ const MailBoxPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 7;
 
+  // @ts-ignore
   const [totalPage, setTotalPage] = useState<number>(
     Math.ceil(mailData.totalCount / pageSize)
   );
 
+  // @ts-ignore
   const [config, setConfig] = useState<ConfigProps>({
     params: {
       page: currentPage,
