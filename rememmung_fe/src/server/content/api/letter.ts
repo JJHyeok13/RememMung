@@ -40,9 +40,18 @@ export const getLetterList = async (
 ): Promise<GetLetterListResponse> => {
   try {
     console.log("편지 목록 조회하기 API 호출");
+
+    const filteredParams = Object.entries(config.params).reduce(
+      (acc, [key, value]) => {
+        if (value) acc[key] = value;
+        return acc;
+      },
+      {} as Record<string, any>
+    );
+
     const res = await GetAxiosInstance<GetLetterListResponse>(
       `/users/me/letters`,
-      config
+      { params: filteredParams }
     );
 
     console.log(res);

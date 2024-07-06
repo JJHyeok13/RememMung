@@ -43,12 +43,10 @@ const MailBoxPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 7;
 
-  // @ts-ignore
   const [totalPage, setTotalPage] = useState<number>(
     Math.ceil(mailData.totalCount / pageSize)
   );
 
-  // @ts-ignore
   const [config, setConfig] = useState<ConfigProps>({
     params: {
       page: currentPage,
@@ -62,11 +60,24 @@ const MailBoxPage: React.FC = () => {
   });
 
   useEffect(() => {
-    getLetterList(config).then((res) => setMailData(res));
-  });
+    const fetchLetters = async () => {
+      try {
+        const result = await getLetterList(config);
+        setMailData(result);
+        setTotalPage(Math.ceil(result.totalCount / pageSize));
+      } catch (error) {
+        console.error("Failed to fetch letters", error);
+      }
+    };
+    fetchLetters();
+  }, [config, currentPage]);
 
   const handlePage = (num: number) => {
     setCurrentPage(num);
+    setConfig((prevConfig) => ({
+      ...prevConfig,
+      params: { ...prevConfig.params, page: num },
+    }));
   };
 
   const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
@@ -83,7 +94,6 @@ const MailBoxPage: React.FC = () => {
     setIsDeleteMode(false);
   };
 
-  // 편지 상세 뷰 관리 변수
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleOpen = (letterId: number) => {
