@@ -62,18 +62,24 @@ const MyMailPage: React.FC = () => {
   return (
     <styles.Container>
       <styles.ElementBox>
-        <MailList
-          mailData={mailData.nodes}
-          isDeleteMode={isDeleteMode}
-          isOpen={isOpen}
-          handleOpen={handleOpen}
-          handleClose={handleClose}
-        />
-        <Pagination
-          currentPage={currentPage}
-          handlePage={handlePage}
-          totalPage={totalPage}
-        />
+        {mailData && mailData.nodes.length > 0 ? (
+          <>
+            <MailList
+              mailData={mailData.nodes}
+              isDeleteMode={isDeleteMode}
+              isOpen={isOpen}
+              handleOpen={handleOpen}
+              handleClose={handleClose}
+            />
+            <Pagination
+              currentPage={currentPage}
+              handlePage={handlePage}
+              totalPage={totalPage}
+            />
+          </>
+        ) : (
+          <styles.NoData>데이터가 존재하지 않습니다.</styles.NoData>
+        )}
       </styles.ElementBox>
       <styles.LowerContainer>
         <SearchBar />
