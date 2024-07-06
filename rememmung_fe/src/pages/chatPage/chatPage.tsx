@@ -20,7 +20,7 @@ const ChatPage: React.FC = () => {
     useState<ChattingDataProps>(dummyData);
 
   // @ts-ignore
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 7;
 
   // @ts-ignore
