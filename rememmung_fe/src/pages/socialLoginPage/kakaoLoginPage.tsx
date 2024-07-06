@@ -24,10 +24,6 @@ const KakaoLoginPage: React.FC = () => {
         if (code) {
           setLoading(true);
           const res = await getKakaoToken(client_id, redirect_uri, code);
-
-          // 로컬스토리지에 카카오 토큰 저장
-          localStorage.setItem("kakaoToken", res.access_token);
-
           // 카카오 토큰 값 저장
           setKakaoToken(res.access_token);
           setLoading(false);
@@ -47,14 +43,11 @@ const KakaoLoginPage: React.FC = () => {
           setLoading(true);
           const res = await kakaoLogin(kakaoToken);
 
-          console.log(res);
-
           if (res.existed) {
             navigate(`/main`);
           } else {
             navigate(`/onboarding`);
           }
-
           setLoading(false);
         }
       } catch (error) {
