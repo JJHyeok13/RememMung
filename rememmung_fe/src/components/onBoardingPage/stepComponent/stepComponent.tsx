@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import StepOne from "@components/onBoardingPage/stepOne/stepOne";
 import StepTwo from "@components/onBoardingPage/stepTwo/stepTwo";
 import StepThree from "@components/onBoardingPage/stepThree/stepThree";
-// import StepFour from "@components/onBoardingPage/stepFour/stepFour";
+import StepFour from "@components/onBoardingPage/stepFour/stepFour";
 import StepFive from "@components/onBoardingPage/stepFive/stepFive";
 
 import styles from "./styles";
@@ -37,7 +37,7 @@ const StepComponent: React.FC<StepComponentProps> = ({
   setSkill,
   submitData,
 }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(4);
 
   const handlePrevStep = () => {
     if (step > 1) {
@@ -96,16 +96,14 @@ const StepComponent: React.FC<StepComponentProps> = ({
         />
       )}
 
-      {/* {step === 4 && (
+      {step === 4 && (
         <StepFour
-          selectedName={petData.name}
-          setName={setName}
           handlePrevStep={handlePrevStep}
           handleNextStep={handleNextStep}
         />
-      )} */}
+      )}
 
-      {step === 4 && (
+      {step === 5 && (
         <StepFive
           selectedGender={petData.gender}
           selectedBirthday={petData.birthday}
