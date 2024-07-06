@@ -66,7 +66,7 @@ const MailBoxPage: React.FC = () => {
 
   useEffect(() => {
     getLetterList(config).then((res) => setMailData(res));
-  });
+  }, [config, currentPage]);
 
   const handlePage = (num: number) => {
     setCurrentPage(num);
