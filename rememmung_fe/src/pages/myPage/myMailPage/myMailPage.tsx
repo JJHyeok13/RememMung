@@ -26,7 +26,10 @@ const MyMailPage: React.FC = () => {
   const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
 
   // @ts-ignore
-  const [mailData, setMailData] = useState<MailDataProps>([]);
+  const [mailData, setMailData] = useState<MailDataProps>({
+    totalCount: 0,
+    nodes: [],
+  });
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 7;
 
