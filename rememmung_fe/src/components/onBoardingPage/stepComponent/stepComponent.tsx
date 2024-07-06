@@ -22,7 +22,6 @@ interface StepComponentProps {
   setSkill: (skill: string[]) => void;
 
   submitData: () => void;
-  TestAPI: () => void;
 }
 
 const StepComponent: React.FC<StepComponentProps> = ({
@@ -37,7 +36,6 @@ const StepComponent: React.FC<StepComponentProps> = ({
   setDislike,
   setSkill,
   submitData,
-  TestAPI,
 }) => {
   const [step, setStep] = useState(1);
 
@@ -78,7 +76,6 @@ const StepComponent: React.FC<StepComponentProps> = ({
           selectedType={petData.species}
           setType={setType}
           handleNextStep={handleNextStep}
-          TestAPI={TestAPI}
         />
       )}
       {step === 2 && (

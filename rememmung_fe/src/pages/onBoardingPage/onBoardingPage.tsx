@@ -5,7 +5,6 @@ import StepComponent from "@components/onBoardingPage/stepComponent/stepComponen
 import styles from "./styles";
 // import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
-import { testAPI } from "@server/user/api/test";
 import { PetInfoProps } from "type/onboardingPage/onboardingPage";
 import { savePetInfo } from "@server/user/api/user";
 
@@ -72,10 +71,6 @@ const OnBoardingPage: React.FC = () => {
     setIsComplete(true);
   };
 
-  const TestAPI = () => {
-    testAPI();
-  };
-
   return (
     <styles.Background>
       {!isComplete && (
@@ -91,7 +86,6 @@ const OnBoardingPage: React.FC = () => {
           setDislike={setDislike}
           setSkill={setSkill}
           submitData={submitData}
-          TestAPI={TestAPI}
         />
       )}
 

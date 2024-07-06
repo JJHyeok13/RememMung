@@ -8,14 +8,12 @@ interface StepOneProps {
   selectedType: string;
   setType: (species: string) => void;
   handleNextStep: () => void;
-  TestAPI: () => void;
 }
 
 const StepOne: React.FC<StepOneProps> = ({
   selectedType,
   setType,
   handleNextStep,
-  TestAPI,
 }) => {
   const types = [
     { id: "dog", name: "🐶 강아지" },
@@ -60,7 +58,6 @@ const StepOne: React.FC<StepOneProps> = ({
           </React.Fragment>
         ))}
       </styles.OptionContainer>
-      <styles.TestButton onClick={TestAPI}>테스트 버튼</styles.TestButton>
 
       {!isInputComplete ? (
         <styles.NextButton
