@@ -34,6 +34,10 @@ const styles = {
     text-align: center;
     width: 15%;
   `,
+  NoData: styled.td`
+    color: #939393;
+    text-align: center;
+  `,
 };
 
 export default styles;

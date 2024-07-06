@@ -7,7 +7,6 @@ import SearchBar from "@components/mailBoxPage/searchBar/searchBar";
 
 import styles from "./styles";
 
-import { dummyData } from "./dummyData";
 import { getLetterList, updateLetter } from "@server/content/api/letter";
 
 interface MailDataProps {
@@ -39,14 +38,17 @@ interface ConfigProps {
 const MailBoxPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const [mailData, setMailData] = useState<MailDataProps>(dummyData);
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  // @ts-ignore
+  const [mailData, setMailData] = useState<MailDataProps>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 7;
 
+  // @ts-ignore
   const [totalPage, setTotalPage] = useState<number>(
     Math.ceil(mailData.totalCount / pageSize)
   );
 
+  // @ts-ignore
   const [config, setConfig] = useState<ConfigProps>({
     params: {
       page: currentPage,
@@ -60,24 +62,11 @@ const MailBoxPage: React.FC = () => {
   });
 
   useEffect(() => {
-    const fetchLetters = async () => {
-      try {
-        const result = await getLetterList(config);
-        setMailData(result);
-        setTotalPage(Math.ceil(result.totalCount / pageSize));
-      } catch (error) {
-        console.error("Failed to fetch letters", error);
-      }
-    };
-    fetchLetters();
-  }, [config, currentPage]);
+    getLetterList(config).then((res) => setMailData(res));
+  });
 
   const handlePage = (num: number) => {
     setCurrentPage(num);
-    setConfig((prevConfig) => ({
-      ...prevConfig,
-      params: { ...prevConfig.params, page: num },
-    }));
   };
 
   const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
@@ -94,6 +83,7 @@ const MailBoxPage: React.FC = () => {
     setIsDeleteMode(false);
   };
 
+  // 편지 상세 뷰 관리 변수
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleOpen = (letterId: number) => {

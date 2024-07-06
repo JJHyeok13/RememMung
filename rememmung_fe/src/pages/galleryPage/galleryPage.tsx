@@ -4,12 +4,12 @@ import PhotoContainer from "@components/galleryPage/photoContainer/photoContaine
 import Pagination from "@components/common/pagination/pagination";
 
 import styles from "./styles";
-import { dummyData } from "./dummyData";
 import { getPetFile } from "@server/content/api/pet_attachment";
 import { PhotoDataProps } from "type/galleryPage/galleryPage";
 
 const GalleryPage: React.FC = () => {
-  const [photoData, setPhotoData] = useState<PhotoDataProps>(dummyData);
+  // @ts-ignore
+  const [photoData, setPhotoData] = useState<PhotoDataProps>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 10;
 
@@ -30,11 +30,13 @@ const GalleryPage: React.FC = () => {
     <styles.Container>
       <styles.WhiteBox>
         <PhotoContainer photoData={photoData.nodes} />
-        <Pagination
-          currentPage={currentPage}
-          handlePage={handlePage}
-          totalPage={totalPage}
-        />
+        {photoData && photoData.totalCount > 0 ? (
+          <Pagination
+            currentPage={currentPage}
+            handlePage={handlePage}
+            totalPage={totalPage}
+          />
+        ) : null}
       </styles.WhiteBox>
     </styles.Container>
   );
