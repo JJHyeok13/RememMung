@@ -49,6 +49,7 @@ const StepFive: React.FC<StepFiveProps> = ({
   const [farewellYear, setFarewellYear] = useState<string>("");
   const [farewellMonth, setFarewellMonth] = useState<string>("");
   const [farewellDay, setFarewellDay] = useState<string>("");
+  const [noFarewell, setNoFarewell] = useState<boolean>(false);
 
   useEffect(() => {
     if (selectedBirthday) {
@@ -73,6 +74,7 @@ const StepFive: React.FC<StepFiveProps> = ({
     setFarewellYear("");
     setFarewellMonth("");
     setFarewellDay("");
+    setNoFarewell(false);
     setGender("");
     setFavorites([]);
     setDislike([]);
@@ -93,6 +95,15 @@ const StepFive: React.FC<StepFiveProps> = ({
 
   const handleChangeSkill = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSkill(e.target.value.split(", ").map((item) => item.trim()));
+  };
+
+  const handleNoFarewellChange = () => {
+    setNoFarewell(!noFarewell);
+    if (!noFarewell) {
+      setFarewellYear("");
+      setFarewellMonth("");
+      setFarewellDay("");
+    }
   };
 
   useEffect(() => {
@@ -185,6 +196,17 @@ const StepFive: React.FC<StepFiveProps> = ({
 
         <styles.InputContainer>
           <styles.InputTitle>이별한 날짜</styles.InputTitle>
+          <styles.Wrapper>
+            <styles.RadioInput
+              type="checkbox"
+              name="noFarewell"
+              checked={noFarewell}
+              onChange={handleNoFarewellChange}
+            />
+            <styles.LabelText htmlFor="noFarewell">
+              아직 이별하지 않았어요
+            </styles.LabelText>
+          </styles.Wrapper>
           <styles.Input>
             <styles.SelectInput
               name="farewellYear"
@@ -192,6 +214,7 @@ const StepFive: React.FC<StepFiveProps> = ({
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setFarewellYear(e.target.value)
               }
+              disabled={noFarewell}
             >
               <option value="" />
               {createYear()}
@@ -203,6 +226,7 @@ const StepFive: React.FC<StepFiveProps> = ({
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setFarewellMonth(e.target.value)
               }
+              disabled={noFarewell}
             >
               <option value="" />
               {createMonth()}
@@ -214,6 +238,7 @@ const StepFive: React.FC<StepFiveProps> = ({
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setFarewellDay(e.target.value)
               }
+              disabled={noFarewell}
             >
               <option value="" />
               {createDay()}

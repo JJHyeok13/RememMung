@@ -78,6 +78,9 @@ const styles = {
     &[type="radio"] {
       accent-color: #53555c;
     }
+    &[type="checkbox"] {
+      accent-color: #946233;
+    }
   `,
   SelectInput: styled.select`
     font-size: 12px;
@@ -112,6 +115,15 @@ const styles = {
     bottom: 200px;
     right: 200px;
     cursor: pointer;
+  `,
+  LabelText: styled.label`
+    color: #8a8e99;
+    font-weight: 400;
+    margin-left: 6px;
+  `,
+  Wrapper: styled.div`
+    display: flex;
+    align-items: center;
   `,
 };
 
