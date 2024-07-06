@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
 import styles from "./styles";
-
 import PetProfileImage from "@assets/chatPage/PetProfileImage.svg";
 
 interface ChatComponentProps {
@@ -32,7 +30,27 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ chattingData }) => {
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
     }
-  }, []);
+  }, [chattingData]);
+
+  const renderMessageContent = (chat: any) => {
+    const { type, url } = chat.attachment;
+
+    switch (type) {
+      case "text":
+        return <div>{chat.content}</div>;
+      case "image":
+        return <img src={url} alt="Chat Image" />;
+      case "video":
+        return (
+          <styles.VideoFile controls>
+            <source src={url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </styles.VideoFile>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <styles.Container ref={chatContainerRef}>
@@ -49,7 +67,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ chattingData }) => {
           {/* 채팅 메시지 및 시간 */}
           <styles.Message $isMe={!!chat.userId}>
             <styles.MessageBubble $isMe={!!chat.userId}>
-              <div>{chat.content}</div>
+              {renderMessageContent(chat)}
             </styles.MessageBubble>
             <styles.Timestamp>{chat.createdAt}</styles.Timestamp>
           </styles.Message>

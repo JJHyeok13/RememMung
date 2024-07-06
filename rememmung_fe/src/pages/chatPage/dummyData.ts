@@ -1,4 +1,6 @@
-// 더미 채팅 데이터
+import icebear from "@pages/chatPage/icebear.jpeg";
+import video from "@pages/chatPage/example.mp4";
+
 export const dummyData = {
   totalCount: 21,
   nodes: [
@@ -9,8 +11,8 @@ export const dummyData = {
       content: "안녕",
       attachment: {
         id: 1,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -22,8 +24,8 @@ export const dummyData = {
       content: "클레오파트라",
       attachment: {
         id: 2,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -35,8 +37,8 @@ export const dummyData = {
       content: "세상에서 제일 가는",
       attachment: {
         id: 3,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -48,8 +50,8 @@ export const dummyData = {
       content: "포테이토칩",
       attachment: {
         id: 4,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -58,25 +60,24 @@ export const dummyData = {
       id: 5,
       chatRoomId: 1,
       userId: "me",
-      content: "안녕",
+      content: "여기 이미지 예시입니다.",
       attachment: {
         id: 5,
-        type: "string",
-        url: "string",
+        type: "image",
+        url: icebear,
         createdAt: "10:00",
       },
       createdAt: "10:00",
     },
-
     {
       id: 6,
       chatRoomId: 1,
-      userId: "me",
-      content: "안녕",
+      userId: null,
+      content: "여기 비디오 예시입니다.",
       attachment: {
         id: 6,
-        type: "string",
-        url: "string",
+        type: "video",
+        url: video,
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -84,12 +85,12 @@ export const dummyData = {
     {
       id: 7,
       chatRoomId: 1,
-      userId: null,
-      content: "클레오파트라",
+      userId: "me",
+      content: "안녕",
       attachment: {
         id: 7,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -97,12 +98,12 @@ export const dummyData = {
     {
       id: 8,
       chatRoomId: 1,
-      userId: "me",
+      userId: null,
       content: "세상에서 제일 가는",
       attachment: {
         id: 8,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",
@@ -114,8 +115,8 @@ export const dummyData = {
       content: "포테이토칩",
       attachment: {
         id: 9,
-        type: "string",
-        url: "string",
+        type: "text",
+        url: "",
         createdAt: "10:00",
       },
       createdAt: "10:00",

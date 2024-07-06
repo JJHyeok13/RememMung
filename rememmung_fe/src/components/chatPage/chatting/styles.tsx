@@ -58,6 +58,11 @@ const styles = {
     font-weight: 400;
     color: #e0e0e0;
   `,
+  VideoFile: styled.video`
+    width: 500px;
+    height: auto;
+    border-radius: 5px;
+  `,
 };
 
 export default styles;
