@@ -5,7 +5,6 @@ import ChattingInput from "@components/chatPage/chattingInput/chattingInput";
 
 import styles from "./styles";
 import { getChatting, sendChat } from "@server/content/api/chats";
-import { dummyData } from "./dummyData";
 import { ChattingDataProps } from "type/chattingPage/chattingPage";
 
 interface ConfigProps {
@@ -16,8 +15,7 @@ interface ConfigProps {
 }
 
 const ChatPage: React.FC = () => {
-  const [chattingData, setChattingData] =
-    useState<ChattingDataProps>(dummyData);
+  const [chattingData, setChattingData] = useState<ChattingDataProps>();
 
   // @ts-ignore
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -52,7 +50,9 @@ const ChatPage: React.FC = () => {
   return (
     <styles.Container>
       <styles.WhiteBox>
-        <ChatComponent chattingData={chattingData} />
+        {chattingData && chattingData.nodes.length > 0 ? (
+          <ChatComponent chattingData={chattingData} />
+        ) : null}
         <ChattingInput
           content={content}
           handleContent={handleContent}
