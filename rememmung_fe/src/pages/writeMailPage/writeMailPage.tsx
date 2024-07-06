@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import InputContainer from "@components/writeMailPage/inputContainer/inputContainer";
 import SelectLetterStyle from "@components/writeMailPage/selectLetterStyle/selectLetterStyle";
@@ -28,13 +28,8 @@ const WriteMailPage: React.FC = () => {
     setLetterData((prev) => ({ ...prev, content }));
   };
 
-  useEffect(() => {
-    console.log(letterData);
-  }, [letterData]);
-
   const handleWrite = () => {
     writeLetter(letterData);
-    console.log("편지 작성 완료");
     navigate("/mailbox");
   };
 
