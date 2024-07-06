@@ -13,7 +13,7 @@ const GalleryPage: React.FC = () => {
     totalCount: 0,
     nodes: [],
   });
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 10;
 
   // @ts-ignore
