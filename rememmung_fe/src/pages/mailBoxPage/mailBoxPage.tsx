@@ -39,7 +39,10 @@ const MailBoxPage: React.FC = () => {
   const navigate = useNavigate();
 
   // @ts-ignore
-  const [mailData, setMailData] = useState<MailDataProps>([]);
+  const [mailData, setMailData] = useState<MailDataProps>({
+    totalCount: 0,
+    nodes: [],
+  });
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 7;
 
@@ -98,18 +101,24 @@ const MailBoxPage: React.FC = () => {
   return (
     <styles.Container>
       <styles.ElementBox>
-        <MailList
-          mailData={mailData.nodes}
-          isDeleteMode={isDeleteMode}
-          isOpen={isOpen}
-          handleOpen={handleOpen}
-          handleClose={handleClose}
-        />
-        <Pagination
-          currentPage={currentPage}
-          handlePage={handlePage}
-          totalPage={totalPage}
-        />
+        {mailData && mailData.nodes.length > 0 ? (
+          <>
+            <MailList
+              mailData={mailData.nodes}
+              isDeleteMode={isDeleteMode}
+              isOpen={isOpen}
+              handleOpen={handleOpen}
+              handleClose={handleClose}
+            />
+            <Pagination
+              currentPage={currentPage}
+              handlePage={handlePage}
+              totalPage={totalPage}
+            />
+          </>
+        ) : (
+          <styles.NoData>데이터가 존재하지 않습니다.</styles.NoData>
+        )}
       </styles.ElementBox>
       <styles.LowerContainer>
         <SearchBar />

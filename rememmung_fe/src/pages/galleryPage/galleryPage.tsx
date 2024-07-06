@@ -9,7 +9,10 @@ import { PhotoDataProps } from "type/galleryPage/galleryPage";
 
 const GalleryPage: React.FC = () => {
   // @ts-ignore
-  const [photoData, setPhotoData] = useState<PhotoDataProps>([]);
+  const [photoData, setPhotoData] = useState<PhotoDataProps>({
+    totalCount: 0,
+    nodes: [],
+  });
   const [currentPage, setCurrentPage] = useState<number>(0);
   const pageSize = 10;
 
@@ -29,14 +32,18 @@ const GalleryPage: React.FC = () => {
   return (
     <styles.Container>
       <styles.WhiteBox>
-        <PhotoContainer photoData={photoData.nodes} />
-        {photoData && photoData.totalCount > 0 ? (
-          <Pagination
-            currentPage={currentPage}
-            handlePage={handlePage}
-            totalPage={totalPage}
-          />
-        ) : null}
+        {photoData && photoData.nodes.length > 0 ? (
+          <>
+            <PhotoContainer photoData={photoData.nodes} />
+            <Pagination
+              currentPage={currentPage}
+              handlePage={handlePage}
+              totalPage={totalPage}
+            />
+          </>
+        ) : (
+          <styles.NoData>데이터가 존재하지 않습니다.</styles.NoData>
+        )}
       </styles.WhiteBox>
     </styles.Container>
   );

@@ -53,10 +53,7 @@ export const getLetterList = async (
       `/users/me/letters`,
       { params: filteredParams }
     );
-
-    console.log(res);
-    console.log(res.data);
-    return res.data.result;
+    return res.data;
   } catch (error) {
     console.log("편지 목록 조회하기 에러", error);
     throw error;

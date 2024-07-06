@@ -48,31 +48,23 @@ const MailList: React.FC<MailListProps> = ({
         </thead>
 
         <tbody>
-          {mailData && mailData.length > 0 ? (
-            mailData.map((mail) => (
-              <tr key={mail.id}>
-                <styles.CheckBox>
-                  <styles.StyleInput
-                    type="checkbox"
-                    $isDeleteMode={isDeleteMode}
-                  />
-                </styles.CheckBox>
-                <styles.TitleData>
-                  <styles.Title onClick={() => handleMailClick(mail)}>
-                    {mail.title}
-                  </styles.Title>
-                </styles.TitleData>
-                <styles.OtherData>{mail.from}</styles.OtherData>
-                <styles.OtherData>{mail.createdAt}</styles.OtherData>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <styles.NoData colSpan={4}>
-                데이터가 존재하지 않습니다.
-              </styles.NoData>
+          {mailData.map((mail) => (
+            <tr key={mail.id}>
+              <styles.CheckBox>
+                <styles.StyleInput
+                  type="checkbox"
+                  $isDeleteMode={isDeleteMode}
+                />
+              </styles.CheckBox>
+              <styles.TitleData>
+                <styles.Title onClick={() => handleMailClick(mail)}>
+                  {mail.title}
+                </styles.Title>
+              </styles.TitleData>
+              <styles.OtherData>{mail.from}</styles.OtherData>
+              <styles.OtherData>{mail.createdAt}</styles.OtherData>
             </tr>
-          )}
+          ))}
         </tbody>
       </styles.Table>
       {isOpen && selectedMail && (

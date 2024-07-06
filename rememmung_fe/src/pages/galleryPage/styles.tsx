@@ -29,6 +29,10 @@ const styles = {
 
     margin: 0 auto;
   `,
+  NoData: styled.div`
+    color: #939393;
+    text-align: center;
+  `,
 };
 
 export default styles;

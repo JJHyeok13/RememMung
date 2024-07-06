@@ -47,11 +47,6 @@ const styles = {
     font-weight: 500;
     color: #c5c5c5;
   `,
-  NoData: styled.div`
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  `,
 };
 
 export default styles;

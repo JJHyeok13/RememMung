@@ -49,6 +49,10 @@ const styles = {
     color: #ffffff;
     border-radius: 8px;
   `,
+  NoData: styled.div`
+    color: #939393;
+    text-align: center;
+  `,
 };
 
 export default styles;

@@ -27,28 +27,22 @@ const PhotoContainer: React.FC<PhotoContainerProps> = ({ photoData }) => {
   };
 
   return (
-    <>
-      {photoData && photoData.length > 0 ? (
-        <styles.Container>
-          {photoData.map((photo, index) => (
-            <styles.PhotoContainer
-              key={photo.id}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              {hoveredIndex === index && (
-                <styles.HoveredData>
-                  <styles.Title>{photo.attachment.createdAt}</styles.Title>
-                </styles.HoveredData>
-              )}
-              <styles.Photo src={photo.attachment.url} />
-            </styles.PhotoContainer>
-          ))}
-        </styles.Container>
-      ) : (
-        <styles.NoData>데이터가 존재하지 않습니다.</styles.NoData>
-      )}
-    </>
+    <styles.Container>
+      {photoData.map((photo, index) => (
+        <styles.PhotoContainer
+          key={photo.id}
+          onMouseEnter={() => handleMouseEnter(index)}
+          onMouseLeave={handleMouseLeave}
+        >
+          {hoveredIndex === index && (
+            <styles.HoveredData>
+              <styles.Title>{photo.attachment.createdAt}</styles.Title>
+            </styles.HoveredData>
+          )}
+          <styles.Photo src={photo.attachment.url} />
+        </styles.PhotoContainer>
+      ))}
+    </styles.Container>
   );
 };
 
