@@ -1,7 +1,6 @@
 import BasicLayout from "./layout/BasicLayout";
 import MyPageLayout from "@layout/MypageLayout";
 import {
-  Routes,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
@@ -33,7 +32,7 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Routes>
+      <Route>
         <Route path="/" element={<StartPage />} />
 
         <Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
@@ -53,7 +52,7 @@ function App() {
           <Route path="/mypage/deletedata" element={<DeleteDataPage />} />
           <Route path="/mypage/delete" element={<DeleteMemberPage />} />
         </Route>
-      </Routes>
+      </Route>
     )
   );
 
