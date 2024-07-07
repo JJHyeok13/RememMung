@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./styles";
+import { getUserInfo } from "@server/user/api/user";
+import { useRecoilState } from "recoil";
+import { userInfo } from "recoil/recoil";
 
 const MainPage: React.FC = () => {
+  const [, setUserInfo] = useRecoilState(userInfo);
+
+  useEffect(() => {
+    getUserInfo().then((res) => setUserInfo(res));
+  });
+
   return (
     <styles.Container>
       <styles.WhiteBox>

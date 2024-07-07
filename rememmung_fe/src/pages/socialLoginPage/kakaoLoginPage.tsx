@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles";
 
 import { HashLoader } from "react-spinners";
+import { useRecoilState } from "recoil";
+import { loggedInState } from "recoil/recoil";
 
 const KakaoLoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -17,6 +19,8 @@ const KakaoLoginPage: React.FC = () => {
 
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get("code");
+
+  const [, setIsLoggedIn] = useRecoilState(loggedInState);
 
   useEffect(() => {
     const fetchKakaoToken = async () => {
@@ -43,6 +47,7 @@ const KakaoLoginPage: React.FC = () => {
           setLoading(true);
           const res = await kakaoLogin(kakaoToken);
 
+          setIsLoggedIn(true);
           if (res.existed) {
             navigate(`/main`);
           } else {
