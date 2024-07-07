@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { PostAxiosInstance } from "@axios/user/axios.method";
+import { GetAxiosInstance, PostAxiosInstance } from "@axios/user/axios.method";
 import { KakaoLoginResponse } from "@server/user/responseType/oauth";
 
 export const getKakaoToken = async (
@@ -29,6 +29,17 @@ export const kakaoLogin = async (
     return res.data;
   } catch (error) {
     console.log("카카오 로그인 에러", error);
+    throw error;
+  }
+};
+
+export const logoutUser = async () => {
+  try {
+    const res = await GetAxiosInstance(`/logout`);
+
+    return res.data;
+  } catch (error) {
+    console.log("로그아웃 에러", error);
     throw error;
   }
 };

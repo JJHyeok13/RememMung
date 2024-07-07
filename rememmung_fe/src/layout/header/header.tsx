@@ -4,12 +4,18 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles";
 
 import LogoImage from "@assets/header/Logo.svg";
+import { logoutUser } from "@server/user/api/oauth";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
 
   const handleMypage = () => {
     navigate("/mypage/mymail");
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+    navigate(`/`);
   };
 
   return (
@@ -25,7 +31,7 @@ const Header: React.FC = () => {
           <styles.Nickname>정현</styles.Nickname>님 반가워요!
         </styles.Greeting>
         <styles.Button onClick={handleMypage}>마이페이지</styles.Button>
-        <styles.Button>로그아웃</styles.Button>
+        <styles.Button onClick={handleLogout}>로그아웃</styles.Button>
       </styles.RightContainer>
     </styles.Container>
   );
