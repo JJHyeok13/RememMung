@@ -5,8 +5,12 @@ import styles from "./styles";
 
 import LogoImage from "@assets/header/Logo.svg";
 import { logoutUser } from "@server/user/api/oauth";
+import { useRecoilValue } from "recoil";
+import { userInfo } from "recoil/recoil";
 
 const Header: React.FC = () => {
+  const userinfo = useRecoilValue(userInfo);
+
   const navigate = useNavigate();
 
   const handleMypage = () => {
@@ -28,7 +32,7 @@ const Header: React.FC = () => {
       </styles.StyledLink>
       <styles.RightContainer>
         <styles.Greeting>
-          <styles.Nickname>정현</styles.Nickname>님 반가워요!
+          <styles.Nickname>{userinfo.userName}</styles.Nickname>님 반가워요!
         </styles.Greeting>
         <styles.Button onClick={handleMypage}>마이페이지</styles.Button>
         <styles.Button onClick={handleLogout}>로그아웃</styles.Button>
