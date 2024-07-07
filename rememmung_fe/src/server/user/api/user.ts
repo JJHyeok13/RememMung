@@ -24,12 +24,12 @@ export const savePetInfo = async (
 };
 
 // 온보딩 펫 정보 조회하기 /petInfo/get
-export const getPetInfo = async (): Promise<GetPetInfoResponse> => {
+export const getPetInfo = async () => {
   try {
     console.log("온보딩 펫 정보 조회하기 호출");
     const res = await GetAxiosInstance<GetPetInfoResponse>(`/petInfo/get`);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log("온보딩 펫 정보 조회하기 에러", error);
     throw error;
