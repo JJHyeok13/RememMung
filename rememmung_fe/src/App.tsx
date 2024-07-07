@@ -1,6 +1,13 @@
 import BasicLayout from "./layout/BasicLayout";
 import MyPageLayout from "@layout/MypageLayout";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import "./App.css";
 
 import useBodyOverflowHidden from "@hooks/useBodyOverflowHidden";
@@ -24,8 +31,8 @@ import DeleteMemberPage from "@pages/myPage/deleteMemberPage/deleteMemberPage";
 function App() {
   useBodyOverflowHidden();
 
-  return (
-    <BrowserRouter>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
       <Routes>
         <Route path="/" element={<StartPage />} />
 
@@ -47,7 +54,13 @@ function App() {
           <Route path="/mypage/delete" element={<DeleteMemberPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    )
+  );
+
+  return (
+    <RecoilRoot>
+      <RouterProvider router={router} />
+    </RecoilRoot>
   );
 }
 
