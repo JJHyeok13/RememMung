@@ -16,7 +16,7 @@ const styles = {
     width: 100%;
     height: 580px;
     border-radius: 12px;
-    background-color: #f4f4f4;
+    background-color: #f6f6f8;
     overflow: hidden;
 
     margin: 0 auto;
