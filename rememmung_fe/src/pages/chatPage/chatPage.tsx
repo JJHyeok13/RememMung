@@ -53,6 +53,7 @@ const ChatPage: React.FC = () => {
         {chattingData && chattingData.nodes.length > 0 ? (
           <ChatComponent chattingData={chattingData} />
         ) : null}
+
         <ChattingInput
           content={content}
           handleContent={handleContent}
