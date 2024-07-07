@@ -35,3 +35,16 @@ export const getPetInfo = async () => {
     throw error;
   }
 };
+
+// 유저 정보 조회하기 /userInfo/get
+export const getUserInfo = async () => {
+  try {
+    const res = await GetAxiosInstance(`/userInfo/get`);
+
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.log("유저 정보 조회하기 에러", error);
+    throw error;
+  }
+};
