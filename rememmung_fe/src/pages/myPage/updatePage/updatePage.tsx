@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+import styles from "./styles";
+import UpdateComponent from "@components/myPage/updatePage/updateComponent";
+import { getPetInfo } from "@server/user/api/user";
+
+import { HashLoader } from "react-spinners";
+
 interface PetInfoProps {
   species: string;
   name: string;
@@ -11,12 +17,6 @@ interface PetInfoProps {
   dislike: string[];
   skill: string[];
 }
-
-import styles from "./styles";
-import UpdateComponent from "@components/myPage/updatePage/updateComponent";
-import { getPetInfo } from "@server/user/api/user";
-
-import { HashLoader } from "react-spinners";
 
 const UpdatePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -48,8 +48,8 @@ const UpdatePage: React.FC = () => {
         skill: data.skill.split(", "),
       });
       console.log(res);
+      setIsLoading(false);
     });
-    setIsLoading(false);
   }, []);
 
   // const setType = (species: string) => {
