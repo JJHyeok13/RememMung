@@ -45,7 +45,7 @@ const ChatPage: React.FC = () => {
       content: content,
     };
     sendChat(data);
-    getChatting(config).then((res) => setChattingData(res));
+    setContent("");
   };
 
   return (
