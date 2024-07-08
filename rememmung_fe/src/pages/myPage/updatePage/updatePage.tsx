@@ -16,7 +16,10 @@ import styles from "./styles";
 import UpdateComponent from "@components/myPage/updatePage/updateComponent";
 import { getPetInfo } from "@server/user/api/user";
 
+import { HashLoader } from "react-spinners";
+
 const UpdatePage: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [petData, setPetData] = useState<PetInfoProps>({
     species: "",
     name: "",
@@ -30,6 +33,7 @@ const UpdatePage: React.FC = () => {
   });
 
   useEffect(() => {
+    setIsLoading(true);
     getPetInfo().then((res) => {
       const data = res.data;
       setPetData({
@@ -45,6 +49,7 @@ const UpdatePage: React.FC = () => {
       });
       console.log(res);
     });
+    setIsLoading(false);
   }, []);
 
   // const setType = (species: string) => {
@@ -82,6 +87,14 @@ const UpdatePage: React.FC = () => {
   const setSkill = (skill: string[]) => {
     setPetData((prev) => ({ ...prev, skill }));
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <HashLoader />
+      </>
+    );
+  }
 
   return (
     <styles.Container>
