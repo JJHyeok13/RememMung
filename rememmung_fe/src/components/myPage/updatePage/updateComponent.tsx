@@ -48,6 +48,13 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
   );
   const [selectedSkill, setSelectedSkill] = useState<string[]>(petData.skill);
 
+  useEffect(() => {
+    setSelectedGender(petData.gender);
+    setSelectedFavorites(petData.favorites);
+    setSelectedDislike(petData.dislike);
+    setSelectedSkill(petData.skill);
+  }, [petData]);
+
   const handleChangeGender = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedGender(e.target.value);
     setGender(e.target.value);
@@ -88,7 +95,7 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
     console.log(selectedFavorites);
     console.log(selectedDislike);
     console.log(selectedSkill);
-  });
+  }, [selectedGender, selectedFavorites, selectedDislike, selectedSkill]);
 
   return (
     <styles.TotalInputContainer>
