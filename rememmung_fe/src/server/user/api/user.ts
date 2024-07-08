@@ -28,7 +28,8 @@ export const getPetInfo = async () => {
   try {
     const res = await GetAxiosInstance<GetPetInfoResponse>(`/petInfo/get`);
 
-    return res;
+    console.log(res.data);
+    return res.data;
   } catch (error) {
     console.log("온보딩 펫 정보 조회하기 에러", error);
     throw error;
