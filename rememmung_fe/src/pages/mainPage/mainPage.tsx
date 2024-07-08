@@ -10,7 +10,7 @@ const MainPage: React.FC = () => {
 
   useEffect(() => {
     getUserInfo().then((res) => setUserInfo(res));
-  });
+  }, []);
 
   return (
     <styles.Container>
