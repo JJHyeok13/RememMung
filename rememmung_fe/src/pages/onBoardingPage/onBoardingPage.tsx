@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import StepComponent from "@components/onBoardingPage/stepComponent/stepComponent";
 
@@ -22,10 +22,6 @@ const OnBoardingPage: React.FC = () => {
     favorites: [],
     dislike: [],
     skill: [],
-  });
-
-  useEffect(() => {
-    console.log(petData);
   });
 
   const setType = (species: string) => {
