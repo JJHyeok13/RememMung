@@ -31,9 +31,19 @@ const UpdatePage: React.FC = () => {
 
   useEffect(() => {
     getPetInfo().then((res) => {
-      setPetData(res.data);
+      const data = res.data;
+      setPetData({
+        species: data.species,
+        name: data.name,
+        personality: data.personality.split(", "),
+        gender: data.gender,
+        birthday: data.birthday,
+        farewellday: data.farewellday,
+        favorites: data.favorites.split(", "),
+        dislike: data.dislike.split(", "),
+        skill: data.skill.split(", "),
+      });
       console.log(res);
-      console.log(petData);
     });
   }, []);
 
