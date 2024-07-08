@@ -1,10 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-interface UserInfo {
-  userName: string;
-}
-
 const { persistAtom } = recoilPersist();
 
 export const loggedInState = atom<boolean>({
@@ -13,10 +9,14 @@ export const loggedInState = atom<boolean>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const userInfo = atom<UserInfo>({
-  key: "userInfo",
-  default: {
-    userName: "",
-  },
+export const userName = atom<string>({
+  key: "userName",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const petName = atom<string>({
+  key: "petName",
+  default: "",
   effects_UNSTABLE: [persistAtom],
 });

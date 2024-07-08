@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 
 import styles from "./styles";
-import { getUserInfo } from "@server/user/api/user";
+import { getPetInfo, getUserInfo } from "@server/user/api/user";
 import { useRecoilState } from "recoil";
-import { userInfo } from "recoil/recoil";
+import { userName, petName } from "recoil/recoil";
 
 const MainPage: React.FC = () => {
-  const [, setUserInfo] = useRecoilState(userInfo);
+  const [, setUserName] = useRecoilState(userName);
+  const [, setPetName] = useRecoilState(petName);
 
   useEffect(() => {
-    getUserInfo().then((res) => setUserInfo(res));
+    getUserInfo().then((res) => setUserName(res.data.userName));
+    getPetInfo().then((res) => setPetName(res.data.name));
   }, []);
 
   return (

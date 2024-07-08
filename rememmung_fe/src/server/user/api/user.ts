@@ -41,8 +41,7 @@ export const getUserInfo = async () => {
   try {
     const res = await GetAxiosInstance(`/userInfo/get`);
 
-    console.log(res.data);
-    return res.data;
+    return res;
   } catch (error) {
     console.log("유저 정보 조회하기 에러", error);
     throw error;

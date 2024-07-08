@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./styles";
 import PetProfileImage from "@assets/chatPage/PetProfileImage.svg";
+import { useRecoilValue } from "recoil";
+import { petName } from "recoil/recoil";
 
 interface ChatComponentProps {
   chattingData: {
@@ -22,6 +24,7 @@ interface ChatComponentProps {
 }
 
 const ChatComponent: React.FC<ChatComponentProps> = ({ chattingData }) => {
+  const petname = useRecoilValue(petName);
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
 
   // 함수 컴포넌트 내부에서 마운트나 업데이트 시 스크롤을 제일 하단으로 이동
@@ -60,7 +63,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ chattingData }) => {
           {chat.userId === null && (
             <styles.PetProfile>
               <styles.PetImage src={PetProfileImage} />
-              <styles.PetName>{chat.userId ? "" : `브리`}</styles.PetName>
+              <styles.PetName>{chat.userId ? "" : `${petname}`}</styles.PetName>
             </styles.PetProfile>
           )}
 
