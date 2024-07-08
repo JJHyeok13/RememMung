@@ -29,6 +29,12 @@ const styles = {
 
     margin: 0 auto;
   `,
+  Date: styled.div`
+    font-family: "YangJin";
+    font-size: 14px;
+    font-weight: 800;
+    color: #37393d;
+  `,
 };
 
 export default styles;
