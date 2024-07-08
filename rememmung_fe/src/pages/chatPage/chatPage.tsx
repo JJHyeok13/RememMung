@@ -19,7 +19,7 @@ const ChatPage: React.FC = () => {
 
   // @ts-ignore
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageSize = 7;
+  const pageSize = 9999;
 
   // @ts-ignore
   const [config, setConfig] = useState<ConfigProps>({
@@ -45,6 +45,7 @@ const ChatPage: React.FC = () => {
       content: content,
     };
     sendChat(data);
+    getChatting(config).then((res) => setChattingData(res));
   };
 
   return (
