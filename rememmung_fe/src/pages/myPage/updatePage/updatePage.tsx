@@ -43,7 +43,6 @@ const UpdatePage: React.FC = () => {
         skill: res.skill ? res.skill.split(", ") : [],
       };
       setPetData(updatedPetData);
-      console.log(updatedPetData);
     });
   }, []);
 
