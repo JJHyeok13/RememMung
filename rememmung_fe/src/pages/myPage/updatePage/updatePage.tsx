@@ -33,8 +33,9 @@ const UpdatePage: React.FC = () => {
     getPetInfo().then((res) => {
       setPetData(res.data);
       console.log(res);
+      console.log(petData);
     });
-  }, [petData]);
+  }, []);
 
   // const setType = (species: string) => {
   //   setPetData((prev) => ({ ...prev, species }));
