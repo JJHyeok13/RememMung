@@ -137,13 +137,6 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
     setFarewellday,
   ]);
 
-  useEffect(() => {
-    console.log(selectedGender);
-    console.log(selectedFavorites);
-    console.log(selectedDislike);
-    console.log(selectedSkill);
-  }, [selectedGender, selectedFavorites, selectedDislike, selectedSkill]);
-
   return (
     <styles.TotalInputContainer>
       <styles.InputContainer>
