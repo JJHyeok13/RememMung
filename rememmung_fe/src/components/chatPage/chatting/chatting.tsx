@@ -57,7 +57,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ chattingData }) => {
 
   return (
     <styles.Container ref={chatContainerRef}>
-      {chattingData.nodes.map((chat) => (
+      {chattingData.nodes.reverse().map((chat) => (
         <styles.ChattingContainer key={chat.id} $isMe={!!chat.userId}>
           {/* 애완동물 프로필사진 및 이름 */}
           {chat.userId === null && (
