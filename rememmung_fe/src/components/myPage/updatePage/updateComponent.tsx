@@ -31,13 +31,36 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
   setDislike,
   setSkill,
 }) => {
-  const [birthdayYear, setBirthdayYear] = useState<string>("");
-  const [birthdayMonth, setBirthdayMonth] = useState<string>("");
-  const [birthdayDay, setBirthdayDay] = useState<string>("");
+  const parseDate = (dateString: string) => {
+    if (!dateString) return { year: "", month: "", day: "" };
+    const [year, month, day] = dateString.split("T")[0].split("-");
+    return { year, month, day };
+  };
 
-  const [farewellYear, setFarewellYear] = useState<string>("");
-  const [farewellMonth, setFarewellMonth] = useState<string>("");
-  const [farewellDay, setFarewellDay] = useState<string>("");
+  const {
+    year: birthdayYear,
+    month: birthdayMonth,
+    day: birthdayDay,
+  } = parseDate(petData.birthday);
+  const {
+    year: farewellYear,
+    month: farewellMonth,
+    day: farewellDay,
+  } = parseDate(petData.farewellday);
+
+  const [selectedBirthdayYear, setSelectedBirthdayYear] =
+    useState<string>(birthdayYear);
+  const [selectedBirthdayMonth, setSelectedBirthdayMonth] =
+    useState<string>(birthdayMonth);
+  const [selectedBirthdayDay, setSelectedBirthdayDay] =
+    useState<string>(birthdayDay);
+
+  const [selectedFarewellYear, setSelectedFarewellYear] =
+    useState<string>(farewellYear);
+  const [selectedFarewellMonth, setSelectedFarewellMonth] =
+    useState<string>(farewellMonth);
+  const [selectedFarewellDay, setSelectedFarewellDay] =
+    useState<string>(farewellDay);
 
   const [selectedGender, setSelectedGender] = useState<string>(petData.gender);
   const [selectedFavorites, setSelectedFavorites] = useState<string[]>(
@@ -53,6 +76,16 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
     setSelectedFavorites(petData.favorites);
     setSelectedDislike(petData.dislike);
     setSelectedSkill(petData.skill);
+
+    const { year, month, day } = parseDate(petData.birthday);
+    setSelectedBirthdayYear(year);
+    setSelectedBirthdayMonth(month);
+    setSelectedBirthdayDay(day);
+
+    const farewell = parseDate(petData.farewellday);
+    setSelectedFarewellYear(farewell.year);
+    setSelectedFarewellMonth(farewell.month);
+    setSelectedFarewellDay(farewell.day);
   }, [petData]);
 
   const handleChangeGender = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,16 +112,30 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
   };
 
   useEffect(() => {
-    if (birthdayYear && birthdayMonth && birthdayDay) {
-      setBirthday(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
+    if (selectedBirthdayYear && selectedBirthdayMonth && selectedBirthdayDay) {
+      setBirthday(
+        `${selectedBirthdayYear}-${selectedBirthdayMonth}-${selectedBirthdayDay}`
+      );
     }
-  }, [birthdayYear, birthdayMonth, birthdayDay, setBirthday]);
+  }, [
+    selectedBirthdayYear,
+    selectedBirthdayMonth,
+    selectedBirthdayDay,
+    setBirthday,
+  ]);
 
   useEffect(() => {
-    if (farewellYear && farewellMonth && farewellDay) {
-      setFarewellday(`${farewellYear}-${farewellMonth}-${farewellDay}`);
+    if (selectedFarewellYear && selectedFarewellMonth && selectedFarewellDay) {
+      setFarewellday(
+        `${selectedFarewellYear}-${selectedFarewellMonth}-${selectedFarewellDay}`
+      );
     }
-  }, [farewellYear, farewellMonth, farewellDay, setFarewellday]);
+  }, [
+    selectedFarewellYear,
+    selectedFarewellMonth,
+    selectedFarewellDay,
+    setFarewellday,
+  ]);
 
   useEffect(() => {
     console.log(selectedGender);
@@ -127,9 +174,9 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
         <styles.Input>
           <styles.SelectInput
             name="birthdayYear"
-            value={birthdayYear}
+            value={selectedBirthdayYear}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setBirthdayYear(e.target.value)
+              setSelectedBirthdayYear(e.target.value)
             }
           >
             <option value="" />
@@ -138,9 +185,9 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
           <div>년</div>
           <styles.SelectInput
             name="birthdayMonth"
-            value={birthdayMonth}
+            value={selectedBirthdayMonth}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setBirthdayMonth(e.target.value)
+              setSelectedBirthdayMonth(e.target.value)
             }
           >
             <option value="" />
@@ -149,9 +196,9 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
           <div>월</div>
           <styles.SelectInput
             name="birthdayDay"
-            value={birthdayDay}
+            value={selectedBirthdayDay}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setBirthdayDay(e.target.value)
+              setSelectedBirthdayDay(e.target.value)
             }
           >
             <option value="" />
@@ -166,9 +213,9 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
         <styles.Input>
           <styles.SelectInput
             name="farewellYear"
-            value={farewellYear}
+            value={selectedFarewellYear}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setFarewellYear(e.target.value)
+              setSelectedFarewellYear(e.target.value)
             }
           >
             <option value="" />
@@ -177,9 +224,9 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
           <div>년</div>
           <styles.SelectInput
             name="farewellMonth"
-            value={farewellMonth}
+            value={selectedFarewellMonth}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setFarewellMonth(e.target.value)
+              setSelectedFarewellMonth(e.target.value)
             }
           >
             <option value="" />
@@ -188,9 +235,9 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
           <div>월</div>
           <styles.SelectInput
             name="farewellDay"
-            value={farewellDay}
+            value={selectedFarewellDay}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setFarewellDay(e.target.value)
+              setSelectedFarewellDay(e.target.value)
             }
           >
             <option value="" />
