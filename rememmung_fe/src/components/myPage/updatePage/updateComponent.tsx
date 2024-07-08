@@ -31,13 +31,25 @@ const UpdateComponent: React.FC<UpdateComponentProps> = ({
   setDislike,
   setSkill,
 }) => {
-  const [birthdayYear, setBirthdayYear] = useState<string>("");
-  const [birthdayMonth, setBirthdayMonth] = useState<string>("");
-  const [birthdayDay, setBirthdayDay] = useState<string>("");
+  const [birthdayYear, setBirthdayYear] = useState<string>(
+    petData.birthday.slice(0, 4)
+  );
+  const [birthdayMonth, setBirthdayMonth] = useState<string>(
+    petData.birthday.slice(5, 7)
+  );
+  const [birthdayDay, setBirthdayDay] = useState<string>(
+    petData.birthday.slice(8, 10)
+  );
 
-  const [farewellYear, setFarewellYear] = useState<string>("");
-  const [farewellMonth, setFarewellMonth] = useState<string>("");
-  const [farewellDay, setFarewellDay] = useState<string>("");
+  const [farewellYear, setFarewellYear] = useState<string>(
+    petData.farewellday.slice(0, 4)
+  );
+  const [farewellMonth, setFarewellMonth] = useState<string>(
+    petData.farewellday.slice(5, 7)
+  );
+  const [farewellDay, setFarewellDay] = useState<string>(
+    petData.farewellday.slice(8, 10)
+  );
 
   const [selectedGender, setSelectedGender] = useState<string>(petData.gender);
   const [selectedFavorites, setSelectedFavorites] = useState<string[]>(

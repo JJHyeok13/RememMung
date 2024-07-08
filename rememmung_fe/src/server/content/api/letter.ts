@@ -21,7 +21,6 @@ export const writeLetter = async (
   data: WriteLetterRequest
 ): Promise<WriteLetterResponse> => {
   try {
-    console.log("편지 생성하기 API 호출");
     const res = await PostAxiosInstance<WriteLetterResponse>(
       `/users/me/letters`,
       data
