@@ -18,6 +18,9 @@ import GrayLetterIcon from "@assets/navBar/grayLetterIcon.svg";
 import BrownMailBoxIcon from "@assets/navBar/brownMailBoxIcon.svg";
 import GrayMailBoxIcon from "@assets/navBar/grayMailBoxIcon.svg";
 
+import BrownDiaryIcon from "@assets/navBar/brownDiaryIcon.svg";
+import GrayDiaryIcon from "@assets/navBar/grayDiaryIcon.svg";
+
 const NavBar: React.FC = () => {
   const location = useLocation();
 
@@ -46,6 +49,12 @@ const NavBar: React.FC = () => {
       icon: BrownMailBoxIcon,
       grayIcon: GrayMailBoxIcon,
       label: "우편함",
+    },
+    {
+      path: "/diary",
+      icon: BrownDiaryIcon,
+      grayIcon: GrayDiaryIcon,
+      label: "멍일기",
     },
   ];
 
