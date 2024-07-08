@@ -37,7 +37,7 @@ const StepComponent: React.FC<StepComponentProps> = ({
   setSkill,
   submitData,
 }) => {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(1);
 
   const handlePrevStep = () => {
     if (step > 1) {
