@@ -31,8 +31,6 @@ const UpdatePage: React.FC = () => {
 
   useEffect(() => {
     getPetInfo().then((res) => {
-      console.log(res.species);
-      console.log(res.name);
       setPetData({
         species: res.species,
         name: res.name,
@@ -44,7 +42,7 @@ const UpdatePage: React.FC = () => {
         dislike: res.dislike.split(", "),
         skill: res.skill.split(", "),
       });
-      console.log(res);
+      console.log(petData);
     });
   }, []);
 
