@@ -31,7 +31,7 @@ const ChatPage: React.FC = () => {
 
   useEffect(() => {
     getChatting(config).then((res) => setChattingData(res));
-  }, [chattingData]);
+  }, [config]);
 
   // 채팅 입력용 state 변수
   const [content, setContent] = useState<string>("");

@@ -38,7 +38,8 @@ export const getChatting = async (
       config
     );
 
-    return res.data.result;
+    console.log(res.data);
+    return res.data;
   } catch (error) {
     console.log("채팅 내용 조회 에러", error);
     throw error;
