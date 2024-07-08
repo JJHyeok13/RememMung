@@ -34,13 +34,13 @@ const UpdatePage: React.FC = () => {
       setPetData({
         species: res.species,
         name: res.name,
-        personality: res.personality.split(", "),
+        personality: res.personality ? res.personality.split(", ") : [],
         gender: res.gender,
         birthday: res.birthday,
-        farewellday: res.farewellday,
-        favorites: res.favorites.split(", "),
-        dislike: res.dislike.split(", "),
-        skill: res.skill.split(", "),
+        farewellday: res.farewellday || "",
+        favorites: res.favorites ? res.favorites.split(", ") : [],
+        dislike: res.dislike ? res.dislike.split(", ") : [],
+        skill: res.skill ? res.skill.split(", ") : [],
       });
       console.log(petData);
     });
