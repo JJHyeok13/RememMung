@@ -11,7 +11,7 @@ const MainPage: React.FC = () => {
 
   useEffect(() => {
     getUserInfo().then((res) => setUserName(res.data.userName));
-    getPetInfo().then((res) => setPetName(res.data.name));
+    getPetInfo().then((res) => setPetName(res.name));
   }, []);
 
   return (
