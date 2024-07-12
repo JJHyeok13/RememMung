@@ -38,7 +38,11 @@ const Pagination: React.FC<PaginationProps> = ({
       <MdNavigateBefore
         size={24}
         fill="#767676"
-        onClick={handlePrevPage}
+        onClick={
+          currentPage > totalPage && currentPage > 1
+            ? handlePrevPage
+            : undefined
+        }
         style={{ cursor: "pointer" }}
       />
       <styles.PageContainer>
@@ -55,7 +59,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <MdNavigateNext
         size={24}
         fill="#767676"
-        onClick={handleNextPage}
+        onClick={totalPage > currentPage ? handleNextPage : undefined}
         style={{ cursor: "pointer" }}
       />
     </styles.Container>
