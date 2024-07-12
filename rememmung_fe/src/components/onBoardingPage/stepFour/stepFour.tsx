@@ -44,27 +44,23 @@ const StepFour: React.FC<StepFourProps> = ({
     const file = event.target.files?.[0] || null;
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        const dataUrl = reader.result as string;
+      reader.onloadend = async () => {
+        const binaryString = reader.result as string;
 
-        // Extracting the Base64 part
-        const base64String = dataUrl.split(",")[1];
+        try {
+          const res = await uploadFile({ type: binaryString });
+          console.log("S3 업로드 성공");
+          setBasicPetImage(res.signedUrl);
 
-        uploadFile({ type: base64String })
-          .then((res) => {
-            console.log("S3 업로드 성공");
-            setBasicPetImage(res.signedUrl);
-          })
-          .catch((error) => {
-            console.error("S3 업로드 실패", error);
-          });
-
-        setPreviews((prevPreviews) => ({
-          ...prevPreviews,
-          [description]: URL.createObjectURL(file),
-        }));
+          setPreviews((prevPreviews) => ({
+            ...prevPreviews,
+            [description]: URL.createObjectURL(file),
+          }));
+        } catch (error) {
+          console.error("S3 업로드 실패", error);
+        }
       };
-      reader.readAsDataURL(file);
+      reader.readAsBinaryString(file);
     }
     setFiles((prevFiles) => ({ ...prevFiles, [description]: file }));
   };
