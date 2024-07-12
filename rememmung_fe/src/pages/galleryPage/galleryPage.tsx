@@ -11,13 +11,11 @@ const GalleryPage: React.FC = () => {
   // @ts-ignore
   const [photoData, setPhotoData] = useState<PhotoDataProps>({
     totalCount: 0,
+    totalPage: 0,
     nodes: [],
   });
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 10;
-
-  // @ts-ignore
-  const [totalPage, setTotalPage] = useState<number>(10);
 
   const handlePage = (num: number) => {
     setCurrentPage(num);
@@ -36,7 +34,7 @@ const GalleryPage: React.FC = () => {
             <Pagination
               currentPage={currentPage}
               handlePage={handlePage}
-              totalPage={totalPage}
+              totalPage={photoData.totalPage}
             />
           </>
         ) : (

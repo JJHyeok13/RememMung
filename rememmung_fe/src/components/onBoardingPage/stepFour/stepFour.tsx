@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 
 import styles from "./styles";
 import InputButton from "./inputButton";
@@ -6,16 +6,70 @@ import InputButton from "./inputButton";
 import PrevButtonImage from "@assets/onBoardingPage/prevButton.svg";
 import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
 import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
+import { uploadFile } from "@server/content/api/attachment";
+import { useRecoilState } from "recoil";
+import { basicPetImage } from "recoil/recoil";
 
 interface StepFourProps {
   handlePrevStep: () => void;
   handleNextStep: () => void;
 }
 
-const ImageUpload: React.FC<StepFourProps> = ({
+const StepFour: React.FC<StepFourProps> = ({
   handlePrevStep,
   handleNextStep,
 }) => {
+  const [, setBasicPetImage] = useRecoilState(basicPetImage);
+
+  const [files, setFiles] = useState<{ [key: string]: File | null }>({
+    기본사진: null,
+    앉아있는사진: null,
+    누워있는사진: null,
+    걷고있는사진: null,
+    뛰고있는사진: null,
+  });
+
+  const [previews, setPreviews] = useState<{ [key: string]: string | null }>({
+    기본사진: null,
+    앉아있는사진: null,
+    누워있는사진: null,
+    걷고있는사진: null,
+    뛰고있는사진: null,
+  });
+
+  const handleFileChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    description: string
+  ) => {
+    const file = event.target.files?.[0] || null;
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const dataUrl = reader.result as string;
+
+        console.log(dataUrl);
+
+        uploadFile({ type: dataUrl })
+          .then((res) => {
+            console.log("S3 업로드 성공");
+            setBasicPetImage(res.signedUrl);
+          })
+          .catch((error) => {
+            console.error("S3 업로드 실패", error);
+          });
+
+        setPreviews((prevPreviews) => ({
+          ...prevPreviews,
+          [description]: URL.createObjectURL(file),
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+    setFiles((prevFiles) => ({ ...prevFiles, [description]: file }));
+  };
+
+  const isBasicPhotoUploaded = !!files.기본사진;
+
   const disableButtonClick = () => {
     alert("기본사진을 첨부해주세요!");
   };
@@ -27,22 +81,32 @@ const ImageUpload: React.FC<StepFourProps> = ({
         해당하는 사진이 없다면 원하는 사진을 넣어주세요
       </styles.SubTitle>
       <styles.InputContainer>
-        <InputButton description="기본 사진" />
-        <InputButton description="앉아있는 사진" />
-        <InputButton description="누워있는 사진" />
-        <InputButton description="걷고있는 사진" />
-        <InputButton description="뛰고있는 사진" />
+        {[
+          "기본사진",
+          "앉아있는사진",
+          "누워있는사진",
+          "걷고있는사진",
+          "뛰고있는사진",
+        ].map((description) => (
+          <InputButton
+            key={description}
+            description={description}
+            imageUrl={previews[description] || undefined}
+            onFileChange={(e) => handleFileChange(e, description)}
+          />
+        ))}
       </styles.InputContainer>
 
       <styles.PrevButton src={PrevButtonImage} onClick={handlePrevStep} />
 
       <styles.NextButton
-        src={DisableNextButtonImage}
-        onClick={disableButtonClick}
+        src={
+          isBasicPhotoUploaded ? AbleNextButtonImage : DisableNextButtonImage
+        }
+        onClick={isBasicPhotoUploaded ? handleNextStep : disableButtonClick}
       />
-      <styles.NextButton src={AbleNextButtonImage} onClick={handleNextStep} />
     </styles.Container>
   );
 };
 
-export default ImageUpload;
+export default StepFour;

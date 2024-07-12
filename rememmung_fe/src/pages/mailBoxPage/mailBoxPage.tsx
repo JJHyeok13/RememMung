@@ -11,6 +11,7 @@ import { getLetterList, updateLetter } from "@server/content/api/letter";
 
 interface MailDataProps {
   totalCount: number;
+  totalPage: number;
   nodes: {
     id: number;
     sourceId: number;
@@ -41,13 +42,11 @@ const MailBoxPage: React.FC = () => {
   // @ts-ignore
   const [mailData, setMailData] = useState<MailDataProps>({
     totalCount: 0,
+    totalPage: 0,
     nodes: [],
   });
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 7;
-
-  // @ts-ignore
-  const [totalPage, setTotalPage] = useState<number>(10);
 
   // @ts-ignore
   const [config, setConfig] = useState<ConfigProps>({
@@ -111,7 +110,7 @@ const MailBoxPage: React.FC = () => {
             <Pagination
               currentPage={currentPage}
               handlePage={handlePage}
-              totalPage={totalPage}
+              totalPage={mailData.totalPage}
             />
           </>
         ) : (

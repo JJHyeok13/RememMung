@@ -1,11 +1,12 @@
-import React from "react";
+// InputButton.tsx
+import React, { ChangeEvent } from "react";
 import styled from "styled-components";
-
 import { FaCirclePlus } from "react-icons/fa6";
 
 interface InputButtonProps {
   description: string;
   imageUrl?: string;
+  onFileChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Container = styled.div`
@@ -19,6 +20,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 8px;
 `;
 
 const NoDisplayInput = styled.input`
@@ -44,12 +46,20 @@ const ImagePreview = styled.img`
   border-radius: 12px;
 `;
 
-const InputButton: React.FC<InputButtonProps> = ({ description, imageUrl }) => {
+const InputButton: React.FC<InputButtonProps> = ({
+  description,
+  imageUrl,
+  onFileChange,
+}) => {
   return (
     <Container>
       {imageUrl && <ImagePreview src={imageUrl} alt="Uploaded" />}
-      <NoDisplayInput type="file" id="upload" />
-      <Label htmlFor="upload">
+      <NoDisplayInput
+        type="file"
+        id={`upload-${description}`}
+        onChange={onFileChange}
+      />
+      <Label htmlFor={`upload-${description}`}>
         {description} <br /> <StyleIcon size={32} />
       </Label>
     </Container>

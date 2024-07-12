@@ -20,3 +20,9 @@ export const petName = atom<string>({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+
+export const basicPetImage = atom<string>({
+  key: "basicPetImage",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});

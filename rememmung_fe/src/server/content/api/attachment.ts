@@ -16,7 +16,8 @@ export const uploadFile = async (
       data
     );
 
-    return res.data.result;
+    console.log("업로드 성공");
+    return res.data;
   } catch (error) {
     console.log("첨부파일 업로드 에러", error);
     throw error;
