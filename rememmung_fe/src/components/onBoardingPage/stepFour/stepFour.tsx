@@ -47,9 +47,10 @@ const StepFour: React.FC<StepFourProps> = ({
       reader.onloadend = () => {
         const dataUrl = reader.result as string;
 
-        console.log(dataUrl);
+        // Extracting the Base64 part
+        const base64String = dataUrl.split(",")[1];
 
-        uploadFile({ type: dataUrl })
+        uploadFile({ type: base64String })
           .then((res) => {
             console.log("S3 업로드 성공");
             setBasicPetImage(res.signedUrl);
