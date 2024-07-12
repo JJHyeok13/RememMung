@@ -5,7 +5,6 @@ import DetailMail from "../detailMail/detailMail";
 import styles from "./styles";
 
 interface MailListProps {
-  isDeleteMode: boolean;
   mailData: {
     id: number;
     sourceId: number;
@@ -22,7 +21,6 @@ interface MailListProps {
 }
 
 const MailList: React.FC<MailListProps> = ({
-  isDeleteMode,
   mailData,
   isOpen,
   handleOpen,
@@ -40,7 +38,6 @@ const MailList: React.FC<MailListProps> = ({
       <styles.Table>
         <thead>
           <tr>
-            <styles.TableHeader></styles.TableHeader>
             <styles.TableHeader>제목</styles.TableHeader>
             <styles.TableHeader>보낸이</styles.TableHeader>
             <styles.TableHeader>날짜</styles.TableHeader>
@@ -50,12 +47,6 @@ const MailList: React.FC<MailListProps> = ({
         <tbody>
           {mailData.map((mail) => (
             <tr key={mail.id}>
-              <styles.CheckBox>
-                <styles.StyleInput
-                  type="checkbox"
-                  $isDeleteMode={isDeleteMode}
-                />
-              </styles.CheckBox>
               <styles.TitleData>
                 <styles.Title onClick={() => handleMailClick(mail)}>
                   {mail.title}

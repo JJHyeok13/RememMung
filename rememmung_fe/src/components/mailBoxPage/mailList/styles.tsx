@@ -4,6 +4,8 @@ const styles = {
   Table: styled.table`
     width: 100%;
     height: 100%;
+    padding: 32px;
+    padding-right: 16px;
     margin-bottom: 64px;
   `,
   TableHeader: styled.th`
@@ -11,7 +13,7 @@ const styles = {
     padding-bottom: 32px;
   `,
   TitleData: styled.td`
-    width: 65%;
+    width: 60%;
     color: #444444;
   `,
   StyleInput: styled.input<{ $isDeleteMode: boolean }>`

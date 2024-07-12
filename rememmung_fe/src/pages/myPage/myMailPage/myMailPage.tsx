@@ -7,6 +7,7 @@ import SearchBar from "@components/mailBoxPage/searchBar/searchBar";
 import styles from "./styles";
 
 import { updateLetter } from "@server/content/api/letter";
+import { useNavigate } from "react-router-dom";
 
 interface MailDataProps {
   totalCount: number;
@@ -23,8 +24,7 @@ interface MailDataProps {
 }
 
 const MyMailPage: React.FC = () => {
-  const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   // @ts-ignore
   const [mailData, setMailData] = useState<MailDataProps>({
     totalCount: 0,
@@ -42,14 +42,6 @@ const MyMailPage: React.FC = () => {
     setCurrentPage(num);
   };
 
-  const OnDeleteMode = () => {
-    setIsDeleteMode(true);
-  };
-
-  const OffDeleteMode = () => {
-    setIsDeleteMode(false);
-  };
-
   // 편지 상세 뷰 관리 변수
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -62,6 +54,10 @@ const MyMailPage: React.FC = () => {
     setIsOpen(false);
   };
 
+  const ToWritePage = () => {
+    navigate("/write");
+  };
+
   return (
     <styles.Container>
       <styles.ElementBox>
@@ -69,7 +65,6 @@ const MyMailPage: React.FC = () => {
           <>
             <MailList
               mailData={mailData.nodes}
-              isDeleteMode={isDeleteMode}
               isOpen={isOpen}
               handleOpen={handleOpen}
               handleClose={handleClose}
@@ -87,18 +82,9 @@ const MyMailPage: React.FC = () => {
       <styles.LowerContainer>
         <SearchBar />
         <styles.ButtonContainer>
-          {!isDeleteMode ? (
-            <styles.DeleteButton onClick={OnDeleteMode}>
-              삭제
-            </styles.DeleteButton>
-          ) : (
-            <>
-              <styles.WriteButton onClick={OffDeleteMode}>
-                취소
-              </styles.WriteButton>
-              <styles.DeleteButton>삭제</styles.DeleteButton>
-            </>
-          )}
+          <styles.WriteButton onClick={ToWritePage}>
+            편지쓰기
+          </styles.WriteButton>
         </styles.ButtonContainer>
       </styles.LowerContainer>
     </styles.Container>

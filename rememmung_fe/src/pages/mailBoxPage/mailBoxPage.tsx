@@ -69,18 +69,8 @@ const MailBoxPage: React.FC = () => {
     setCurrentPage(num);
   };
 
-  const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
-
   const ToWritePage = () => {
     navigate("/write");
-  };
-
-  const OnDeleteMode = () => {
-    setIsDeleteMode(true);
-  };
-
-  const OffDeleteMode = () => {
-    setIsDeleteMode(false);
   };
 
   // 편지 상세 뷰 관리 변수
@@ -102,7 +92,6 @@ const MailBoxPage: React.FC = () => {
           <>
             <MailList
               mailData={mailData.nodes}
-              isDeleteMode={isDeleteMode}
               isOpen={isOpen}
               handleOpen={handleOpen}
               handleClose={handleClose}
@@ -120,23 +109,9 @@ const MailBoxPage: React.FC = () => {
       <styles.LowerContainer>
         <SearchBar />
         <styles.ButtonContainer>
-          {!isDeleteMode ? (
-            <>
-              <styles.WriteButton onClick={ToWritePage}>
-                편지쓰기
-              </styles.WriteButton>
-              <styles.DeleteButton onClick={OnDeleteMode}>
-                삭제
-              </styles.DeleteButton>
-            </>
-          ) : (
-            <>
-              <styles.WriteButton onClick={OffDeleteMode}>
-                취소
-              </styles.WriteButton>
-              <styles.DeleteButton>삭제</styles.DeleteButton>
-            </>
-          )}
+          <styles.WriteButton onClick={ToWritePage}>
+            편지쓰기
+          </styles.WriteButton>
         </styles.ButtonContainer>
       </styles.LowerContainer>
     </styles.Container>
