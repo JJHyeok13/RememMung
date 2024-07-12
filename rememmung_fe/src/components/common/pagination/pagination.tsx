@@ -45,7 +45,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {pageNumbers.map((page, index) => (
           <styles.PaginationItem
             key={index}
-            $isActive={currentPage + 1 === page}
+            $isActive={currentPage === page}
             onClick={() => handlePageClick(page)}
           >
             {page}
