@@ -6,9 +6,11 @@ import InputButton from "./inputButton";
 import PrevButtonImage from "@assets/onBoardingPage/prevButton.svg";
 import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
 import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
-import { uploadFile } from "@server/content/api/attachment";
+// import { uploadFile } from "@server/content/api/attachment";
 import { useRecoilState } from "recoil";
 import { basicPetImage } from "recoil/recoil";
+import axiosInstance from "@axios/content/axios.Instance";
+import axios from "axios";
 
 interface StepFourProps {
   handlePrevStep: () => void;
@@ -37,32 +39,50 @@ const StepFour: React.FC<StepFourProps> = ({
     뛰고있는사진: null,
   });
 
-  const handleFileChange = (
-    event: ChangeEvent<HTMLInputElement>,
+  const handleFileChange = async (
+    e: ChangeEvent<HTMLInputElement>,
     description: string
   ) => {
-    const file = event.target.files?.[0] || null;
+    const file = e.target.files?.[0] || null;
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        const binaryString = reader.result as string;
+      const preview = URL.createObjectURL(file);
+      setPreviews((prev) => ({ ...prev, [description]: preview }));
+      setFiles((prev) => ({ ...prev, [description]: file }));
 
-        try {
-          const res = await uploadFile({ type: binaryString });
-          console.log("S3 업로드 성공");
-          setBasicPetImage(res.signedUrl);
-
-          setPreviews((prevPreviews) => ({
-            ...prevPreviews,
-            [description]: URL.createObjectURL(file),
-          }));
-        } catch (error) {
-          console.error("S3 업로드 실패", error);
-        }
-      };
-      reader.readAsBinaryString(file);
+      if (description === "기본사진") {
+        const uploadedUrl = await uploadFileToS3(file);
+        setBasicPetImage(uploadedUrl);
+      }
     }
-    setFiles((prevFiles) => ({ ...prevFiles, [description]: file }));
+  };
+
+  const uploadFileToS3 = async (file: File): Promise<string> => {
+    try {
+      const {
+        data: { signedUrl, url },
+      } = await axiosInstance.post(
+        `${import.meta.env.VITE_CONTENT_SERVER_URL}/attachment/prepare-upload`,
+        {
+          fileName: file.name,
+          fileType: file.type,
+        }
+      );
+
+      const blob = new Blob([file], { type: file.type });
+
+      await axios.put(signedUrl, blob, {
+        headers: {
+          "Content-Type": file.type,
+          "Content-Length": blob.size,
+        },
+      });
+
+      console.log(url);
+      return url;
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      throw new Error("File upload failed");
+    }
   };
 
   const isBasicPhotoUploaded = !!files.기본사진;
