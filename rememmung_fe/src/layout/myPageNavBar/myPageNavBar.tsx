@@ -1,18 +1,43 @@
 import React from "react";
-import styles from "./styles";
+import { Link, useLocation } from "react-router-dom";
 
 const MyPageNavBar: React.FC = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const navItems = [
+    { id: 1, path: "/mypage/mymail", label: "내가 쓴 편지" },
+    { id: 2, path: "/mypage/update", label: "반려동물\n정보수정" },
+    { id: 3, path: "/mypage/deletedata", label: "데이터 삭제" },
+    { id: 4, path: "/mypage/delete", label: "회원탈퇴" },
+  ];
+
   return (
-    <styles.Container>
-      <styles.List to="/mypage/mymail">내가 쓴 편지</styles.List>
-      <styles.List to="/mypage/update">
-        반려동물
-        <br />
-        정보수정
-      </styles.List>
-      <styles.List to="/mypage/deletedata">데이터 삭제</styles.List>
-      <styles.List to="/mypage/delete">회원탈퇴</styles.List>
-    </styles.Container>
+    <nav className="flex flex-col bg-[#f6f6f8] py-12 px-8 rounded-xl h-fit items-center">
+      {navItems.map((nav) => (
+        <Link to={nav.path} key={nav.id}>
+          <li
+            className={`${
+              isActive(nav.path)
+                ? "text-brown-500 font-semibold"
+                : "text-[#afafaf] font-normal"
+            } ${
+              nav.id !== navItems.length ? "pb-12" : ""
+            } list-none text-lg hover:text-brown-500 hover:font-semibold`}
+          >
+            {nav.label.split("\n").map((line, idx) => (
+              <span key={idx}>
+                {line}
+                {idx !== nav.label.split("\n").length - 1 && <br />}
+              </span>
+            ))}
+          </li>
+        </Link>
+      ))}
+    </nav>
   );
 };
 
