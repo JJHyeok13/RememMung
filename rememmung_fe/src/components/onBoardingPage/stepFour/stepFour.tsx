@@ -58,22 +58,24 @@ const StepFour: React.FC<StepFourProps> = ({
 
   const uploadFileToS3 = async (file: File): Promise<string> => {
     try {
-      console.log(file.arrayBuffer);
       const {
         data: { signedUrl, url },
       } = await axiosInstance.post(
         `${import.meta.env.VITE_CONTENT_SERVER_URL}/attachment/prepare-upload`,
         {
-          type: file.arrayBuffer,
+          fileName: file.name,
+          fileType: file.type,
         }
       );
 
-      const blob = new Blob([file], { type: file.type });
+      // Convert the file to a Blob
+      const arrayBuffer = await file.arrayBuffer();
+      const blob = new Blob([arrayBuffer], { type: file.type });
 
+      // Upload the file to S3 using the signed URL
       await axios.put(signedUrl, blob, {
         headers: {
           "Content-Type": file.type,
-          "Content-Length": blob.size,
         },
       });
 
