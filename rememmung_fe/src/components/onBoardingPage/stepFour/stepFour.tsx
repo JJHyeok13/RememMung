@@ -55,7 +55,10 @@ const StepFour: React.FC<StepFourProps> = ({
 
   const uploadFileToS3 = async (file: File) => {
     try {
-      const blob = new Blob([file], { type: "image/png" });
+      const arrayBuffer = await file.arrayBuffer();
+
+      const blob = new Blob([arrayBuffer], { type: "image/png" });
+      console.log(blob);
 
       const response = await axios.post(
         `${import.meta.env.VITE_CONTENT_SERVER_URL}/attachment/prepare-upload`,
