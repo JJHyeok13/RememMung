@@ -63,8 +63,7 @@ const StepFour: React.FC<StepFourProps> = ({
       } = await axiosInstance.post(
         `${import.meta.env.VITE_CONTENT_SERVER_URL}/attachment/prepare-upload`,
         {
-          fileName: file.name,
-          fileType: file.type,
+          type: file.arrayBuffer,
         }
       );
 
