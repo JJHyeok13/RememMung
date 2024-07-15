@@ -38,7 +38,7 @@ const WriteMailPage: React.FC = () => {
   };
 
   return (
-    <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center h-2/3 py-8 pl-6 pr-4 rounded-xl">
+    <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center h-2/3 py-8 px-6 rounded-xl">
       <input
         type="text"
         placeholder="제목"
