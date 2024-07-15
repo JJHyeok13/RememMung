@@ -3,14 +3,12 @@ import React, { ChangeEvent, useState } from "react";
 import styles from "./styles";
 import InputButton from "./inputButton";
 
+import axios from "axios";
+import { updateUploadFile, uploadFile } from "@server/content/api/attachment";
+
 import PrevButtonImage from "@assets/onBoardingPage/prevButton.svg";
 import DisableNextButtonImage from "@assets/onBoardingPage/disableNextButton.svg";
 import AbleNextButtonImage from "@assets/onBoardingPage/ableNextButton.svg";
-// import { uploadFile } from "@server/content/api/attachment";
-// import { useRecoilState } from "recoil";
-// import { basicPetImage } from "recoil/recoil";
-// import axiosInstance from "@axios/content/axios.Instance";
-import axios from "axios";
 
 interface StepFourProps {
   handlePrevStep: () => void;
@@ -45,32 +43,28 @@ const StepFour: React.FC<StepFourProps> = ({
   ) => {
     const file = e.target.files?.[0] || null;
     if (file) {
-      uploadFileToS3(file);
-
       const preview = URL.createObjectURL(file);
       setPreviews((prev) => ({ ...prev, [description]: preview }));
       setFiles((prev) => ({ ...prev, [description]: file }));
+      await handleFileUpload(file);
     }
   };
 
-  const uploadFileToS3 = async (file: File) => {
+  const handleFileUpload = async (file: File) => {
     try {
-      const arrayBuffer = await file.arrayBuffer();
+      // Step 1: Get presigned URL from the backend
+      const { signedUrl, attachmentId } = await uploadFile({
+        type: file.type,
+      });
 
-      const blob = new Blob([arrayBuffer], { type: "image/png" });
-      console.log(blob);
+      await axios.put(signedUrl, file, {
+        headers: {
+          "Content-Type": file.type,
+        },
+      });
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_CONTENT_SERVER_URL}/attachment/prepare-upload`,
-        blob,
-        {
-          headers: {
-            "Content-Type": "image/png",
-          },
-        }
-      );
+      await updateUploadFile(attachmentId);
 
-      console.log(response.data);
       alert("파일 업로드 성공!");
     } catch (error) {
       console.error("파일 업로드 실패:", error);

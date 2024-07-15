@@ -23,7 +23,7 @@ const GalleryPage: React.FC = () => {
 
   useEffect(() => {
     getPetFile(currentPage, pageSize).then((res) => setPhotoData(res));
-  }, [photoData, currentPage]);
+  }, []);
 
   return (
     <styles.Container>
