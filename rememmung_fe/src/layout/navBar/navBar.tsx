@@ -1,7 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-
-import styles from "./styles";
+import { Link, useLocation } from "react-router-dom";
 
 import BrownHomeIcon from "@assets/navBar/brownHomeIcon.svg";
 import GrayHomeIcon from "@assets/navBar/grayHomeIcon.svg";
@@ -23,6 +21,10 @@ import GrayDiaryIcon from "@assets/navBar/grayDiaryIcon.svg";
 
 const NavBar: React.FC = () => {
   const location = useLocation();
+
+  const isActive = (path: string) => {
+    return path.includes(location.pathname);
+  };
 
   const navItems = [
     { path: "/main", icon: BrownHomeIcon, grayIcon: GrayHomeIcon, label: "홈" },
@@ -59,18 +61,27 @@ const NavBar: React.FC = () => {
   ];
 
   return (
-    <styles.Container>
-      {navItems.map(({ path, icon, grayIcon, label }) => {
-        const isActive = location.pathname === path;
-        return (
-          <styles.StyleLink key={path} to={path} $active={isActive}>
-            {isActive && <styles.Dot />}
-            <img src={isActive ? icon : grayIcon} />
-            <styles.Location $active={isActive}>{label}</styles.Location>
-          </styles.StyleLink>
-        );
-      })}
-    </styles.Container>
+    <div className="flex flex-row items-center mb-6 mx-auto w-5/6">
+      {navItems.map(({ path, icon, grayIcon, label }) => (
+        <Link
+          key={path}
+          to={path}
+          className="relative flex flex-col items-center w-12 mr-6"
+        >
+          {isActive(path) && (
+            <div className="w-2 h-2 rounded-full bg-brown-500 absolute top-[-10px]" />
+          )}
+          <img className="w-6" src={isActive(path) ? icon : grayIcon} />
+          <div
+            className={`${
+              isActive(path) ? "text-brown-500" : "text-[#AAAEBB]"
+            } text-xs text-center`}
+          >
+            {label}
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 };
 
