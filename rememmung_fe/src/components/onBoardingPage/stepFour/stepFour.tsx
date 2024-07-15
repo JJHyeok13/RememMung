@@ -58,6 +58,7 @@ const StepFour: React.FC<StepFourProps> = ({
 
   const uploadFileToS3 = async (file: File): Promise<string> => {
     try {
+      console.log(file.arrayBuffer);
       const {
         data: { signedUrl, url },
       } = await axiosInstance.post(
