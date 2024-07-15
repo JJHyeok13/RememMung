@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import PhotoContainer from "@components/galleryPage/photoContainer/photoContainer";
 import Pagination from "@components/common/pagination/pagination";
 
-import styles from "./styles";
 import { getPetFile } from "@server/content/api/pet_attachment";
+
 import { PhotoDataProps } from "type/galleryPage/galleryPage";
 
 const GalleryPage: React.FC = () => {
@@ -26,22 +26,22 @@ const GalleryPage: React.FC = () => {
   }, []);
 
   return (
-    <styles.Container>
-      <styles.WhiteBox>
-        {photoData && photoData.nodes.length > 0 ? (
-          <>
-            <PhotoContainer photoData={photoData.nodes} />
-            <Pagination
-              currentPage={currentPage}
-              handlePage={handlePage}
-              totalPage={photoData.totalPage}
-            />
-          </>
-        ) : (
-          <styles.NoData>데이터가 존재하지 않습니다.</styles.NoData>
-        )}
-      </styles.WhiteBox>
-    </styles.Container>
+    <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center justify-center h-2/3 py-8 pl-6 pr-4 rounded-xl">
+      {photoData && photoData.nodes.length > 0 ? (
+        <>
+          <PhotoContainer photoData={photoData.nodes} />
+          <Pagination
+            currentPage={currentPage}
+            handlePage={handlePage}
+            totalPage={photoData.totalPage}
+          />
+        </>
+      ) : (
+        <div className="text-[#939393] text-center">
+          데이터가 존재하지 않습니다.
+        </div>
+      )}
+    </div>
   );
 };
 

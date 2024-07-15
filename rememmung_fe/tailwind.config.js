@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        chatPage: "url('./assets/chatPage/background.svg')",
+      },
       colors: {
         brown: {
           100: "#EAE0D6",

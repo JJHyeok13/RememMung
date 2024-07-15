@@ -3,8 +3,8 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import ChatComponent from "@components/chatPage/chatting/chatting";
 import ChattingInput from "@components/chatPage/chattingInput/chattingInput";
 
-import styles from "./styles";
 import { getChatting, sendChat } from "@server/content/api/chats";
+
 import { ChattingDataProps } from "type/chattingPage/chattingPage";
 
 interface ConfigProps {
@@ -49,19 +49,17 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <styles.Container>
-      <styles.WhiteBox>
-        {chattingData && chattingData.nodes.length > 0 ? (
-          <ChatComponent chattingData={chattingData} />
-        ) : null}
+    <div className="w-5/6 mx-auto flex flex-col justify-end h-2/3 pt-7 p-5 rounded-xl bg-chatPage">
+      {chattingData && chattingData.nodes.length > 0 ? (
+        <ChatComponent chattingData={chattingData} />
+      ) : null}
 
-        <ChattingInput
-          content={content}
-          handleContent={handleContent}
-          sendContent={sendContent}
-        />
-      </styles.WhiteBox>
-    </styles.Container>
+      <ChattingInput
+        content={content}
+        handleContent={handleContent}
+        sendContent={sendContent}
+      />
+    </div>
   );
 };
 
