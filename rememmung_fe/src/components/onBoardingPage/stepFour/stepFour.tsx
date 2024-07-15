@@ -58,7 +58,7 @@ const StepFour: React.FC<StepFourProps> = ({
       const blob = new Blob([file], { type: "image/png" });
 
       const response = await axios.post(
-        `${import.meta.env.VITE_CONTENT_SERVER_URL}`,
+        `${import.meta.env.VITE_CONTENT_SERVER_URL}/attachment/prepare-upload`,
         blob,
         {
           headers: {
