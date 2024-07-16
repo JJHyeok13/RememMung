@@ -22,6 +22,7 @@ import GalleryPage from "./pages/galleryPage/galleryPage";
 import WriteMailPage from "./pages/writeMailPage/writeMailPage";
 import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
 import DiaryPage from "@pages/diaryPage/diaryPage";
+import WriteDiaryPage from "@pages/writeDiaryPage/writeDiaryPage";
 
 import MyMailPage from "@pages/myPage/myMailPage/myMailPage";
 import UpdatePage from "@pages/myPage/updatePage/updatePage";
@@ -46,6 +47,7 @@ function App() {
           <Route path="/write" element={<WriteMailPage />} />
           <Route path="/mailbox" element={<MailBoxPage />} />
           <Route path="/diary" element={<DiaryPage />} />
+          <Route path="/writediary" element={<WriteDiaryPage />} />
         </Route>
 
         <Route element={<MyPageLayout />}>
