@@ -6,9 +6,9 @@ import DeleteMemberComponent from "@components/myPage/deleteMemberPage/deleteMem
 
 const DeleteMemberPage: React.FC = () => {
   return (
-    <styles.Container>
+    <div className="flex flex-col w-full h-screen pb-[100px] overflow-y-auto pl-10">
       <DeleteMemberComponent />
-    </styles.Container>
+    </div>
   );
 };
 

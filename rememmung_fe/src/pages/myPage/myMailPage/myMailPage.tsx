@@ -59,7 +59,7 @@ const MyMailPage: React.FC = () => {
   };
 
   return (
-    <styles.Container>
+    <div className="flex flex-col w-full h-screen pb-[100px] overflow-y-auto pl-10">
       <styles.ElementBox>
         {mailData && mailData.nodes.length > 0 ? (
           <>
@@ -87,7 +87,7 @@ const MyMailPage: React.FC = () => {
           </styles.WriteButton>
         </styles.ButtonContainer>
       </styles.LowerContainer>
-    </styles.Container>
+    </div>
   );
 };
 

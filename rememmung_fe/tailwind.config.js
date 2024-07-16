@@ -4,8 +4,18 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        sm: { min: "1280px", max: "1439px" },
+        md: { min: "1440px", max: "1679px" },
+        xl: { min: "1680px", max: "1919px" },
+        xxl: { min: "1920px", max: "2560px" },
+      },
       backgroundImage: {
         chatPage: "url('./assets/chatPage/background.svg')",
+        smStartPage: "url('./assets/background/background_1280.png')",
+        mdStartPage: "url('./assets/background/background_1440.png')",
+        xlStartPage: "url('./assets/background/background_1680.png')",
+        xxlStartPage: "url('./assets/background/background_1920.png')",
       },
       backgroundColor: {
         modalBack: "rgba(0, 0, 0, 0.8)",

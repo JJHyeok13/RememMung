@@ -16,7 +16,7 @@ const MyPageNavBar: React.FC = () => {
   ];
 
   return (
-    <nav className="flex flex-col bg-[#f6f6f8] py-12 px-8 rounded-xl h-fit items-center">
+    <nav className="flex flex-col bg-[#f6f6f8] w-[180px] py-12 px-8 rounded-xl h-fit items-center">
       {navItems.map((nav) => (
         <Link to={nav.path} key={nav.id}>
           <li
