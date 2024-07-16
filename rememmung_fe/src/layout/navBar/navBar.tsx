@@ -7,8 +7,8 @@ import GrayHomeIcon from "@assets/navBar/grayHomeIcon.svg";
 import BrownChattingIcon from "@assets/navBar/brownChattingIcon.svg";
 import GrayChattingIcon from "@assets/navBar/grayChattingIcon.svg";
 
-import BrownGalleryIcon from "@assets/navBar/brownGalleryIcon.svg";
-import GrayGalleryIcon from "@assets/navBar/grayGalleryIcon.svg";
+import BrownPhotoIcon from "@assets/navBar/brownPhotoIcon.svg";
+import GrayPhotoIcon from "@assets/navBar/grayPhotoIcon.svg";
 
 import BrownLetterIcon from "@assets/navBar/brownLetterIcon.svg";
 import GrayLetterIcon from "@assets/navBar/grayLetterIcon.svg";
@@ -41,9 +41,9 @@ const NavBar: React.FC = () => {
     },
     {
       paths: ["/photo"],
-      icon: BrownGalleryIcon,
-      grayIcon: GrayGalleryIcon,
-      label: "갤러리",
+      icon: BrownPhotoIcon,
+      grayIcon: GrayPhotoIcon,
+      label: "사진첩",
     },
     {
       paths: ["/writemail"],
