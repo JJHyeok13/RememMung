@@ -18,7 +18,7 @@ import OnBoardingPage from "./pages/onBoardingPage/onBoardingPage";
 import MainPage from "./pages/mainPage/mainPage";
 
 import ChatPage from "./pages/chatPage/chatPage";
-import GalleryPage from "./pages/galleryPage/galleryPage";
+import PhotoPage from "./pages/photoPage/PhotoPage";
 import WriteMailPage from "./pages/writeMailPage/writeMailPage";
 import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
 import DiaryPage from "@pages/diaryPage/diaryPage";
@@ -42,11 +42,17 @@ function App() {
 
         <Route element={<BasicLayout />}>
           <Route path="/main" element={<MainPage />} />
+
           <Route path="/chat" element={<ChatPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/write" element={<WriteMailPage />} />
+
+          <Route path="/photo" element={<PhotoPage />} />
+
+          <Route path="/writemail" element={<WriteMailPage />} />
+
           <Route path="/mailbox" element={<MailBoxPage />} />
+
           <Route path="/diary" element={<DiaryPage />} />
+
           <Route path="/writediary" element={<WriteDiaryPage />} />
         </Route>
 

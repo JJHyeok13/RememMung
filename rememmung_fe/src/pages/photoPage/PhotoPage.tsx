@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import PhotoContainer from "@components/galleryPage/photoContainer/photoContainer";
+import PhotoContainer from "@components/photoPage/photoContainer/photoContainer";
 import Pagination from "@components/common/pagination/pagination";
 
 import { getPetFile } from "@server/content/api/pet_attachment";
@@ -8,7 +8,7 @@ import { getPetFile } from "@server/content/api/pet_attachment";
 import { PhotoDataProps } from "type/galleryPage/galleryPage";
 import { dummyData } from "./dummyData";
 
-const GalleryPage: React.FC = () => {
+const PhotoPage: React.FC = () => {
   // @ts-ignore
   const [photoData, setPhotoData] = useState<PhotoDataProps>(dummyData);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -42,4 +42,4 @@ const GalleryPage: React.FC = () => {
   );
 };
 
-export default GalleryPage;
+export default PhotoPage;

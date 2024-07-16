@@ -22,38 +22,43 @@ import GrayDiaryIcon from "@assets/navBar/grayDiaryIcon.svg";
 const NavBar: React.FC = () => {
   const location = useLocation();
 
-  const isActive = (path: string) => {
-    return path.includes(location.pathname);
+  const isActive = (paths: string[]) => {
+    return paths.includes(location.pathname);
   };
 
   const navItems = [
-    { path: "/main", icon: BrownHomeIcon, grayIcon: GrayHomeIcon, label: "홈" },
     {
-      path: "/chat",
+      paths: ["/main"],
+      icon: BrownHomeIcon,
+      grayIcon: GrayHomeIcon,
+      label: "홈",
+    },
+    {
+      paths: ["/chat"],
       icon: BrownChattingIcon,
       grayIcon: GrayChattingIcon,
       label: "채팅",
     },
     {
-      path: "/gallery",
+      paths: ["/photo"],
       icon: BrownGalleryIcon,
       grayIcon: GrayGalleryIcon,
       label: "갤러리",
     },
     {
-      path: "/write",
+      paths: ["/writemail"],
       icon: BrownLetterIcon,
       grayIcon: GrayLetterIcon,
       label: "편지쓰기",
     },
     {
-      path: "/mailbox",
+      paths: ["/mailbox"],
       icon: BrownMailBoxIcon,
       grayIcon: GrayMailBoxIcon,
       label: "우편함",
     },
     {
-      path: "/diary",
+      paths: ["/diary", "/writediary"],
       icon: BrownDiaryIcon,
       grayIcon: GrayDiaryIcon,
       label: "멍일기",
@@ -62,19 +67,19 @@ const NavBar: React.FC = () => {
 
   return (
     <div className="flex flex-row items-center mb-6 mx-auto w-5/6">
-      {navItems.map(({ path, icon, grayIcon, label }) => (
+      {navItems.map(({ paths, icon, grayIcon, label }) => (
         <Link
-          key={path}
-          to={path}
+          key={paths[0]}
+          to={paths[0]}
           className="relative flex flex-col items-center w-12 mr-6"
         >
-          {isActive(path) && (
+          {isActive(paths) && (
             <div className="w-2 h-2 rounded-full bg-brown-500 absolute top-[-10px]" />
           )}
-          <img className="w-6" src={isActive(path) ? icon : grayIcon} />
+          <img className="w-6" src={isActive(paths) ? icon : grayIcon} />
           <div
             className={`${
-              isActive(path) ? "text-brown-500" : "text-[#AAAEBB]"
+              isActive(paths) ? "text-brown-500" : "text-[#AAAEBB]"
             } text-xs text-center`}
           >
             {label}
