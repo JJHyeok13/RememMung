@@ -6,14 +6,11 @@ import Pagination from "@components/common/pagination/pagination";
 import { getPetFile } from "@server/content/api/pet_attachment";
 
 import { PhotoDataProps } from "type/galleryPage/galleryPage";
+import { dummyData } from "./dummyData";
 
 const GalleryPage: React.FC = () => {
   // @ts-ignore
-  const [photoData, setPhotoData] = useState<PhotoDataProps>({
-    totalCount: 0,
-    totalPage: 0,
-    nodes: [],
-  });
+  const [photoData, setPhotoData] = useState<PhotoDataProps>(dummyData);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 10;
 
@@ -21,9 +18,9 @@ const GalleryPage: React.FC = () => {
     setCurrentPage(num);
   };
 
-  useEffect(() => {
-    getPetFile(currentPage, pageSize).then((res) => setPhotoData(res));
-  }, []);
+  // useEffect(() => {
+  //   getPetFile(currentPage, pageSize).then((res) => setPhotoData(res));
+  // }, []);
 
   return (
     <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center justify-center h-2/3 py-8 pl-6 pr-4 rounded-xl">

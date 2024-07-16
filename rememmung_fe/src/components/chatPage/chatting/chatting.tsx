@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles";
 import PetProfileImage from "@assets/chatPage/PetProfileImage.svg";
 import { useRecoilValue } from "recoil";
@@ -27,13 +27,35 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ chattingData }) => {
   const petname = useRecoilValue(petName);
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // // 함수 컴포넌트 내부에서 마운트나 업데이트 시 스크롤을 제일 하단으로 이동
-  // useEffect(() => {
-  //   if (chatContainerRef.current) {
-  //     chatContainerRef.current.scrollTop =
-  //       chatContainerRef.current.scrollHeight;
-  //   }
-  // }, [chattingData]);
+  const [isUserAtBottom, setIsUserAtBottom] = useState(true);
+
+  useEffect(() => {
+    const chatContainer = chatContainerRef.current;
+    if (!chatContainer) return;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = chatContainer;
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        setIsUserAtBottom(true);
+      } else {
+        setIsUserAtBottom(false);
+      }
+    };
+
+    chatContainer.addEventListener("scroll", handleScroll);
+
+    return () => {
+      chatContainer.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // 새로운 채팅 메시지가 올 때마다 스크롤을 하단으로 이동
+  useEffect(() => {
+    if (chatContainerRef.current && isUserAtBottom) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  }, [chattingData]);
 
   // const renderMessageContent = (chat: any) => {
   //   const { type, url } = chat.attachment;

@@ -33,13 +33,14 @@ const styles = {
     background: rgba(0, 0, 0, 0.47);
     backdrop-filter: blur(2px);
 
-    padding: 17px 18px;
+    padding: 8px 18px;
     box-sizing: border-box;
     border-radius: 12px;
   `,
   Title: styled.div`
+    margin-top: auto;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     color: #ffffff;
   `,
   Content: styled.div`

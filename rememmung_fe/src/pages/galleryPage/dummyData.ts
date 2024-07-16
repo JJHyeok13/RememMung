@@ -6,6 +6,7 @@ import Example5 from "../../assets/galleryPage/Example5.svg";
 
 export const dummyData = {
   totalCount: 10,
+  totalPage: 1,
   nodes: [
     {
       id: 1,

@@ -7,6 +7,9 @@ module.exports = {
       backgroundImage: {
         chatPage: "url('./assets/chatPage/background.svg')",
       },
+      backgroundColor: {
+        modalBack: "rgba(0, 0, 0, 0.8)",
+      },
       colors: {
         brown: {
           100: "#EAE0D6",
