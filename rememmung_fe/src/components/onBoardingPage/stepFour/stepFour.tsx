@@ -52,7 +52,6 @@ const StepFour: React.FC<StepFourProps> = ({
 
   const handleFileUpload = async (file: File) => {
     try {
-      // Step 1: Get presigned URL from the backend
       const { signedUrl, attachmentId } = await uploadFile({
         type: file.type,
       });
@@ -64,11 +63,8 @@ const StepFour: React.FC<StepFourProps> = ({
       });
 
       await updateUploadFile(attachmentId);
-
-      alert("파일 업로드 성공!");
     } catch (error) {
       console.error("파일 업로드 실패:", error);
-      alert("파일 업로드 실패!");
     }
   };
 
