@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 import StepComponent from "@components/onBoardingPage/stepComponent/stepComponent";
-
-import styles from "./styles";
-// import LoadingComponent from "@components/onBoardingPage/loadingComponent/loadingComponent";
 import CompleteComponent from "@components/onBoardingPage/completeComponent/completeComponent";
-import { PetInfoProps } from "type/onboardingPage/onboardingPage";
+
 import { savePetInfo } from "@server/user/api/user";
 
+import { PetInfoProps } from "type/onboardingPage/onboardingPage";
+
+import styles from "./styles";
+
 const OnBoardingPage: React.FC = () => {
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
   const [petData, setPetData] = useState<PetInfoProps>({
@@ -61,8 +61,6 @@ const OnBoardingPage: React.FC = () => {
   };
 
   const submitData = async () => {
-    //setIsLoading(true);
-
     await savePetInfo(petData);
     setIsComplete(true);
   };
@@ -84,8 +82,6 @@ const OnBoardingPage: React.FC = () => {
           submitData={submitData}
         />
       )}
-
-      {/* {isLoading && <LoadingComponent />} */}
 
       {isComplete && <CompleteComponent petData={petData} />}
     </styles.Background>

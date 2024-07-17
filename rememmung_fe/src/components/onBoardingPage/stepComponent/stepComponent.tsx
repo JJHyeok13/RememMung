@@ -6,8 +6,9 @@ import StepThree from "@components/onBoardingPage/stepThree/stepThree";
 import StepFour from "@components/onBoardingPage/stepFour/stepFour";
 import StepFive from "@components/onBoardingPage/stepFive/stepFive";
 
-import styles from "./styles";
 import { PetInfoProps } from "type/onboardingPage/onboardingPage";
+
+import styles from "./styles";
 
 interface StepComponentProps {
   petData: PetInfoProps;
@@ -42,16 +43,12 @@ const StepComponent: React.FC<StepComponentProps> = ({
   const handlePrevStep = () => {
     if (step > 1) {
       setStep(step - 1);
-      console.log(step);
-      console.log(petData);
     }
   };
 
   const handleNextStep = () => {
     if (step < 5) {
       setStep(step + 1);
-      console.log(step);
-      console.log(petData);
     }
   };
 
