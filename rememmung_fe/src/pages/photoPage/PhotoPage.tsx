@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import PhotoContainer from "@components/photoPage/photoContainer/photoContainer";
 import Pagination from "@components/common/pagination/pagination";
 
-import { getPetFile } from "@server/content/api/pet_attachment";
+//import { getPetFile } from "@server/content/api/pet_attachment";
 
 import { PhotoDataProps } from "type/photoPage/photoPage";
 import { dummyData } from "./dummyData";
@@ -12,6 +12,7 @@ const PhotoPage: React.FC = () => {
   // @ts-ignore
   const [photoData, setPhotoData] = useState<PhotoDataProps>(dummyData);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  // @ts-ignore
   const pageSize = 10;
 
   const handlePage = (num: number) => {

@@ -18,7 +18,7 @@ import OnBoardingPage from "./pages/onBoardingPage/onBoardingPage";
 import MainPage from "./pages/mainPage/mainPage";
 
 import ChatPage from "./pages/chatPage/chatPage";
-import PhotoPage from "./pages/photoPage/PhotoPage";
+import PhotoPage from "./pages/photoPage/photoPage";
 import WriteMailPage from "./pages/writeMailPage/writeMailPage";
 import MailBoxPage from "./pages/mailBoxPage/mailBoxPage";
 import DiaryPage from "@pages/diaryPage/diaryPage";
