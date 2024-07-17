@@ -141,14 +141,14 @@ const UpdatePage: React.FC = () => {
       <TextareaBox
         title="싫어하는 것"
         placeholder="ex. 차 소리"
-        value={petData.favorites.join(", ")}
+        value={petData.dislike.join(", ")}
         handleSetPetInfo={handleSetPetInfoDislike}
       />
 
       <TextareaBox
         title="개인기"
         placeholder="ex. 코"
-        value={petData.dislike.join(", ")}
+        value={petData.skill.join(", ")}
         handleSetPetInfo={handleSetPetInfoSkill}
       />
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ItemProps {
   id: number;
@@ -22,6 +22,10 @@ const RadioInputBox: React.FC<RadioInputBoxProps> = ({
   const [selectedItem, setSelectedItem] = useState<string | null>(
     selectedValue
   );
+
+  useEffect(() => {
+    setSelectedItem(selectedValue);
+  }, [selectedValue]);
 
   const handleInputChange = (item: ItemProps) => {
     handleSetPetInfoGender(item.value);
