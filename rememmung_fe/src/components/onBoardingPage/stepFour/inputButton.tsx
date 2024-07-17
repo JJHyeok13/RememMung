@@ -6,7 +6,7 @@ import { FaCirclePlus } from "react-icons/fa6";
 interface InputButtonProps {
   description: string;
   imageUrl?: string;
-  onFileChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onFileChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Container = styled.div`
@@ -20,7 +20,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 8px;
 `;
 
 const NoDisplayInput = styled.input`
@@ -30,6 +29,9 @@ const NoDisplayInput = styled.input`
 const Label = styled.label`
   cursor: pointer;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const StyleIcon = styled(FaCirclePlus)`

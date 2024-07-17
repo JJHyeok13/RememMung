@@ -5,6 +5,7 @@ import RadioInputBox from "@components/myPage/updatePage/radioInputBox";
 import TextInputBox from "@components/myPage/updatePage/textInputBox";
 import CheckBoxInput from "@components/myPage/updatePage/checkboxInput";
 import TextareaBox from "@components/myPage/updatePage/textareaBox";
+import InputButton from "@components/onBoardingPage/stepFour/inputButton";
 
 interface PetInfoProps {
   species: string;
@@ -123,6 +124,27 @@ const UpdatePage: React.FC = () => {
         selectedValues={petData.personality}
         handleSetPetInfoPersonality={handleSetPetInfoPersonality}
       />
+
+      <div className="flex flex-row mb-20">
+        <div className="mr-[64px]">
+          <div className="text-[#808997] font-semibold text-xs mb-2">
+            사진(필수)
+          </div>
+          <InputButton description="기본사진" />
+        </div>
+
+        <div>
+          <div className="text-[#808997] font-semibold text-xs mb-2">
+            사진(선택)
+          </div>
+          <div className="flex flex-row [&>div]:mr-4">
+            <InputButton description="앉아있는 사진" />
+            <InputButton description="누워있는 사진" />
+            <InputButton description="걷고있는 사진" />
+            <InputButton description="뛰고있는 사진" />
+          </div>
+        </div>
+      </div>
 
       <div className="text-xl font-semibold text-black-500">선택정보</div>
       <RadioInputBox
