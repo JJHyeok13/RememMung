@@ -107,6 +107,7 @@ const UpdatePage: React.FC = () => {
         items={speciesItem}
         selectedValue={petData.species}
         handleSetPetInfoGender={handleSetPetInfoSpecies}
+        name="species"
       />
 
       <TextInputBox
@@ -129,6 +130,7 @@ const UpdatePage: React.FC = () => {
         items={genderItem}
         selectedValue={petData.gender}
         handleSetPetInfoGender={handleSetPetInfoGender}
+        name="gender"
       />
 
       <TextareaBox

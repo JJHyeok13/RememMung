@@ -11,6 +11,7 @@ interface RadioInputBoxProps {
   items: ItemProps[];
   selectedValue: string;
   handleSetPetInfoGender: (type: string) => void;
+  name: string;
 }
 
 const RadioInputBox: React.FC<RadioInputBoxProps> = ({
@@ -18,6 +19,7 @@ const RadioInputBox: React.FC<RadioInputBoxProps> = ({
   items,
   selectedValue,
   handleSetPetInfoGender,
+  name,
 }) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(
     selectedValue
@@ -42,7 +44,7 @@ const RadioInputBox: React.FC<RadioInputBoxProps> = ({
             <input
               type="radio"
               id={`radio_${item.id}`}
-              name="radio_group"
+              name={name}
               className="mr-1 accent-[#6C6C77]"
               checked={selectedItem === item.value}
               onChange={() => handleInputChange(item)}
