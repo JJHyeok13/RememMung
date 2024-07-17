@@ -25,9 +25,9 @@ import DiaryPage from "@pages/diaryPage/diaryPage";
 import WriteDiaryPage from "@pages/writeDiaryPage/writeDiaryPage";
 
 import MyMailPage from "@pages/myPage/myMailPage/myMailPage";
-import UpdatePage from "@pages/myPage/updatePage/updatePage";
-import DeleteDataPage from "@pages/myPage/deleteDataPage/deleteDataPage";
-import DeleteMemberPage from "@pages/myPage/deleteMemberPage/deleteMemberPage";
+import UpdatePage from "@pages/myPage/updatePage";
+import DeleteDataPage from "@pages/myPage/deleteDataPage";
+import DeleteMemberPage from "@pages/myPage/deleteMemberPage";
 
 function App() {
   useBodyOverflowHidden();
