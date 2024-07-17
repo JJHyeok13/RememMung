@@ -27,7 +27,7 @@ const PhotoContainer: React.FC<PhotoContainerProps> = ({ photoData }) => {
   };
 
   return (
-    <div className="w-full grid grid-cols-5 gap-8 mb-12 items-center">
+    <div className="grid items-center w-full grid-cols-5 gap-8 mb-12 place-items-center">
       {photoData.map((photo, index) => (
         <styles.PhotoContainer
           key={photo.id}
