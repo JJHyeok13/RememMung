@@ -25,7 +25,7 @@ const DiaryContainer: React.FC<DiaryContainerProps> = ({
           key={diary.id}
           onClick={() => onDiaryClick(diary)}
         >
-          <div className="font-['YangJin'] text-black-500 text-[10px]">
+          <div className="font-['YangJin'] text-black-500 text-[10px] mb-2">
             {diary.createdAt}
           </div>
           <img
