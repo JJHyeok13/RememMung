@@ -13,13 +13,11 @@ interface MailDataProps {
   totalCount: number;
   nodes: {
     id: number;
-    sourceId: number;
-    from: string;
-    sourceName: string;
     title: string;
     content: string;
-    isRead: boolean;
+    letterType: string;
     createdAt: string;
+    video?: string;
   }[];
 }
 
