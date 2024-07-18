@@ -31,7 +31,7 @@ const ChatPage: React.FC = () => {
 
   const fetchData = useCallback(() => {
     getChatting(config).then((res) => setChattingData(res));
-  }, [chattingData]);
+  }, [config]);
 
   useEffect(() => {
     fetchData();
@@ -48,8 +48,10 @@ const ChatPage: React.FC = () => {
     const data = {
       content: content,
     };
-    sendChat(data);
-    setContent("");
+    sendChat(data).then(() => {
+      setContent("");
+      fetchData();
+    });
   };
 
   return (
