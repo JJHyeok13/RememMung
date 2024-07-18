@@ -71,7 +71,7 @@ const MailBoxPage: React.FC = () => {
   };
 
   const ToWritePage = () => {
-    navigate("/write");
+    navigate("/writemail");
   };
 
   // 편지 상세 뷰 관리 변수

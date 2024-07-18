@@ -10,6 +10,7 @@ interface DetailMailProps {
     letterType: string;
     title: string;
     content: string;
+    video?: string;
     createdAt: string;
   };
   handleClose: () => void;
@@ -52,6 +53,12 @@ const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
   return (
     <>
       <styles.Background>
+        {detailData.video && (
+          <iframe
+            src={detailData.video}
+            className="h-[300px] w-[512px] ml-[180px]"
+          />
+        )}
         <styles.Letter letterType={detailData.letterType} ref={letterRef}>
           <styles.Content>
             <styles.Receiver>눈나에게</styles.Receiver>

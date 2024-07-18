@@ -2,16 +2,42 @@ import React, { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SelectLetterStyle from "@components/writeMailPage/selectLetterStyle";
+import { useRecoilState } from "recoil";
+import { mailDataState } from "recoil/recoil";
 
-import { writeLetter } from "@server/content/api/letter";
+// import { writeLetter } from "@server/content/api/letter";
+
+import Video from "@assets/mailBoxPage/video.mp4";
 
 interface LetterDataProps {
+  id: number;
   title: string;
   content: string;
+  video?: string;
+  letterType: string;
+  createdAt: string;
 }
 
 const WriteMailPage: React.FC = () => {
   const navigate = useNavigate();
+  // @ts-ignore
+  const [mail, setMail] = useRecoilState(mailDataState);
+  // const [today, setToday] = useState<string>("");
+
+  // useEffect(() => {
+  //   const getFormattedDate = () => {
+  //     const date = new Date();
+  //     const year = date.getFullYear();
+  //     const month = String(date.getMonth() + 1).padStart(2, "0");
+  //     const day = String(date.getDate()).padStart(2, "0");
+  //     const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
+  //     const dayName = dayNames[date.getDay()];
+
+  //     return `${year}. ${month}. ${day} (${dayName})`;
+  //   };
+
+  //   setToday(getFormattedDate());
+  // }, []);
 
   const [letterStyle, setLetterStyle] = useState<string>("");
 
@@ -19,7 +45,7 @@ const WriteMailPage: React.FC = () => {
     setLetterStyle(type);
   };
 
-  const [letterData, setLetterData] = useState<LetterDataProps>({
+  const [letterData, setLetterData] = useState({
     title: "",
     content: "",
   });
@@ -33,7 +59,25 @@ const WriteMailPage: React.FC = () => {
   };
 
   const handleWrite = () => {
-    writeLetter(letterData);
+    const newMail: LetterDataProps = {
+      id: 2,
+      title: letterData.title,
+      content: letterData.content,
+      letterType: letterStyle,
+      createdAt: "방금 전",
+    };
+    const newVideoMail: LetterDataProps = {
+      id: 1,
+      title: "누나 안녕!",
+      content:
+        "누나 잘 지내고 있어? 난 오늘 산책 다녀와써! 날씨가 엄청 좋더라~ 누나랑 같이 공원 산책했던 날이 기억나더라구~ 난 잘 지내고 있으니까 걱정마 누나~! 누나도 삶이 지칠 때, 꼭 산책해!",
+      letterType: "purple",
+      video: Video,
+      createdAt: "방금 전",
+    };
+    setMail((prevData) => [newVideoMail, newMail, ...prevData]);
+
+    // writeLetter(letterData);
     navigate("/mailbox");
   };
 

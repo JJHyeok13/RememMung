@@ -12,6 +12,7 @@ interface MailListProps {
     letterType: string;
     title: string;
     content: string;
+    video?: string;
     createdAt: string;
   }[];
   isOpen: boolean;

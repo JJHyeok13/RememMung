@@ -2,7 +2,7 @@ export const maildummyData = {
   totalCount: 7,
   nodes: [
     {
-      id: 1,
+      id: 3,
       letterType: "purple",
       title: "요즘엔 어떤 노래 들어어~?",
       content:
@@ -10,7 +10,7 @@ export const maildummyData = {
       createdAt: "3시간 전",
     },
     {
-      id: 2,
+      id: 4,
       letterType: "purple",
       title: "감기 조심해야해애~",
       content:
@@ -18,7 +18,7 @@ export const maildummyData = {
       createdAt: "2024. 04. 27",
     },
     {
-      id: 3,
+      id: 5,
       letterType: "purple",
       title: "누나 생일추카해!!~~",
       content:
@@ -26,7 +26,7 @@ export const maildummyData = {
       createdAt: "2024. 04. 18",
     },
     {
-      id: 4,
+      id: 6,
       letterType: "purple",
       title: "이별은 항상 어려운 법이죠..",
       content:
