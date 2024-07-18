@@ -15,6 +15,7 @@ interface LetterDataProps {
   content: string;
   video?: string;
   letterType: string;
+  from: string;
   createdAt: string;
 }
 
@@ -64,6 +65,7 @@ const WriteMailPage: React.FC = () => {
       title: letterData.title,
       content: letterData.content,
       letterType: letterStyle,
+      from: "나",
       createdAt: "방금 전",
     };
     const newVideoMail: LetterDataProps = {
@@ -72,6 +74,7 @@ const WriteMailPage: React.FC = () => {
       content:
         "누나 잘 지내고 있어? 난 오늘 산책 다녀와써! 날씨가 엄청 좋더라~ 누나랑 같이 공원 산책했던 날이 기억나더라구~ 난 잘 지내고 있으니까 걱정마 누나~! 누나도 삶이 지칠 때, 꼭 산책해!",
       letterType: "purple",
+      from: "브리",
       video: Video,
       createdAt: "방금 전",
     };

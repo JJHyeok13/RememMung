@@ -13,6 +13,7 @@ interface MailListProps {
     title: string;
     content: string;
     video?: string;
+    from: string;
     createdAt: string;
   }[];
   isOpen: boolean;
@@ -53,7 +54,7 @@ const MailList: React.FC<MailListProps> = ({
                   {mail.title}
                 </styles.Title>
               </styles.TitleData>
-              <styles.OtherData>{petInfo}</styles.OtherData>
+              <styles.OtherData>{mail.from}</styles.OtherData>
               <styles.OtherData>{mail.createdAt}</styles.OtherData>
             </tr>
           ))}

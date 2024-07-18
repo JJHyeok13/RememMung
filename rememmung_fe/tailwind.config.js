@@ -11,7 +11,7 @@ module.exports = {
         xxl: { min: "1920px", max: "2560px" },
       },
       backgroundImage: {
-        chatPage: "url('./assets/chatPage/background.svg')",
+        chatPage: "url('./assets/chatPage/newBack.svg')",
         smStartPage: "url('./assets/background/background_1280.png')",
         mdStartPage: "url('./assets/background/background_1440.png')",
         xlStartPage: "url('./assets/background/background_1680.png')",

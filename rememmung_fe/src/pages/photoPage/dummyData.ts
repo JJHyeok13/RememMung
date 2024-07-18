@@ -1,8 +1,9 @@
-import Example1 from "@assets/photoPage/Example1.svg";
-import Example2 from "@assets/photoPage/Example2.svg";
-import Example3 from "@assets/photoPage/Example3.svg";
-import Example4 from "@assets/photoPage/Example4.svg";
-import Example5 from "@assets/photoPage/Example5.svg";
+import Example1 from "@assets/photoPage/ComfyUI_00053_.png";
+import Example2 from "@assets/photoPage/ComfyUI_00056_.png";
+import Example3 from "@assets/photoPage/ComfyUI_00064_.png";
+import Example4 from "@assets/photoPage/ComfyUI_00100_.png";
+import Example5 from "@assets/photoPage/ComfyUI_00105_.png";
+import Example6 from "@assets/photoPage/ComfyUI_00108_.png";
 
 export const dummyData = {
   totalCount: 10,
@@ -64,47 +65,7 @@ export const dummyData = {
       attachment: {
         id: 1,
         type: "",
-        url: `${Example1}`,
-        createdAt: "2024. 06. 08",
-      },
-    },
-    {
-      id: 7,
-      petId: 1,
-      attachment: {
-        id: 1,
-        type: "",
-        url: `${Example2}`,
-        createdAt: "2024. 06. 08",
-      },
-    },
-    {
-      id: 8,
-      petId: 1,
-      attachment: {
-        id: 1,
-        type: "",
-        url: `${Example3}`,
-        createdAt: "2024. 06. 08",
-      },
-    },
-    {
-      id: 9,
-      petId: 1,
-      attachment: {
-        id: 1,
-        type: "",
-        url: `${Example4}`,
-        createdAt: "2024. 06. 08",
-      },
-    },
-    {
-      id: 10,
-      petId: 1,
-      attachment: {
-        id: 1,
-        type: "",
-        url: `${Example5}`,
+        url: `${Example6}`,
         createdAt: "2024. 06. 08",
       },
     },
