@@ -3,8 +3,8 @@ import styles from "./styles";
 
 import PetProfileImage from "@assets/onBoardingPage/image.png";
 
-import { useRecoilValue } from "recoil";
-import { petName } from "recoil/recoil";
+// import { useRecoilValue } from "recoil";
+// import { petName } from "recoil/recoil";
 
 interface ChatComponentProps {
   nodes: {
@@ -23,7 +23,7 @@ interface ChatComponentProps {
 }
 
 const ChatComponent: React.FC<ChatComponentProps> = ({ nodes }) => {
-  const petname = useRecoilValue(petName);
+  // const petname = useRecoilValue(petName);
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
 
   const renderMessageContent = (chat: any) => {
@@ -57,7 +57,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ nodes }) => {
           {chat.userId === null && (
             <styles.PetProfile>
               <styles.PetImage src={PetProfileImage} />
-              <styles.PetName>{chat.userId ? "" : `${petname}`}</styles.PetName>
+              <styles.PetName>{chat.userId ? "" : "브리"}</styles.PetName>
             </styles.PetProfile>
           )}
 
