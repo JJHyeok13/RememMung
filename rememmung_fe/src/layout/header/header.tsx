@@ -19,12 +19,12 @@ const Header: React.FC = () => {
 
   const handleLogout = () => {
     logoutUser();
-    navigate(`/`);
+    navigate(`/chat`);
   };
 
   return (
-    <div className="flex flex-row justify-between w-5/6 mx-auto py-8">
-      <Link className="no-underline	flex flex-row items-center" to="/main">
+    <div className="flex flex-row justify-between w-5/6 py-8 mx-auto">
+      <Link className="flex flex-row items-center no-underline" to="/main">
         <img className="mr-2" src={LogoImage} alt="Logo Image" />
         <div className="font-['SebangGothic'] text-brown-500 text-2xl">
           리멤멍

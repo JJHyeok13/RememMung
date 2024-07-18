@@ -15,8 +15,6 @@ import StartPage from "./pages/startPage/startPage";
 import KakaoLoginPage from "@pages/socialLoginPage/kakaoLoginPage";
 import OnBoardingPage from "./pages/onBoardingPage/onBoardingPage";
 
-import MainPage from "./pages/mainPage/mainPage";
-
 import ChatPage from "./pages/chatPage/chatPage";
 import PhotoPage from "./pages/photoPage/photoPage";
 import WriteMailPage from "./pages/writeMailPage/writeMailPage";
@@ -41,8 +39,6 @@ function App() {
         <Route path="/onboarding" element={<OnBoardingPage />} />
 
         <Route element={<BasicLayout />}>
-          <Route path="/main" element={<MainPage />} />
-
           <Route path="/chat" element={<ChatPage />} />
 
           <Route path="/photo" element={<PhotoPage />} />

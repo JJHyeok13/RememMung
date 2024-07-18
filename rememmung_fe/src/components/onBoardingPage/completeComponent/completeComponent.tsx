@@ -41,7 +41,7 @@ const CompleteComponent: React.FC<CompleteComponentProps> = (
   };
 
   const handleComplete = () => {
-    navigate("/main");
+    navigate("/chat");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
