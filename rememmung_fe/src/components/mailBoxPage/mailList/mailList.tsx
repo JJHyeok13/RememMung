@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import DetailMail from "../detailMail/detailMail";
 
 import styles from "./styles";
-import { useRecoilValue } from "recoil";
-import { petName } from "recoil/recoil";
+// import { useRecoilValue } from "recoil";
+// import { petName } from "recoil/recoil";
 
 interface MailListProps {
   mailData: {
@@ -27,7 +27,7 @@ const MailList: React.FC<MailListProps> = ({
   handleOpen,
   handleClose,
 }) => {
-  const petInfo = useRecoilValue(petName);
+  // const petInfo = useRecoilValue(petName);
   const [selectedMail, setSelectedMail] = useState(null);
 
   const handleMailClick = (mail: any) => {

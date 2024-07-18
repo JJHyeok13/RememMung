@@ -17,6 +17,7 @@ interface MailDataProps {
     content: string;
     letterType: string;
     createdAt: string;
+    from: string;
     video?: string;
   }[];
 }
