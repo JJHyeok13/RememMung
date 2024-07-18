@@ -1,8 +1,6 @@
 import React, { KeyboardEvent, useEffect, useRef } from "react";
 
 import styles from "./styles";
-import { useRecoilValue } from "recoil";
-import { petName } from "recoil/recoil";
 
 interface DetailMailProps {
   detailData: {
@@ -11,13 +9,13 @@ interface DetailMailProps {
     title: string;
     content: string;
     video?: string;
+    from: string;
     createdAt: string;
   };
   handleClose: () => void;
 }
 
 const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
-  const petInfo = useRecoilValue(petName);
   const letterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
           <styles.Content>
             <styles.Receiver>눈나에게</styles.Receiver>
             <div>{detailData.content}</div>
-            <styles.Sender>{petInfo}가</styles.Sender>
+            <styles.Sender>{detailData.from}가</styles.Sender>
           </styles.Content>
         </styles.Letter>
         {/* <styles.Button onClick={handleClose}>닫기</styles.Button> */}

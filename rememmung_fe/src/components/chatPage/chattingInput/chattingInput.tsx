@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, KeyboardEvent } from "react";
 
 import SendButtonImage from "../../../assets/chatPage/sendButton.svg";
 
@@ -15,6 +15,12 @@ const ChattingInput: React.FC<ChattingInputProps> = ({
   handleContent,
   sendContent,
 }) => {
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      sendContent();
+    }
+  };
+
   return (
     <styles.Container>
       <styles.StyleInput
@@ -22,6 +28,7 @@ const ChattingInput: React.FC<ChattingInputProps> = ({
         placeholder="브리에게 말을 걸어봐요!"
         value={content}
         onChange={handleContent}
+        onKeyPress={handleKeyPress}
       />
       <styles.SendButton
         src={SendButtonImage}

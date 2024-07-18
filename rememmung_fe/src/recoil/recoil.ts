@@ -1,5 +1,6 @@
 import { dummyData } from "@pages/diaryPage/dummyData";
 import { maildummyData } from "@pages/mailBoxPage/dummyData";
+import { chatdummyData } from "@pages/chatPage/dummyData";
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
@@ -54,4 +55,23 @@ interface MailProps {
 export const mailDataState = atom<MailProps[]>({
   key: "mailData",
   default: maildummyData.nodes,
+});
+
+interface ChatProps {
+  id: number;
+  chatRoomId: number;
+  userId: string | null;
+  content: string;
+  attachment: {
+    id: number;
+    type: string;
+    url: string;
+    createdAt: string;
+  };
+  createdAt: string;
+}
+
+export const chatDataState = atom<ChatProps[]>({
+  key: "chatData",
+  default: chatdummyData.nodes,
 });
