@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import BrownHomeIcon from "@assets/navBar/brownHomeIcon.svg";
-import GrayHomeIcon from "@assets/navBar/grayHomeIcon.svg";
+// import BrownHomeIcon from "@assets/navBar/brownHomeIcon.svg";
+// import GrayHomeIcon from "@assets/navBar/grayHomeIcon.svg";
 
 import BrownChattingIcon from "@assets/navBar/brownChattingIcon.svg";
 import GrayChattingIcon from "@assets/navBar/grayChattingIcon.svg";
@@ -27,12 +27,12 @@ const NavBar: React.FC = () => {
   };
 
   const navItems = [
-    {
-      paths: ["/main"],
-      icon: BrownHomeIcon,
-      grayIcon: GrayHomeIcon,
-      label: "홈",
-    },
+    // {
+    //   paths: ["/main"],
+    //   icon: BrownHomeIcon,
+    //   grayIcon: GrayHomeIcon,
+    //   label: "홈",
+    // },
     {
       paths: ["/chat"],
       icon: BrownChattingIcon,
@@ -66,7 +66,7 @@ const NavBar: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-row items-center mb-6 mx-auto w-5/6">
+    <div className="flex flex-row items-center w-5/6 mx-auto mb-6">
       {navItems.map(({ paths, icon, grayIcon, label }) => (
         <Link
           key={paths[0]}
