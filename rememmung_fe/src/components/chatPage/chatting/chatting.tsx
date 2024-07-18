@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./styles";
 
 import PetProfileImage from "@assets/onBoardingPage/image.png";
@@ -49,6 +49,17 @@ const ChatComponent: React.FC<ChatComponentProps> = ({ nodes }) => {
         return null;
     }
   };
+
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [nodes]);
 
   return (
     <styles.Container ref={chatContainerRef}>
