@@ -54,7 +54,7 @@ const DetailMail: React.FC<DetailMailProps> = ({ detailData, handleClose }) => {
         {detailData.video && (
           <iframe
             src={detailData.video}
-            className="h-[300px] w-[512px] ml-[180px] sm:w-[300px] sm:h-[200px] sm:ml-[100px] md:w-[400px] md:h-[300px] md:ml-[100px]"
+            className="h-[300px] w-[400px] ml-[100px] sm:w-[300px] sm:h-[200px] sm:ml-[100px] md:w-[400px] md:h-[300px] md:ml-[100px]"
           />
         )}
         <styles.Letter letterType={detailData.letterType} ref={letterRef}>
