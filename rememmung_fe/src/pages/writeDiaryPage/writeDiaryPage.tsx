@@ -67,7 +67,7 @@ const WriteDiaryPage: React.FC = () => {
         emotion: diaryData.emotion,
         createdAt: today,
       };
-      setDiaryData((prevData) => [...prevData, newDiary]);
+      setDiaryData((prevData) => [newDiary, ...prevData]);
       navigate("/diary");
     }
   };
