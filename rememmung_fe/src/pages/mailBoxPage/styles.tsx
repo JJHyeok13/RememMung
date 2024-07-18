@@ -53,6 +53,13 @@ const styles = {
     color: #939393;
     text-align: center;
   `,
+  PetImage: styled.img`
+    width: 248px;
+    height: 248px;
+    border-radius: 50%;
+
+    margin-bottom: 42px;
+  `,
 };
 
 export default styles;

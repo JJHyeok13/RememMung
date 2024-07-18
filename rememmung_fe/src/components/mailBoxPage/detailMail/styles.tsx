@@ -1,25 +1,46 @@
 import styled from "styled-components";
 
-import MailGreenBackground from "@assets/mailBoxPage/mailBackground_Green.png";
+import Green from "@assets/mailBoxPage/Frame-1.png";
+import Purple from "@assets/mailBoxPage/Frame-2.png";
+import Pink from "@assets/mailBoxPage/Frame.png";
+import Sky from "@assets/mailBoxPage/Frame-3.png";
+
+const getBackgroundImage = (letterType: string) => {
+  switch (letterType) {
+    case "green":
+      return Green;
+    case "purple":
+      return Purple;
+    case "pink":
+      return Pink;
+    case "sky":
+      return Sky;
+    default:
+      return Purple;
+  }
+};
 
 const styles = {
   Background: styled.div`
     position: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(3px);
     z-index: 1000;
   `,
-  Container: styled.div``,
-  Letter: styled.div`
-    background-image: url(${MailGreenBackground});
+  Letter: styled.div<{ letterType: string }>`
+    background-image: url(${(props) => getBackgroundImage(props.letterType)});
     background-repeat: no-repeat;
+    color: #37393d;
+
+    margin: 0 auto;
 
     border-radius: 12px;
     display: flex;
@@ -27,7 +48,7 @@ const styles = {
     justify-content: center;
     align-items: center;
     width: 710px;
-    height: 480px;
+    height: 401.5px;
   `,
   Content: styled.div`
     font-family: "SBAggro";
@@ -36,16 +57,17 @@ const styles = {
     width: 534px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 40px;
   `,
   Receiver: styled.div`
-    margin-bottom: 35px;
+    padding-top: 10px;
+    padding-bottom: 50px;
   `,
   Sender: styled.div`
-    margin-top: 67px;
+    margin-top: 40px;
     text-align: right;
   `,
   Button: styled.div`
-    margin-left: auto;
     margin-top: 24px;
 
     width: fit-content;

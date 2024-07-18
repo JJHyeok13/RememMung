@@ -1,4 +1,5 @@
 import { dummyData } from "@pages/diaryPage/dummyData";
+import { maildummyData } from "@pages/mailBoxPage/dummyData";
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
@@ -38,4 +39,18 @@ interface DiaryProps {
 export const diaryDataState = atom<DiaryProps[]>({
   key: "diaryData",
   default: dummyData.nodes,
+});
+
+interface MailProps {
+  id: number;
+  title: string;
+  content: string;
+  letterType: string;
+  createdAt: string;
+  video?: string;
+}
+
+export const mailDataState = atom<MailProps[]>({
+  key: "mailData",
+  default: maildummyData.nodes,
 });

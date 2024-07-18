@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import MailList from "@components/mailBoxPage/mailList/mailList";
@@ -7,22 +7,27 @@ import SearchBar from "@components/mailBoxPage/searchBar/searchBar";
 
 import styles from "./styles";
 
-import { getLetterList, updateLetter } from "@server/content/api/letter";
+import {
+  //getLetterList,
+  updateLetter,
+} from "@server/content/api/letter";
+import { useRecoilValue } from "recoil";
+import { mailDataState } from "recoil/recoil";
 
-interface MailDataProps {
-  totalCount: number;
-  totalPage: number;
-  nodes: {
-    id: number;
-    sourceId: number;
-    from: string;
-    sourceName: string;
-    title: string;
-    content: string;
-    isRead: boolean;
-    createdAt: string;
-  }[];
-}
+// interface MailDataProps {
+//   totalCount: number;
+//   totalPage: number;
+//   nodes: {
+//     id: number;
+//     sourceId: number;
+//     from: string;
+//     sourceName: string;
+//     title: string;
+//     content: string;
+//     isRead: boolean;
+//     createdAt: string;
+//   }[];
+// }
 
 interface ConfigProps {
   params: {
@@ -39,12 +44,8 @@ interface ConfigProps {
 const MailBoxPage: React.FC = () => {
   const navigate = useNavigate();
 
-  // @ts-ignore
-  const [mailData, setMailData] = useState<MailDataProps>({
-    totalCount: 0,
-    totalPage: 0,
-    nodes: [],
-  });
+  const mailData = useRecoilValue(mailDataState);
+  const totalPage = 1;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 7;
 
@@ -61,9 +62,9 @@ const MailBoxPage: React.FC = () => {
     },
   });
 
-  useEffect(() => {
-    getLetterList(config).then((res) => setMailData(res));
-  }, [config, currentPage]);
+  // useEffect(() => {
+  //   getLetterList(config).then((res) => setMailData(res));
+  // }, [config, currentPage]);
 
   const handlePage = (num: number) => {
     setCurrentPage(num);
@@ -88,10 +89,10 @@ const MailBoxPage: React.FC = () => {
   return (
     <styles.Container>
       <styles.ElementBox>
-        {mailData && mailData.nodes.length > 0 ? (
+        {mailData && mailData.length > 0 ? (
           <>
             <MailList
-              mailData={mailData.nodes}
+              mailData={mailData}
               isOpen={isOpen}
               handleOpen={handleOpen}
               handleClose={handleClose}
@@ -99,7 +100,7 @@ const MailBoxPage: React.FC = () => {
             <Pagination
               currentPage={currentPage}
               handlePage={handlePage}
-              totalPage={mailData.totalPage}
+              totalPage={totalPage}
             />
           </>
         ) : (
