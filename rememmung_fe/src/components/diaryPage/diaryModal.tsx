@@ -22,7 +22,7 @@ const DiaryModal: React.FC<DiaryModalProps> = ({ diary, onClose }) => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-30 bg-black-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-30 bg-black-black min-w-[700px]">
       <div className="flex flex-col items-center p-6 bg-white rounded-lg">
         <img
           src={handleEmotionIcon(diary.emotion)}

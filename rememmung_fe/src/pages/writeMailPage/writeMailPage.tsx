@@ -52,13 +52,13 @@ const WriteMailPage: React.FC = () => {
         value={letterData.content}
         onChange={handleContent}
       />
-      <div className="flex flex-row justify-between items-center w-full">
+      <div className="flex flex-row items-center justify-between w-full">
         <SelectLetterStyle
           letterStyle={letterStyle}
           handleLetterStyle={handleLetterStyle}
         />
         <div
-          className="cursor-pointer px-6 py-2 bg-brown-500 text-white rounded-xl"
+          className="px-6 py-2 text-white cursor-pointer bg-brown-500 rounded-xl"
           onClick={handleWrite}
         >
           편지쓰기

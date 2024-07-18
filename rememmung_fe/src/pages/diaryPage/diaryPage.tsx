@@ -2,8 +2,9 @@ import Pagination from "@components/common/pagination/pagination";
 import DiaryContainer from "@components/diaryPage/diaryContainer";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { dummyData } from "./dummyData";
 import DiaryModal from "@components/diaryPage/diaryModal";
+import { useRecoilValue } from "recoil";
+import { diaryDataState } from "recoil/recoil";
 
 export interface DiaryItem {
   id: number;
@@ -15,8 +16,8 @@ export interface DiaryItem {
 const DiaryPage: React.FC = () => {
   const navigate = useNavigate();
 
-  // @ts-ignore
-  const [diaryData, setDiaryData] = useState(dummyData);
+  const diaryData = useRecoilValue(diaryDataState);
+  const totalPage = 1;
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   // @ts-ignore
@@ -43,16 +44,16 @@ const DiaryPage: React.FC = () => {
   return (
     <>
       <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center justify-center h-2/3 py-8 pl-6 pr-4 rounded-xl">
-        {diaryData && diaryData.nodes.length > 0 ? (
+        {diaryData && diaryData.length > 0 ? (
           <>
             <DiaryContainer
-              diaryData={diaryData.nodes}
+              diaryData={diaryData}
               onDiaryClick={handleDiaryClick}
             />
             <Pagination
               currentPage={currentPage}
               handlePage={handlePage}
-              totalPage={diaryData.totalPage}
+              totalPage={totalPage}
             />
           </>
         ) : (

@@ -1,14 +1,21 @@
 import SelectEmotionModal from "@components/diaryPage/selectEmotionModal";
 import React, { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { diaryDataState } from "recoil/recoil";
 
 import { handleEmotionIcon } from "utils/returnEmotion";
 
 interface DiaryDataProps {
+  id: number;
   emotion: string;
   content: string;
+  createdAt: string;
 }
 
 const WriteDiaryPage: React.FC = () => {
+  const navigate = useNavigate();
+  const [diaryStateData, setDiaryData] = useRecoilState(diaryDataState);
   const [today, setToday] = useState<string>("");
 
   useEffect(() => {
@@ -26,7 +33,7 @@ const WriteDiaryPage: React.FC = () => {
     setToday(getFormattedDate());
   }, []);
 
-  const [diaryData, setDiaryData] = useState<DiaryDataProps>({
+  const [diaryData, setDiaryDataState] = useState({
     emotion: "",
     content: "",
   });
@@ -44,16 +51,26 @@ const WriteDiaryPage: React.FC = () => {
   const isActive = diaryData.content !== "" && diaryData.emotion !== "";
 
   const handleEmotionSelect = (emotion: string) => {
-    setDiaryData((prev) => ({ ...prev, emotion }));
+    setDiaryDataState((prev) => ({ ...prev, emotion }));
     handleCloseModal();
   };
 
   const handleContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setDiaryData((prev) => ({ ...prev, content: e.target.value }));
+    setDiaryDataState((prev) => ({ ...prev, content: e.target.value }));
   };
 
-  const handleWrite = () => {};
-
+  const handleWrite = () => {
+    if (isActive) {
+      const newDiary: DiaryDataProps = {
+        id: diaryStateData.length + 1,
+        content: diaryData.content,
+        emotion: diaryData.emotion,
+        createdAt: today,
+      };
+      setDiaryData((prevData) => [...prevData, newDiary]);
+      navigate("/diary");
+    }
+  };
   return (
     <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center h-2/3 py-8 px-6 rounded-xl">
       <div className="font-['YangJin'] font-normal text-[#37393d] text-lg mb-6">
