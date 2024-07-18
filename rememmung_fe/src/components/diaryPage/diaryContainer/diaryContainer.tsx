@@ -1,47 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./styles";
+import { handleEmotionIcon } from "utils/returnEmotion";
 
 interface PhotoContainerProps {
   diaryData: {
     id: number;
-    petId: number;
     content: string;
     emotion: string;
-    attachment: {
-      id: number;
-      type: string;
-      url: string;
-      createdAt: string;
-    };
+    createdAt: string;
   }[];
 }
 
 const DiaryContainer: React.FC<PhotoContainerProps> = ({ diaryData }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-  };
-
   return (
     <styles.Container>
-      {diaryData.map((diary, index) => (
-        <styles.PhotoContainer
-          key={diary.id}
-          onMouseEnter={() => handleMouseEnter(index)}
-          onMouseLeave={handleMouseLeave}
-        >
-          {hoveredIndex === index && (
-            <styles.HoveredData>
-              <styles.Title>{diary.attachment.createdAt}</styles.Title>
-            </styles.HoveredData>
-          )}
-          <styles.Photo src={diary.attachment.url} />
+      {diaryData.map((diary) => (
+        <styles.PhotoContainer key={diary.id}>
+          <div>{diary.createdAt}</div>
+          <img src={handleEmotionIcon(diary.emotion)} />
         </styles.PhotoContainer>
       ))}
     </styles.Container>

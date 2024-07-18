@@ -2,6 +2,7 @@ import Pagination from "@components/common/pagination/pagination";
 import DiaryContainer from "@components/diaryPage/diaryContainer/diaryContainer";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { dummyData } from "./dummyData";
 
 export interface DiaryDataProps {
   totalCount: number;
@@ -24,11 +25,7 @@ const DiaryPage: React.FC = () => {
   const navigate = useNavigate();
 
   // @ts-ignore
-  const [diaryData, setDiaryData] = useState({
-    totalCount: 0,
-    totalPage: 0,
-    nodes: [],
-  });
+  const [diaryData, setDiaryData] = useState(dummyData);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   // @ts-ignore
@@ -60,9 +57,9 @@ const DiaryPage: React.FC = () => {
           </div>
         )}
       </div>
-      <div className="w-5/6 flex justify-end mx-auto mt-4">
+      <div className="flex justify-end w-5/6 mx-auto mt-4">
         <div
-          className="cursor-pointer px-4 py-2 bg-brown-500 text-white rounded-lg"
+          className="px-4 py-2 text-white rounded-lg cursor-pointer bg-brown-500"
           onClick={handleWrite}
         >
           일기쓰기

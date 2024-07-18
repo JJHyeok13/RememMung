@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 
 import ChatComponent from "@components/chatPage/chatting/chatting";
 import ChattingInput from "@components/chatPage/chattingInput/chattingInput";
@@ -29,9 +29,13 @@ const ChatPage: React.FC = () => {
     },
   });
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     getChatting(config).then((res) => setChattingData(res));
-  }, []);
+  }, [chattingData]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   // 채팅 입력용 state 변수
   const [content, setContent] = useState<string>("");
@@ -49,7 +53,7 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="w-5/6 mx-auto flex flex-col justify-end h-2/3 pt-7 p-5 rounded-xl bg-chatPage">
+    <div className="flex flex-col justify-end w-5/6 p-5 mx-auto h-2/3 pt-7 rounded-xl bg-chatPage">
       {chattingData && chattingData.nodes.length > 0 ? (
         <ChatComponent chattingData={chattingData} />
       ) : null}

@@ -19,8 +19,6 @@ const StepFour: React.FC<StepFourProps> = ({
   handlePrevStep,
   handleNextStep,
 }) => {
-  // const [, setBasicPetImage] = useRecoilState(basicPetImage);
-
   const [files, setFiles] = useState<{ [key: string]: File | null }>({
     기본사진: null,
     앉아있는사진: null,
