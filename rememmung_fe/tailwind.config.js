@@ -19,6 +19,10 @@ module.exports = {
       },
       backgroundColor: {
         modalBack: "rgba(0, 0, 0, 0.8)",
+        emotionBack: "linear-gradient(180deg, #FFD756 0%, #FFC300 100%)",
+      },
+      boxShadow: {
+        emotionShadow: "0px 2px 6px rgba(82, 82, 82, 0.25)",
       },
       colors: {
         brown: {

@@ -1,24 +1,15 @@
 import Pagination from "@components/common/pagination/pagination";
-import DiaryContainer from "@components/diaryPage/diaryContainer/diaryContainer";
+import DiaryContainer from "@components/diaryPage/diaryContainer";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { dummyData } from "./dummyData";
+import DiaryModal from "@components/diaryPage/diaryModal";
 
-export interface DiaryDataProps {
-  totalCount: number;
-  totalPage: number;
-  nodes: {
-    id: number;
-    petId: number;
-    content: string;
-    emotion: string;
-    attachment: {
-      id: number;
-      type: string;
-      url: string;
-      createdAt: string;
-    };
-  }[];
+export interface DiaryItem {
+  id: number;
+  content: string;
+  emotion: string;
+  createdAt: string;
 }
 
 const DiaryPage: React.FC = () => {
@@ -39,12 +30,25 @@ const DiaryPage: React.FC = () => {
     navigate(`/writediary`);
   };
 
+  const [selectedDiary, setSelectedDiary] = useState<DiaryItem | null>(null);
+
+  const handleDiaryClick = (diary: DiaryItem) => {
+    setSelectedDiary(diary);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedDiary(null);
+  };
+
   return (
     <>
       <div className="w-5/6 mx-auto bg-[#f6f6f8] flex flex-col items-center justify-center h-2/3 py-8 pl-6 pr-4 rounded-xl">
         {diaryData && diaryData.nodes.length > 0 ? (
           <>
-            <DiaryContainer diaryData={diaryData.nodes} />
+            <DiaryContainer
+              diaryData={diaryData.nodes}
+              onDiaryClick={handleDiaryClick}
+            />
             <Pagination
               currentPage={currentPage}
               handlePage={handlePage}
@@ -65,6 +69,10 @@ const DiaryPage: React.FC = () => {
           일기쓰기
         </div>
       </div>
+
+      {selectedDiary && (
+        <DiaryModal diary={selectedDiary} onClose={handleCloseModal} />
+      )}
     </>
   );
 };
